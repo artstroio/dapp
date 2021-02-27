@@ -33,6 +33,44 @@
 	margin-bottom: 0px;
 	line-height:22px;
 }
+/* The alert message box */
+.alert {
+  padding: 20px;
+  background-color: #2196F3; /* Light Blue */
+  color: white;
+  margin-bottom: 15px;
+}
+.alert span {
+	font-weight: 1000;
+	color: white;
+}
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+.disclaimer p{
+	margin-bottom: 20px;
+}
+.copyright strong{
+	font-weight: 1000;
+	color: white;
+}
+
+
+/* MODIFICADO HACIA ARRIBA */
+
 
 
 html, body, div, span, applet, object,

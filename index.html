@@ -20,8 +20,8 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 		<link rel="apple-touch-icon" href="images/icono.png" />
-		<meta name="apple-mobile-web-app-title" content="ARTSTRO">
-		<meta name="application-name" content="ARTSTRO">
+		<meta name="apple-mobile-web-app-title" content="Artstro">
+		<meta name="application-name" content="Artstro">
 	    <link rel="shortcut icon" sizes="128x128" href="images/icono.png">
     	<meta name="mobile-web-app-capable" content="yes">
     	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -39,7 +39,6 @@
 						<a href="#wallet" class="icon solid fa-wallet"><span>Your Wallet</span></a>
 						<a target="_blank" href="https://medium.com/artstroio" target="_blank" class="icon brands fa-medium"><span>Medium</span></a>
 						<a target="_blank" href="https://twitter.com/artstroio" target="_blank" class="icon brands fa-twitter"><span>Twitter</span></a>
-						<a target="_blank" href="javascript:void" target="_blank" class="icon brands fa-telegram"><span>Telegram</span></a>
 					</nav>
 
 				<!-- Main -->
@@ -63,10 +62,15 @@
 								<header>
 									<h2 style="line-height:4px;">Create your NFT Token</h2>
 								</header>
-								<p style="line-height:22px;">
-									<b>The Transaction Fee is 5 $ARTST + Network Gas Fee</b></br>
+								<p style="line-height:22px; margin-bottom:15px;">
 									<small>Connect your WEB3 wallet and fill-up the following form to create your NFT(s).</br>All the fields marked with an <b>asterisk*</b> are mandatories.</small>
 								</p>
+
+								<div class="alert">
+								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+								  Transaction Fee is <span>Five (5) $ARTST + Network Gas Fee.</span>
+								</div>
+
 								<form action="#" method="post">
 									<div>
 										<div class="row">
@@ -74,7 +78,7 @@
 												<input type="text" name="name" placeholder="Token Name*" />
 											</div>
 											<div class="col-6 col-12-medium">
-												<input type="text" name="symbol" placeholder="Token Symbol*" />
+												<input type="text" name="symbol" placeholder="Token Symbol* (Usually 3 to 5 characters)" />
 											</div>
 											<div class="col-6 col-12-medium">
 												<input type="text" name="supply" placeholder="Supply*" />
@@ -82,11 +86,20 @@
 											<div class="col-6 col-12-medium">
 												<input type="text" name="other" placeholder="Value*" />
 											</div>
+											<div class="col-6 col-12-medium">
+												<label for="thumbnail">Choose your token thumbnail:</label>
+												<input type="file"
+												       id="thumbnail" name="thumbnail"
+												       accept="image/png, image/jpeg, image/gif, video/mp4, audio/mp3">												
+											</div>												
+											<div class="col-6 col-12-medium">
+												<input type="text" name="other" placeholder="Attached URL (Optional)" />
+											</div>
 											<div class="col-12">
 												<textarea name="message" placeholder="Token Description*" rows="6"></textarea>
-											</div>											
-											<div class="col-12">
-												<p><b>DISCLAIMER:</b> By using this platform, we, the users and the creators of the tool, strongly reject the use of it for the purpose of creating content that contains or supports any sample of discrimination, abuse of morals and good customs, child pornography , the violation of personal privacy, piracy and violations of intellectual property rights, terrorism of any kind, and any other violation of the fundamental rights of individuals or entities.</p>
+											</div>
+											<div class="col-12 disclaimer">
+												<p><strong>DISCLAIMER:</strong> By using this platform, we, the users and the creators of the tool, strongly reject the use of it for the purpose of creating content that contains or supports any sample of discrimination, abuse of morals and good customs, child pornography , the violation of personal privacy, piracy and violations of intellectual property rights, terrorism of any kind, and any other violation of the fundamental rights of individuals or entities.</p>
 												<input type="submit" value="Create Token" />
 											</div>
 										</div>
@@ -223,9 +236,9 @@
 					<div id="footer">
 						<ul class="copyright">
 							<li><a target="_blank" href="https://jfscaramazza.com/product-category/main/cake/artstro">Official Store</a></li>
-							<li>ARTSTRO 2021.</li>
 							<li>Open Source Design by <a target="_blank" href="http://html5up.net">HTML5 UP</a></li>
-							<li>Mascot and graphics designed by<a target="_blank" href="https://www.freepik.com"> Catalyststuff - on Freepik.com</a></li>
+							<li>Mascot and Graphic Design by <a target="_blank" href="https://www.freepik.com/catalyststuff">Freepik.com</a></li>
+							<li><strong>Buy $ARTST on <a target="_blank" href="#">PancakeSwap</a></strong></li>							
 						</ul>
 						<p class="descripcion"><b>DISCLAIMER</b>: ARTSTRO is an effort to give artists like you, or me, the proper space to profit your talent taking advantage of the constantly growing crypto market, cutting out of the equation any middle-man | DeFi world is full of malicious projects, on ARTSTRO we encourage you to <b>Do Your Own Research</b> on us or any other DeFi project you are considering putting your money on, our website and smart contracts are available to anyone on GitHub.
 						</p>
