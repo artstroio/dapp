@@ -63,11 +63,16 @@
 .disclaimer p{
 	margin-bottom: 20px;
 }
-.copyright strong{
+#footer {
+	color: #fff;
 	font-weight: 1000;
+	margin-bottom: 20px;
+}
+#footer strong {
+	font-weight: bolder;
+	text-decoration: underline;
 	color: white;
 }
-
 
 
 /* MODIFICADO HACIA ARRIBA */
