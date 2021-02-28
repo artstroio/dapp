@@ -79,6 +79,10 @@
 .wallet header {
 	margin:0;
 }
+.token-thumbnail-minting {
+	max-width: 100%;
+	height: auto;
+}
 
 /* MODIFICADO HACIA ARRIBA */
 
