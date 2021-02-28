@@ -59,9 +59,9 @@
 .closebtn:hover {
   color: black;
 }
-
 .disclaimer p{
 	margin-bottom: 20px;
+	text-align: justify;
 }
 #footer {
 	color: #fff;
@@ -73,7 +73,9 @@
 	text-decoration: underline;
 	color: white;
 }
-
+.imagen-token {
+	text-align: center;
+}
 
 /* MODIFICADO HACIA ARRIBA */
 
