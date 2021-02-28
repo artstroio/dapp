@@ -71,13 +71,14 @@
 								<header>
 									<h2 style="line-height:4px;">Create your NFT Token</h2>
 								</header>
-								<p style="line-height:22px; margin-bottom:15px;">
-									<small>Connect your WEB3 wallet and fill-up the following form to create your NFT(s).</br>All the fields marked with an <b>asterisk*</b> are mandatories.</small>
-								</p>
+									<p style="line-height:22px; margin-bottom:15px;">
+									<small>Connect your WEB3 wallet, and fill-up the form.</br>
+									All fields marked with <b>*</b> are mandatories.</br>
+									<b> Transaction Fee is 0.1 $BNB + Network Gas Fee.</b></small></p> 
 
 								<div class="alert">
 								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-								  Transaction Fee is <span>0.1 $BNB + Network Gas Fee.</span>
+								  <span>Please allow network to approve your token creation before it can appear in your wallet.</span>
 								</div>
 
 								<form action="#" method="post">
@@ -108,7 +109,6 @@
 												<input type="text" name="description" placeholder="Token Description*" />
 											</div>
 											<div class="col-12 disclaimer">
-												<h6>After the token creation is confirmed on the network, your token will appear in your wallet.</h6>
 												<p><strong>DISCLAIMER:</strong> By using this platform, we, the users and the creators of the tool, strongly reject the use of it for the purpose of creating content that contains or supports any sample of discrimination, abuse of morals and good customs, child pornography , the violation of personal privacy, piracy and violations of intellectual property rights, terrorism of any kind, and any other violation of the fundamental rights of individuals or entities.</p>
 												<input type="submit" value="Create Token" />
 											</div>
@@ -174,10 +174,16 @@
 							<article id="wallet" class="panel">
 								<header>
 									<h2>Wallet</h2>
-									<p>You have <b> 8888 BNB</b> in your wallet, and the following NFTs minted with us:</br>
-									After the token creation is confirmed on the network, your token will appear here.</p> 
+									<p>If your token is not showing here, please refresh the page (F5) after receiving network confirmation.
+									You have <b> 8888 BNB</b> in your wallet, and the following NFTs minted with us:</p> 
 								</header>
 								<section>
+
+								<div class="alert">
+								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+								  <span>Please allow network to approve your token before it can appear here.</span>
+								</div>
+
 									<div class="row">
 										<div class="col-4 col-6-medium col-12-small">
 											<a href="#" class="image fit"><img src="https://img.freepik.com/vector-gratis/astronauta-dabbing-on-rocket-icon-ilustracion-personaje-dibujos-animados-mascota-astronauta-concepto-icono-ciencia-aislado_138676-972.jpg?size=338&ext=jpg&uid=R518281&ga=GA1.2.278836255.1614294689" alt=""></a>
