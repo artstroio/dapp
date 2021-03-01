@@ -79,6 +79,13 @@
 .wallet header {
 	margin:0;
 }
+.token-thumbnail-minting {
+	max-width: 100%;
+	height: auto;
+}
+.mintbutton input {
+	width: 100%;
+}
 
 /* MODIFICADO HACIA ARRIBA */
 
