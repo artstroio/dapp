@@ -93,6 +93,9 @@
 .mintbutton input {
 	width: 100%;
 }
+.#nav a {
+	font-size: 2em;
+}
 
 /* MODIFICADO HACIA ARRIBA */
 
