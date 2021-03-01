@@ -79,6 +79,13 @@
 .wallet header {
 	margin:0;
 }
+.wallet a {
+	text-decoration: none;
+	font-weight: bolder;
+}
+.wallet a:hover {
+	text-decoration: underline;
+}
 .token-thumbnail-minting {
 	max-width: 100%;
 	height: auto;
