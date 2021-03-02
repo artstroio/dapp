@@ -587,7 +587,7 @@ sendJSONToIPFS = async () => {
         mintLoader.hidden = true;
         tokenURI = `https://gateway.pinata.cloud/ipfs/${cid[0].hash}`
         console.log(`https://gateway.pinata.cloud/ipfs/${cid[0].hash}`)  
-        mintBtnELm.value = 'Sending Transaction to BSC'
+        mintBtnELm.value = 'Approving Transaction to BSC (please wait)'
         mintLoader.hidden = false;
         mintToken()
     })
