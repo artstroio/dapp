@@ -19,8 +19,8 @@
 }
 .descripcion {
 	color:white;
-	line-height:13px;
-	font-size: 13px;
+	line-height:15px;
+	font-size: 15px;
 	margin: 0;
 	padding: 0;
 	font-weight: normal;
@@ -79,12 +79,22 @@
 .wallet header {
 	margin:0;
 }
+.wallet a {
+	text-decoration: none;
+	font-weight: bolder;
+}
+.wallet a:hover {
+	text-decoration: underline;
+}
 .token-thumbnail-minting {
 	max-width: 100%;
 	height: auto;
 }
 .mintbutton input {
 	width: 100%;
+}
+.#nav a {
+	font-size: 2em;
 }
 
 /* MODIFICADO HACIA ARRIBA */
