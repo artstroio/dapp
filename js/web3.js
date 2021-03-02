@@ -1,7 +1,16 @@
 const inputELm = document.querySelector('#thumbnail');
-let imgBuffer;
-let ipfs;
+const descriptionELm = document.querySelector('#description')
+const supplyELm = document.querySelector('#supply');
+const valueElm = document.querySelector('#value');
+const royaltyELm = document.querySelector('#royalty');
+const optionalURLELm = document.querySelector('#royalty');
+const mintBtnELm = document.querySelector('#mintBtn');
+
+let imgBuffer,ipfs,imageUrl,description,supply,value,royalty,optionalUrl,tokenURI;
+
 window.onload = async () => {
+    loader.hidden = true
+    mintLoader.hidden = true
      ipfs = IpfsApi({
          host: 'ipfs.infura.io',
          port: 5001,
@@ -19,6 +28,7 @@ window.onload = async () => {
 }
 
 inputELm.addEventListener('change' ,(e) => {
+    loader.hidden = false
     const file = e.target.files[0];
     const reader = new window.FileReader()
     reader.readAsArrayBuffer(file);
@@ -40,23 +50,37 @@ async function addData() {
         }
         hash = result[0]
         console.log(hash)
-        alert(`IMAGE UPLOADED TO IPFS https://gateway.pinata.cloud/ipfs/${result[0].hash}`)
+        loader.hidden = true
+        imageUrl = (`https://gateway.pinata.cloud/ipfs/${result[0].hash}`)
     })
 }
 
-const pinJSONToIPFS = (pinataApiKey, pinataSecretApiKey, JSONBody ) => {
-    const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
-    return axios
-        .post(url, JSONBody, {
-            headers: {
-                pinata_api_key: pinataApiKey,
-                pinata_secret_api_key: pinataSecretApiKey
-            }
-        })
-        .then(function (response) {
-            console.log(response)
-        })
-        .catch(function (error) {
-            console.log(error)
-        });
-};
+sendJSONToIPFS = async () => {
+    mintBtnELm.value = 'Sending metadata to IPFS'
+    mintLoader.hidden = false;
+    getValues()
+    const doc = JSON.stringify({
+        description: description,
+        supply: supply,
+        value: value,
+        royalty: royalty,
+        optionalUrl: optionalUrl,
+        img: imageUrl
+    });
+    
+    const cid = await ipfs.add(ipfs.Buffer(doc));
+    console.log("IPFS cid:", cid);
+    mintLoader.hidden = true;
+    tokenURI = `https://gateway.pinata.cloud/ipfs/${cid[0].hash}`
+    console.log(`https://gateway.pinata.cloud/ipfs/${cid[0].hash}`)  
+    mintBtnELm.value = 'Sending Transaction to BSC'
+    mintLoader.hidden = false;
+  }
+
+function getValues() {
+    description = descriptionELm.value;
+    supply = supplyELm.value;
+    value = valueElm.value;
+    royalty = royaltyELm.value;
+    optionalUrl = optionalURLELm.value;
+}
