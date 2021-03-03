@@ -5,7 +5,7 @@ const valueElm = document.querySelector('#value');
 const royaltyELm = document.querySelector('#royalty');
 const optionalURLELm = document.querySelector('#royalty');
 const mintBtnELm = document.querySelector('#mintBtn');
-const contractAbi = [
+const contractAbi =[
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -106,6 +106,37 @@ const contractAbi = [
 		"outputs": [],
 		"stateMutability": "payable",
 		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "uri",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Minted",
+		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -517,7 +548,7 @@ const contractAbi = [
 		"type": "function"
 	}
 ]
-const contractAddress = '0x4ab23b8f65F4CbADCB796fE4913b1d43399B13e8'
+const contractAddress = '0x47879490A53A737476C4aC47c7d9C1bEa64E0815'
 
 let imgBuffer,ipfs,imageUrl,description,supply,value,royalty,optionalUrl,tokenURI,contract;
 
@@ -565,6 +596,7 @@ async function addData() {
         console.log(hash)
         loader.hidden = true
         imageUrl = (`https://gateway.pinata.cloud/ipfs/${result[0].hash}`)
+		tokenImg.src = imageUrl
     })
 }
 
