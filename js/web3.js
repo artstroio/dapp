@@ -100,6 +100,11 @@ const contractAbi =[
 				"internalType": "uint256",
 				"name": "_value",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_royaltyShare",
+				"type": "uint256"
 			}
 		],
 		"name": "mint",
@@ -548,7 +553,7 @@ const contractAbi =[
 		"type": "function"
 	}
 ]
-const contractAddress = '0x47879490A53A737476C4aC47c7d9C1bEa64E0815'
+const contractAddress = '0x82bdF16Ad907171bBc5c048aaE592291701A22ED'
 
 let imgBuffer,ipfs,imageUrl,description,supply,value,royalty,optionalUrl,tokenURI,contract;
 
@@ -560,7 +565,10 @@ window.onload = async () => {
          port: 5001,
          protocol: 'https'
      })
-    if(window.ethereum) {
+}
+
+async function connectWallet() {
+	if(window.ethereum) {
         web3 = new Web3(window.ethereum)
         try{    
             contract = new web3.eth.Contract(contractAbi,contractAddress);
@@ -634,8 +642,8 @@ function getValues() {
 }
 
 function mintToken() {
-    contract.methods.mint(accounts[0],supply,tokenURI,web3.utils.toWei(value)).
-    send({from: accounts[0],value : '100000000000000000'}).then(() =>{
+    contract.methods.mint(accounts[0],supply,tokenURI,web3.utils.toWei(value),royalty).
+    send({from: accounts[0],value : '50000000000000000'}).then(() =>{
         mintBtnELm.value = 'Transaction Confirmed (token minted)'
         mintLoader.hidden = true;
     })

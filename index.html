@@ -93,7 +93,7 @@
 												<b> Transaction Fee is 0.05 $BNB + Network Gas Fee.</b></small></p>		
 											</div>	
 											<div class="col-6 col-12-medium">
-												<input type="submit" id="connectBtn" onclick="#" value="Connect your Wallet" />
+												<input type="submit" id="connectBtn" onclick="connectWallet()" value="Connect your Wallet" />
 											</div>
 								</div>	
 
@@ -102,19 +102,14 @@
 								  <span>Please allow network to approve your token creation before it can appear in your wallet.</span>
 								</div>
 
-								<form action="#" method="post" onsubmit="return false">
+								<form action="#" id="myForm" method="post" onsubmit="return false">
 									<div>
 										<div class="row">
 											<div class="col-6 col-12-medium">
 												<input type="text" name="description" id="description" placeholder="Token Name* (Description)" />
 											</div>
 											<div class="col-6 col-12-medium">
-<<<<<<< HEAD
 												<input type="text" name="supply" id="supply" placeholder="Supply* (Max 50)" />											</div>
-=======
-												<input type="text" name="supply" id="supply" placeholder="Supply* (Max 50)" />						
-											</div>
->>>>>>> ba723db7c4d7911536b8247af746f2cde8176e5b
 											<div class="col-6 col-12-medium">
 												<input type="text" name="other" id="value" placeholder="Value per Unit (in BNB)*" />
 											</div>
@@ -129,10 +124,6 @@
 													   <img style="width: 130px;" id="loader" src="./images/loadingbar.gif" >
 
 												<p style="margin-top:20px;"><strong>Specifications:</strong></br> Max. File Size: 30mb</br>Ideal Image Proportions: 3:4</p><p>Files Allowed:</br>.png, .jpg, .gif, .mp4, .webm.</br></p><p>Note: Do not use 3rd party creations to mint an NFT in our platform without legal authorization.</p>
-<<<<<<< HEAD
-
-=======
->>>>>>> ba723db7c4d7911536b8247af746f2cde8176e5b
 											</div>					
 											<div class="col-6 col-12-medium imagen-token">
 												<img class="token-thumbnail-minting" id="tokenImg" src="https://img.freepik.com/vector-gratis/astronauta-dabbing-on-rocket-icon-ilustracion-personaje-dibujos-animados-mascota-astronauta-concepto-icono-ciencia-aislado_138676-972.jpg?size=338&ext=jpg&uid=R518281&ga=GA1.2.278836255.1614294689"/>
@@ -141,7 +132,7 @@
 												<input type="text" name="url" id="optionalURL" placeholder="Attachment URL - Recommended Format .ZIP (Optional)" />
 											</div>
 											<div class="col-6 col-12-medium mintbutton">
-												<input type="submit" id="clearBtn" onclick="document.getElementById("myForm").reset();" value="Clear Form" />
+												<input type="submit" id="clearBtn" onclick='document.getElementById("myForm").reset();' value="Clear Form" />
 											</div>																						
 											<div class="col-6 col-12-medium mintbutton">
 												<img style="width: 130px; margin-left: 300px;" id="mintLoader" src="./images/loadingbar.gif" >
@@ -412,5 +403,5 @@
 			<script src="https://wzrd.in/standalone/buffer"></script>
 			<script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"></script>
 			<script src="https://unpkg.com/ipfs/dist/index.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/@walletconnect/eth-provider@1.0.0/dist/cjs/index.min.js"></script>		</body>
+			<!-- <script src="https://cdn.jsdelivr.net/npm/@walletconnect/eth-provider@1.0.0/dist/cjs/index.min.js"></script>		</body> -->
 </html>
