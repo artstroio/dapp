@@ -598,6 +598,7 @@ let imgBuffer,ipfs,imageUrl,description,supply,value,royalty,optionalUrl,tokenUR
 window.onload = async () => {
     loader.hidden = true
     mintLoader.hidden = true
+	connectWallet()
      ipfs = IpfsApi({
          host: 'ipfs.infura.io',
          port: 5001,
@@ -608,6 +609,10 @@ window.onload = async () => {
 async function connectWallet() {
 	if(window.ethereum) {
         web3 = new Web3(window.ethereum)
+		if(await web3.eth.getChainId() !== 97){
+			alert("ERROR: Wrong Network")
+		}
+
         try{    
             contract = new web3.eth.Contract(contractAbi,contractAddress);
             accounts = await ethereum.enable();
