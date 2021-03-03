@@ -35,6 +35,16 @@
 		<meta name="og:description" content="NFT Generator for the Binance Smart Chain."/>
 		<meta name="fb:page_id" content="101259668694401" />
 
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-GKVGKE9LP2"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-GKVGKE9LP2');
+		</script>
+
 <!-- Cambios Arriba -->
 	</head>
 	<body class="is-preload">
@@ -122,10 +132,13 @@
 											<div class="col-12">
 												<input type="text" name="url" id="optionalURL" placeholder="Attachment URL - Recommended Format .ZIP (Optional)" />
 											</div>
-											<div class="col-12 mintbutton">
+											<div class="col-6 col-12-medium mintbutton">
+												<input type="submit" id="clearBtn" onclick="document.getElementById("myForm").reset();" value="Clear Form" />
+											</div>																						
+											<div class="col-6 col-12-medium mintbutton">
 												<img style="width: 130px; margin-left: 300px;" id="mintLoader" src="./images/loadingbar.gif" >
 												<input type="submit" id="mintBtn" onclick="sendJSONToIPFS()" value="Mint Token" />
-											</div>																						
+											</div>
 											<div class="col-12 disclaimer">
 												<p style="margin-top:20px;"><strong>DISCLAIMER:</strong> By using this platform, we, the users and the creators of the tool, strongly reject the use of it for the purpose of creating content that contains or supports any sample of discrimination, abuse of morals and good customs, child pornography , the violation of personal privacy, piracy and violations of intellectual property rights, terrorism of any kind, and any other violation of the fundamental rights of individuals or entities.</p>
 											</div>											
@@ -260,7 +273,6 @@
 											<h3>Unit Price 0.5 BNB</h3>
 											<p>Available Supply: 01</p>
 											<p style="margin:7px 0"><input type="text" name="token-qty" placeholder="Buy 50 tokens max. (Subject to availability)" /></p>
-											<h3><a target="_blank" href="#">Download Attachment</a> (if any)</h3>
 											</div>											
 											<div class="col-12 mintbutton">
 												<input type="submit" value="Buy Token" />
@@ -369,7 +381,7 @@
 							<li>Web by <a target="_blank" href="http://html5up.net">HTML5 UP</a></li>
 							<li>Graphics by <a target="_blank" href="https://www.freepik.com/catalyststuff">Freepik.com</a></li>
 							<li><a target="_blank" href="#">DApp Contract on BSC</a></li>	
-							<li><a target="_blank" href="#">Token Sales Contract on BSC</a></li>												
+							<!-- <li><a target="_blank" href="#">Token Sales Contract on BSC</a></li> -->												
 						</ul>							
 						<p class="descripcion">ARTSTRO is an effort to give artists like you, or me, the proper space to profit your talent taking advantage of the constantly growing crypto market, cutting out of the equation any middle-man | <strong>DISCLAIMER</strong>: All projects are subject to both high market risk and volatility. Please, <b>do your own research</b> and full due diligence before even considering to invest your funds in any project and please, make your investments very cautiously. <b>ARTSTRO</b> will not be held responsible for any investment losses.
 						</p>
