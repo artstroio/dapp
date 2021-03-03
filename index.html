@@ -74,11 +74,18 @@
 								<header>
 									<h2 style="line-height:4px;">Create your NFT Token</h2>
 								</header>
-									<p style="line-height:22px; margin-bottom:15px;">
-									<small>Connect your WEB3 wallet, and fill-up the form.</br>
-									All fields marked with <b>*</b> are mandatories.</br>
-									<b> Transaction Fee is 0.05 $BNB + Network Gas Fee.</b></small></p> 									
 
+								<div class="row">
+											<div class="col-6 col-12-medium">
+												<p style="line-height:22px; margin-bottom:15px;">
+												<small>Connect your WEB3 wallet, and fill-up the form.</br>
+												All fields marked with <b>*</b> are mandatories.</br>
+												<b> Transaction Fee is 0.05 $BNB + Network Gas Fee.</b></small></p>		
+											</div>	
+											<div class="col-6 col-12-medium">
+												<input type="submit" id="connectBtn" onclick="#" value="Connect your Wallet" />
+											</div>
+								</div>	
 
 								<div class="alert">
 								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -92,12 +99,13 @@
 												<input type="text" name="description" id="description" placeholder="Token Name* (Description)" />
 											</div>
 											<div class="col-6 col-12-medium">
-												<input type="text" name="supply" id="supply" placeholder="Supply* (Max 50)" />											</div>
-											<div class="col-6 col-12-medium">
-												<input type="text" name="other" id="value" placeholder="Value per Unit*" />
+												<input type="text" name="supply" id="supply" placeholder="Supply* (Max 50)" />						
 											</div>
 											<div class="col-6 col-12-medium">
-												<input type="text" name="royalty" id="royalty" placeholder="Royalty on Future Sells* (Usually 5%)" />
+												<input type="text" name="other" id="value" placeholder="Value per Unit (in BNB)*" />
+											</div>
+											<div class="col-6 col-12-medium">
+												<input type="text" name="royalty" id="royalty" placeholder="% of Future Sells going to Creator's Wallet*" />
 											</div>											
 											<div class="col-6 col-12-medium disclaimer">
 												<label for="thumbnail">Token Thumbnail:</label>
@@ -107,7 +115,6 @@
 													   <img style="width: 130px;" id="loader" src="./images/loadingbar.gif" >
 
 												<p style="margin-top:20px;"><strong>Specifications:</strong></br> Max. File Size: 30mb</br>Ideal Image Proportions: 3:4</p><p>Files Allowed:</br>.png, .jpg, .gif, .mp4, .webm.</br></p><p>Note: Do not use 3rd party creations to mint an NFT in our platform without legal authorization.</p>
-
 											</div>					
 											<div class="col-6 col-12-medium imagen-token">
 												<img class="token-thumbnail-minting" src="https://img.freepik.com/vector-gratis/astronauta-dabbing-on-rocket-icon-ilustracion-personaje-dibujos-animados-mascota-astronauta-concepto-icono-ciencia-aislado_138676-972.jpg?size=338&ext=jpg&uid=R518281&ga=GA1.2.278836255.1614294689"/>
@@ -118,7 +125,6 @@
 											<div class="col-12 mintbutton">
 												<img style="width: 130px; margin-left: 300px;" id="mintLoader" src="./images/loadingbar.gif" >
 												<input type="submit" id="mintBtn" onclick="sendJSONToIPFS()" value="Mint Token" />
-
 											</div>																						
 											<div class="col-12 disclaimer">
 												<p style="margin-top:20px;"><strong>DISCLAIMER:</strong> By using this platform, we, the users and the creators of the tool, strongly reject the use of it for the purpose of creating content that contains or supports any sample of discrimination, abuse of morals and good customs, child pornography , the violation of personal privacy, piracy and violations of intellectual property rights, terrorism of any kind, and any other violation of the fundamental rights of individuals or entities.</p>
