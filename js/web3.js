@@ -3,9 +3,9 @@ const descriptionELm = document.querySelector('#description')
 const supplyELm = document.querySelector('#supply');
 const valueElm = document.querySelector('#value');
 const royaltyELm = document.querySelector('#royalty');
-const optionalURLELm = document.querySelector('#royalty');
+const optionalURLELm = document.querySelector('#optionalURL');
 const mintBtnELm = document.querySelector('#mintBtn');
-const contractAbi =[
+const contractAbi = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -116,7 +116,7 @@ const contractAbi =[
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": true,
 				"internalType": "address",
 				"name": "to",
 				"type": "address"
@@ -342,6 +342,25 @@ const contractAbi =[
 		"inputs": [
 			{
 				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "firstOwnerOfToken",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			}
@@ -524,6 +543,25 @@ const contractAbi =[
 		"inputs": [
 			{
 				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "tokenRoyaltyShare",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			}
@@ -553,7 +591,7 @@ const contractAbi =[
 		"type": "function"
 	}
 ]
-const contractAddress = '0x82bdF16Ad907171bBc5c048aaE592291701A22ED'
+const contractAddress = '0x6B30EaD8B66d7454a0e4087b7bF76609093DaB23'
 
 let imgBuffer,ipfs,imageUrl,description,supply,value,royalty,optionalUrl,tokenURI,contract;
 
@@ -573,6 +611,7 @@ async function connectWallet() {
         try{    
             contract = new web3.eth.Contract(contractAbi,contractAddress);
             accounts = await ethereum.enable();
+			getTokenOfUserFromEvent()
         }catch(e){
             console.log(e);
         }
@@ -644,7 +683,36 @@ function getValues() {
 function mintToken() {
     contract.methods.mint(accounts[0],supply,tokenURI,web3.utils.toWei(value),royalty).
     send({from: accounts[0],value : '50000000000000000'}).then(() =>{
+		getTokenOfUserFromEvent()
         mintBtnELm.value = 'Transaction Confirmed (token minted)'
         mintLoader.hidden = true;
-    })
+		window.location.hash = '#wallet'
+    }).catch((e) => {
+		alert('ERROR:',e);
+	})
+}
+
+function getTokenOfUserFromEvent() {
+	contract.events.Minted({filter: {to: accounts[0]},fromBlock: 0},(err,r) => {
+		walletLoader.hidden = true;
+		let uri = r.returnValues.uri;
+		let id = r.returnValues.id;
+		let value = web3.utils.fromWei(r.returnValues.value);
+		let imageLink,optionalLink;
+		console.log(uri);
+		axios(uri).then((r) => {
+		 	optionalLink =  r.data.optionalUrl;
+			imageLink = r.data.img;
+			console.log('imageLInk',imageLink,'optionalLink',optionalLink);
+			// console.log()
+			walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
+			<a href="#" class="image fit"><img src=${imageLink} alt=""></a>
+			<p><b>ARTSTRO TOKEN</b></p><p>Current Price ${value} BNB</p>
+			<p>Token Id.: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
+			<p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
+		</div>`
+	
+		})
+	
+	})
 }

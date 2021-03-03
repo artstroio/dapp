@@ -1814,11 +1814,13 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata, IERC721Enumerable 
      */
     function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal virtual { }
 }
-contract ARTSTRO is ERC721{
+contract ARTSTRO is ERC721,Ownable(){
     
     uint256 baseFee;
     uint256 maxMint;
     uint256 currentId;
+    
+    event Minted(address to,uint256 id,string  uri,uint256 value);
     
     constructor() ERC721('Artstro','ARTST'){
         baseFee = 0.05 ether;
@@ -1826,14 +1828,26 @@ contract ARTSTRO is ERC721{
         currentId = 0;
     }
     
-    function mint(address _to,uint256 _count,string memory _uri) public payable {
+    mapping(uint256 => uint256) public NFTValue;
+    mapping(uint256 => uint256) royaltyShare;
+    mapping(uint256 => address) firstOwner;
+    
+    function mint(address _to,uint256 _count,string memory _uri,uint256 _value,uint256 _royaltyShare) public payable {
         require(_count != 0 && _count <= maxMint,'ERROR: cannot mint');
-        require(msg.value >= _count*baseFee,"ERROR: not enough fee");
+        require(msg.value >= baseFee,"ERROR: not enough fee");
         
         for(uint256 i=0; i<_count; i++){
             _mint(_to,currentId);
             _setTokenURI(currentId,_uri);
+            NFTValue[currentId] = _value;
+            royaltyShare[currentId] = _royaltyShare;
+            firstOwner[currentId] = msg.sender;
+            emit Minted(_to,currentId,_uri,_value);
             currentId++;
         }
+    }
+    
+    function withdrawBNB() onlyOwner public {
+        payable(owner()).transfer(address(this).balance);
     }
 }
