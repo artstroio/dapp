@@ -628,7 +628,6 @@ inputELm.addEventListener('change' ,(e) => {
 			imgBuffer = ipfs.Buffer(reader.result);
 		}
 		setTimeout(() => {
-			if(bytesToSize(thumbnail.files[0].size))
 			addData()
 		}, 500);	
 	}else {
