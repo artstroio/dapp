@@ -621,14 +621,20 @@ async function connectWallet() {
 inputELm.addEventListener('change' ,(e) => {
     loader.hidden = false
     const file = e.target.files[0];
-    const reader = new window.FileReader()
-    reader.readAsArrayBuffer(file);
-    reader.onloadend = () => {
-        imgBuffer = ipfs.Buffer(reader.result);
-    }
-    setTimeout(() => {
-        addData()
-    }, 500);
+	if(thumbnail.files[0].size/1024/1024 < 30){
+		const reader = new window.FileReader()
+		reader.readAsArrayBuffer(file);
+		reader.onloadend = () => {
+			imgBuffer = ipfs.Buffer(reader.result);
+		}
+		setTimeout(() => {
+			if(bytesToSize(thumbnail.files[0].size))
+			addData()
+		}, 500);	
+	}else {
+		alert('File Size exceed')
+	}
+    
 
 })
 
