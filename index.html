@@ -33,11 +33,21 @@
 		<meta property="og:image" content="https://artstro.io/images/me.jpg">
 		<meta name="og:site_name" content="ARTSTRO"/>
 		<meta name="og:description" content="NFT Generator for the Binance Smart Chain."/>
-		<meta name="fb:page_id" content="101259668694401" />		
-<!-- Cambiado Arriba -->
+		<meta name="fb:page_id" content="101259668694401" />
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-GKVGKE9LP2"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-GKVGKE9LP2');
+		</script>
+
+<!-- Cambios Arriba -->
 	</head>
 	<body class="is-preload">
-
 		<!-- Wrapper-->
 			<div id="wrapper">
 
@@ -74,11 +84,18 @@
 								<header>
 									<h2 style="line-height:4px;">Create your NFT Token</h2>
 								</header>
-									<p style="line-height:22px; margin-bottom:15px;">
-									<small>Connect your WEB3 wallet, and fill-up the form.</br>
-									All fields marked with <b>*</b> are mandatories.</br>
-									<b> Transaction Fee is 0.05 $BNB + Network Gas Fee.</b></small></p> 									
 
+								<div class="row">
+											<div class="col-6 col-12-medium">
+												<p style="line-height:22px; margin-bottom:15px;">
+												<small>Connect your WEB3 wallet, and fill-up the form.</br>
+												All fields marked with <b>*</b> are mandatories.</br>
+												<b> Transaction Fee is 0.05 $BNB + Network Gas Fee.</b></small></p>		
+											</div>	
+											<div class="col-6 col-12-medium">
+												<input type="submit" id="connectBtn" onclick="#" value="Connect your Wallet" />
+											</div>
+								</div>	
 
 								<div class="alert">
 								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -92,12 +109,17 @@
 												<input type="text" name="description" id="description" placeholder="Token Name* (Description)" />
 											</div>
 											<div class="col-6 col-12-medium">
+<<<<<<< HEAD
 												<input type="text" name="supply" id="supply" placeholder="Supply* (Max 50)" />											</div>
+=======
+												<input type="text" name="supply" id="supply" placeholder="Supply* (Max 50)" />						
+											</div>
+>>>>>>> ba723db7c4d7911536b8247af746f2cde8176e5b
 											<div class="col-6 col-12-medium">
-												<input type="text" name="other" id="value" placeholder="Value per Unit*" />
+												<input type="text" name="other" id="value" placeholder="Value per Unit (in BNB)*" />
 											</div>
 											<div class="col-6 col-12-medium">
-												<input type="text" name="royalty" id="royalty" placeholder="Royalty on Future Sells* (Usually 5%)" />
+												<input type="text" name="royalty" id="royalty" placeholder="% of Future Sells going to Creator's Wallet*" />
 											</div>											
 											<div class="col-6 col-12-medium disclaimer">
 												<label for="thumbnail">Token Thumbnail:</label>
@@ -107,7 +129,10 @@
 													   <img style="width: 130px;" id="loader" src="./images/loadingbar.gif" >
 
 												<p style="margin-top:20px;"><strong>Specifications:</strong></br> Max. File Size: 30mb</br>Ideal Image Proportions: 3:4</p><p>Files Allowed:</br>.png, .jpg, .gif, .mp4, .webm.</br></p><p>Note: Do not use 3rd party creations to mint an NFT in our platform without legal authorization.</p>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ba723db7c4d7911536b8247af746f2cde8176e5b
 											</div>					
 											<div class="col-6 col-12-medium imagen-token">
 												<img class="token-thumbnail-minting" id="tokenImg" src="https://img.freepik.com/vector-gratis/astronauta-dabbing-on-rocket-icon-ilustracion-personaje-dibujos-animados-mascota-astronauta-concepto-icono-ciencia-aislado_138676-972.jpg?size=338&ext=jpg&uid=R518281&ga=GA1.2.278836255.1614294689"/>
@@ -115,11 +140,13 @@
 											<div class="col-12">
 												<input type="text" name="url" id="optionalURL" placeholder="Attachment URL - Recommended Format .ZIP (Optional)" />
 											</div>
-											<div class="col-12 mintbutton">
+											<div class="col-6 col-12-medium mintbutton">
+												<input type="submit" id="clearBtn" onclick="document.getElementById("myForm").reset();" value="Clear Form" />
+											</div>																						
+											<div class="col-6 col-12-medium mintbutton">
 												<img style="width: 130px; margin-left: 300px;" id="mintLoader" src="./images/loadingbar.gif" >
 												<input type="submit" id="mintBtn" onclick="sendJSONToIPFS()" value="Mint Token" />
-
-											</div>																						
+											</div>
 											<div class="col-12 disclaimer">
 												<p style="margin-top:20px;"><strong>DISCLAIMER:</strong> By using this platform, we, the users and the creators of the tool, strongly reject the use of it for the purpose of creating content that contains or supports any sample of discrimination, abuse of morals and good customs, child pornography , the violation of personal privacy, piracy and violations of intellectual property rights, terrorism of any kind, and any other violation of the fundamental rights of individuals or entities.</p>
 											</div>											
@@ -254,7 +281,6 @@
 											<h3>Unit Price 0.5 BNB</h3>
 											<p>Available Supply: 01</p>
 											<p style="margin:7px 0"><input type="text" name="token-qty" placeholder="Buy 50 tokens max. (Subject to availability)" /></p>
-											<h3><a target="_blank" href="#">Download Attachment</a> (if any)</h3>
 											</div>											
 											<div class="col-12 mintbutton">
 												<input type="submit" value="Buy Token" />
@@ -363,7 +389,7 @@
 							<li>Web by <a target="_blank" href="http://html5up.net">HTML5 UP</a></li>
 							<li>Graphics by <a target="_blank" href="https://www.freepik.com/catalyststuff">Freepik.com</a></li>
 							<li><a target="_blank" href="#">DApp Contract on BSC</a></li>	
-							<li><a target="_blank" href="#">Token Sales Contract on BSC</a></li>												
+							<!-- <li><a target="_blank" href="#">Token Sales Contract on BSC</a></li> -->												
 						</ul>							
 						<p class="descripcion">ARTSTRO is an effort to give artists like you, or me, the proper space to profit your talent taking advantage of the constantly growing crypto market, cutting out of the equation any middle-man | <strong>DISCLAIMER</strong>: All projects are subject to both high market risk and volatility. Please, <b>do your own research</b> and full due diligence before even considering to invest your funds in any project and please, make your investments very cautiously. <b>ARTSTRO</b> will not be held responsible for any investment losses.
 						</p>

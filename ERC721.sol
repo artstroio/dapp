@@ -1821,7 +1821,7 @@ contract ARTSTRO is ERC721{
     uint256 currentId;
     
     constructor() ERC721('Artstro','ARTST'){
-        baseFee = 0.1 ether;
+        baseFee = 0.05 ether;
         maxMint = 50;
         currentId = 0;
     }
