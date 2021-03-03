@@ -15,8 +15,17 @@
 	line-height: 0;
 }
 .sub-titulo {
-	line-height: 0;
+	line-height: 12px;
 }
+.beta {
+	background-color: #267ff9;
+	color: #fff;
+	line-height: 12px;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bolder;
+	padding: 3px;	
+}	
 .descripcion {
 	color:white;
 	line-height:15px;
