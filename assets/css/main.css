@@ -108,7 +108,10 @@
 .#nav a {
 	font-size: 2em;
 }
-
+.video-preview {
+	width: 340px;
+	height: auto;
+}
 
 
 /* MODIFICADO HACIA ARRIBA */
