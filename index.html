@@ -53,7 +53,7 @@
 
 				<!-- Nav -->
 					<nav id="nav">
-						<a href="#" class="icon solid fa-user-astronaut"><span>Start</span></a>
+						<a href="/" class="icon solid fa-user-astronaut"><span>Start</span></a>
 						<a href="#mint" class="icon solid fa-edit"><span>Create Token</span></a>
 						<a href="#wallet" class="icon solid fa-wallet"><span>Your Wallet</span></a>
 						<!-- <a href="#find-token" class="icon solid fa-search"><span>Find Token</span></a>
@@ -123,11 +123,14 @@
 												       id="thumbnail" name="thumbnail"
 												       accept="image/png, image/jpeg, image/gif, video/mp4, video/webm">
 													   <img style="width: 130px;" id="loader" src="./images/loadingbar.gif" >
-
-												<p style="margin-top:20px;"><strong>Specifications:</strong></br> Max. File Size: 30mb</br>Ideal Image Proportions: 3:4</p><p>Files Allowed:</br>.png, .jpg, .gif, .mp4, .webm.</br></p><p>Note: Do not use 3rd party creations to mint an NFT in our platform without legal authorization.</p>
+												<p style="margin-top:20px;"><strong>Specifications:</strong></br> Max. File Size: 30mb</br>Ideal Image Proportions: 3:4</p><p>Files Allowed:</br>.png, .jpg, .gif, muted .mp4, and muted .webm.</br></p><p>Note: Do not use 3rd party creations to mint an NFT in our platform without legal authorization.</p>
 											</div>					
 											<div class="col-6 col-12-medium imagen-token">
 												<img class="token-thumbnail-minting" id="tokenImg" src="./images/nft-preview.jpg"/>
+													<!-- We have to create an HTML player for .mp4 and .webm files uploaded during minting to display as token preview images -->
+													<video class="video-preview" autoplay loop muted src="./images/bullish.webm">
+													  Your browser does not support the video tag.
+													</video>												
 											</div>
 											<div class="col-12">
 												<input type="text" name="url" id="optionalURL" placeholder="Attachment URL - Recommended Format .ZIP (Optional)" />
@@ -136,8 +139,8 @@
 												<input type="submit" id="clearBtn" onclick='document.getElementById("myForm").reset();' value="Clear Form" />
 											</div>																						
 											<div class="col-6 col-12-medium mintbutton">
-												<img style="width: 100px; margin-left: 130px;" id="mintLoader" src="./images/loadingbar.gif" >
 												<input type="submit" id="mintBtn" onclick="sendJSONToIPFS()" value="Mint Token" />
+												<img style="width: 100px; margin-left: 130px;" id="mintLoader" src="./images/loadingbar.gif" >
 											</div>
 											<div class="col-12 disclaimer">
 												<p style="margin-top:20px;"><strong>DISCLAIMER:</strong> By using this platform, we, the users and the creators of the tool, strongly reject the use of it for the purpose of creating content that contains or supports any sample of discrimination, abuse of morals and good customs, child pornography , the violation of personal privacy, piracy and violations of intellectual property rights, terrorism of any kind, and any other violation of the fundamental rights of individuals or entities.</p>
@@ -205,7 +208,7 @@
 								<header>
 									<h2>Wallet</h2>
 								</header>
-									<p>If your token is not showing here, please refresh the page (F5) after receiving network confirmation.</p> 
+									<p>If your tokens are not showing here, please close the tab and open a new one.</p> 
 								<section>
 
 								<div class="alert">
