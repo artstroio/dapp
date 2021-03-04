@@ -109,8 +109,8 @@
 	font-size: 2em;
 }
 .video-preview {
-	max-width: 340px;
-	height: auto;
+	max-width: 87.25%;
+	text-align: center;
 }
 
 
