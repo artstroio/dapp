@@ -5,6 +5,8 @@ const valueElm = document.querySelector('#value');
 const royaltyELm = document.querySelector('#royalty');
 const optionalURLELm = document.querySelector('#optionalURL');
 const mintBtnELm = document.querySelector('#mintBtn');
+const walletLoader = document.querySelector('#walletLoader');
+
 const contractAbi = [
 	{
 		"inputs": [],
@@ -697,12 +699,14 @@ function mintToken() {
         mintBtnELm.value = 'Transaction Confirmed (token minted)'
         mintLoader.hidden = true;
 		window.location.hash = '#wallet'
+		document.getElementById("myForm").reset();
     }).catch((e) => {
 		alert('ERROR:',e);
 	})
 }
 
 function getTokenOfUserFromEvent() {
+	walletTokens.innerHTML = ''
 	contract.events.Minted({filter: {to: accounts[0]},fromBlock: 0},(err,r) => {
 		walletLoader.hidden = true;
 		let uri = r.returnValues.uri;
@@ -713,16 +717,16 @@ function getTokenOfUserFromEvent() {
 		axios(uri).then((r) => {
 		 	optionalLink =  r.data.optionalUrl;
 			imageLink = r.data.img;
-			console.log('imageLInk',imageLink,'optionalLink',optionalLink);
-			// console.log()
+			let des = r.data.description;
 			walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
-			<a href="#" class="image fit"><img src=${imageLink} alt=""></a>
-			<p><b>ARTSTRO TOKEN</b></p><p>Current Price ${value} BNB</p>
+			<a href="${optionalLink}" class="image fit"><img src=${imageLink} alt=""></a>
+			<p><b>${des}</b></p><p>Current Price ${value} BNB</p>
 			<p>Token Id.: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
 			<p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
 		</div>`
 	
 		})
-	
 	})
+
+
 }
