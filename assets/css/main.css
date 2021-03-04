@@ -112,7 +112,16 @@
 	max-width: 87.25%;
 	text-align: center;
 }
-
+@media only screen and (max-width: 600px) {
+	.video-preview {
+		max-width: 87.25%;
+		text-align: center;
+		height: 480px;
+		background-image: url("./images/no-video.png");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+	}
+}
 
 /* MODIFICADO HACIA ARRIBA */
 
