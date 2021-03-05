@@ -593,13 +593,14 @@ const contractAbi = [
 		"type": "function"
 	}
 ]
-const contractAddress = '0x6B30EaD8B66d7454a0e4087b7bF76609093DaB23'
+const contractAddress = '0x8D4912b85E33ADC9b2442bf118d59cFd39Db6aBB'
 
-let imgBuffer,ipfs,imageUrl,description,supply,value,royalty,optionalUrl,tokenURI,contract;
+let imgBuffer,ipfs,imageUrl,description,supply,value,royalty,optionalUrl,tokenURI,contract,tokenType;
 
 window.onload = async () => {
     loader.hidden = true
     mintLoader.hidden = true
+	video.hidden = true
 	connectWallet()
      ipfs = IpfsApi({
          host: 'ipfs.infura.io',
@@ -628,6 +629,15 @@ async function connectWallet() {
 inputELm.addEventListener('change' ,(e) => {
     loader.hidden = false
     const file = e.target.files[0];
+	console.log(file)
+	// const file = this.files[0];
+	fileType = file['type'];
+	validImageTypes = ['image/gif', 'image/jpeg', 'image/png','video/webm','video/mp4','video/muted'];
+	if (!validImageTypes.includes(fileType)) {
+		// invalid file type code goes here.
+		alert('Invalid file type');
+		return false;
+	}
 	if(thumbnail.files[0].size/1024/1024 < 30){
 		const reader = new window.FileReader()
 		reader.readAsArrayBuffer(file);
@@ -655,7 +665,15 @@ async function addData() {
         console.log(hash)
         loader.hidden = true
         imageUrl = (`https://gateway.pinata.cloud/ipfs/${result[0].hash}`)
-		tokenImg.src = imageUrl
+		const videoType = ['video/webm','video/mp4','video/muted']
+		if(videoType.includes(fileType)){
+			tokenImg.hidden = true
+			video.src = imageUrl;
+			tokenType = 'video'
+		}else{
+			tokenImg.src = imageUrl
+			tokenType = 'image'
+		}
     })
 }
 
@@ -669,7 +687,8 @@ sendJSONToIPFS = async () => {
         value: value,
         royalty: royalty,
         optionalUrl: optionalUrl,
-        img: imageUrl
+        img: imageUrl,
+		type: tokenType
     });
     
     ipfs.add(ipfs.Buffer(doc)).then((cid) => {
@@ -718,10 +737,18 @@ function getTokenOfUserFromEvent() {
 		 	optionalLink =  r.data.optionalUrl;
 			imageLink = r.data.img;
 			let des = r.data.description;
+			let type1 = r.data.type;
+			if(type1 === 'image'){
+				tag = `<img src=${imageLink} alt=""></a>`
+			}else {
+				tag = `<video class="video-preview" id="video" autoplay loop muted src="${imageLink}">
+					Your browser does not support the video tag.
+				</video>`
+			}
 			walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
-			<a href="${optionalLink}" class="image fit"><img src=${imageLink} alt=""></a>
+			<a href="${optionalLink}" class="image fit"> ${tag}
 			<p><b>${des}</b></p><p>Current Price ${value} BNB</p>
-			<p>Token Id.: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
+			<p>Token Id: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
 			<p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
 		</div>`
 	
