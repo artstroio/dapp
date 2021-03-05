@@ -593,7 +593,7 @@ const contractAbi = [
 		"type": "function"
 	}
 ]
-const contractAddress = '0x92595603D198B4Dc99098701DDC313D2fEc56E88'
+const contractAddress = '0x3a156aA0acF21cFb98C25FC46e2793721Ea016d8' <!-- 0x92595603D198B4Dc99098701DDC313D2fEc56E88 -->
 
 let imgBuffer,ipfs,imageUrl,description,supply,value,royalty,optionalUrl,tokenURI,contract,tokenType;
 
