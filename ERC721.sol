@@ -1820,7 +1820,7 @@ contract ARTSTRO is ERC721,Ownable(){
     uint256 maxMint;
     uint256 currentId;
     
-    event Minted(address to,uint256 id,string  uri,uint256 value);
+    event Minted(address indexed to,uint256 id,string uri,uint256 value);
     
     constructor() ERC721('Artstro','ARTST'){
         baseFee = 0.05 ether;
@@ -1845,6 +1845,14 @@ contract ARTSTRO is ERC721,Ownable(){
             emit Minted(_to,currentId,_uri,_value);
             currentId++;
         }
+    }
+    
+    function tokenRoyaltyShare(uint256 _id) public view returns(uint256) {
+        return royaltyShare[_id];
+    }
+    
+    function firstOwnerOfToken(uint256 _id) public view returns(address){
+        return firstOwner[_id];
     }
     
     function withdrawBNB() onlyOwner public {
