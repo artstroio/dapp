@@ -87,12 +87,12 @@
 								</header>
 
 								<div class="row">
-											<div class="col-6 col-12-medium">
+											<div class="col-12">
 												<p style="line-height:22px; margin-bottom:15px;">
 												<small>Connect your WEB3 wallet, and fill-up the form.</br>
 												All fields marked with <b>*</b> are mandatories.</br>
 												<b> Minting Fee is 0.05 $BNB + Network Gas Fee.</b></small></p>		
-											</div>	
+											</div>											
 											<!-- <div class="col-6 col-12-medium"> -->
 												<!-- <input type="submit" id="connectBtn" onclick="connectWallet()" value="Connect your Wallet" /> -->
 											<!-- </div> -->
@@ -158,12 +158,26 @@
 									<h2>Wallet</h2>
 								</header>
 									<p>If your tokens are not showing here, please close the tab and open a new one.</p> 
-								<section>
-
+								<section>	
 								<div class="alert">
 								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-								  <span>Please allow network to approve your token before it can appear here.</span>
+								  <span>Use the form below to transfer a tokens from one wallet to another.</span>
 								</div>
+								<form action="#" id="myForm" method="post" onsubmit="return false">				
+									<div>
+										<div class="row">															
+											<div class="col-6 col-12-medium">
+												<input type="text" name="tokenid" id="tokenid" placeholder="Token Id*" />
+											</div>
+											<div class="col-6 col-12-medium">	
+												<input type="text" name="destination" id="destination" placeholder="Destination Wallet*" />
+											</div>
+											<div class="col-12 mintbutton">
+												<input type="submit" id="" onclick="" value="Transfer Token" />
+											</div>		
+										</div>
+									</div>											
+								</form>
 
 									<div class="row" id="walletTokens">
 										<img style="width: 350px; margin-left: 190px;" id="walletLoader" src="./images/loadingbar.gif" >
