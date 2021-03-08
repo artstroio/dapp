@@ -86,7 +86,7 @@
 	text-align: center;
 }
 .wallet header {
-	margin:0;
+	margin-bottom:10px;
 }
 .wallet a {
 	text-decoration: none;
@@ -131,6 +131,13 @@
 .recommended-txt {
 	color: white;
 }
+.notas {
+	text-decoration: underline;
+}
+#wallet p {
+	line-height: 24px;
+}
+
 
 /* MODIFICADO HACIA ARRIBA */
 
