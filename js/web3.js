@@ -596,6 +596,11 @@ const contractAbi = [
 let contractAddress = ''
 
 let imgBuffer,ipfs,imageUrl,description,supply,value,royalty,optionalUrl,tokenURI,contract,tokenType;
+let returnValuesArr = []	
+let deleteId = [];
+let userTokenID = [];
+let mintedArray = [];
+let userTokenData = [];
 
 window.onload = async () => {
     loader.hidden = true
@@ -731,34 +736,88 @@ function mintToken() {
 
 function getTokenOfUserFromEvent() {
 	walletTokens.innerHTML = ''
-	contract.events.Minted({filter: {to: accounts[0]},fromBlock: 0},(err,r) => {
-		walletLoader.hidden = true;
-		let uri = r.returnValues.uri;
-		let id = r.returnValues.id;
-		let value = web3.utils.fromWei(r.returnValues.value);
-		let imageLink,optionalLink;
-		console.log(uri);
-		axios(uri).then((r) => {
-		 	optionalLink =  r.data.optionalUrl;
-			imageLink = r.data.img;
-			let des = r.data.description;
-			let type1 = r.data.type;
-			if(type1 === 'image'){
-				tag = `<img src=${imageLink} alt=""></a>`
-			}else {
-				tag = `<video class="video-preview" id="video" autoplay loop muted src="${imageLink}">
-					Your browser does not support the video tag.
-				</video>`
-			}
-			walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
-			<a href="${optionalLink}" class="image fit"> ${tag}
-			<p><b>${des}</b></p><p>Current Price ${value} BNB</p>
-			<p>Token Id: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
-			<p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-		</div>`
 	
+	contract.events.Transfer({filter: {to: accounts[0]}, fromBlock: 0},(err,r) => {
+		returnValuesArr.push(r.returnValues)
+		userTokenID.push(r.returnValues.tokenId);
+	})
+	
+		
+	contract.events.Transfer({filter: {from: accounts[0]}, fromBlock: 0},(err,r) => {
+		deleteId.push(r.returnValues.tokenId);
+		deleteId.map((index) => {
+			returnValuesArr.map((index1,i) => {
+				// console.log("index",i,'element',index)
+				if(index === index1.tokenId){
+					console.log("index",i,'element',index)
+					returnValuesArr.splice(i, 1)
+					userTokenID.splice(i,1);
+				}
+			})
 		})
 	})
 
+	// contract.events.Minted({filter: {to: accounts[0]},fromBlock: 0},(err,r) => {
+	// 	walletLoader.hidden = true;
+	// 	let uri = r.returnValues.uri;
+	// 	let id = r.returnValues.id;
+	// 	let value = web3.utils.fromWei(r.returnValues.value);
+	// 	let imageLink,optionalLink;
+	// 	console.log(uri);
+	// 	axios(uri).then((r) => {
+	// 	 	optionalLink =  r.data.optionalUrl;
+	// 		imageLink = r.data.img;
+	// 		let des = r.data.description;
+	// 		let type1 = r.data.type;
+	// 		if(type1 === 'image'){
+	// 			tag = `<img src=${imageLink} alt=""></a>`
+	// 		}else {
+	// 			tag = `<video class="video-preview" id="video" autoplay loop muted src="${imageLink}">
+	// 				Your browser does not support the video tag.
+	// 			</video>`
+	// 		}
+	// 		walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
+	// 		<a href="${optionalLink}" class="image fit"> ${tag}
+	// 		<p><b>${des}</b></p><p>Current Price ${value} BNB</p>
+	// 		<p>Token Id: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
+	// 		<p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
+	// 	</div>`
+	
+	// 	})
+	// })
+
+	contract.events.Minted({fromBlock: 0},(err,r) => {
+		userTokenID.map(index => {
+			if(r.returnValues.id === index){
+				walletLoader.hidden = true;
+				let uri = r.returnValues.uri;
+				let id = r.returnValues.id;
+				let value = web3.utils.fromWei(r.returnValues.value);
+				let imageLink,optionalLink;
+				console.log(uri);
+				axios(uri).then((r) => {
+					optionalLink =  r.data.optionalUrl;
+					imageLink = r.data.img;
+					let des = r.data.description;
+					let type1 = r.data.type;
+					if(type1 === 'image'){
+						tag = `<img src=${imageLink} alt=""></a>`
+					}else {
+						tag = `<video class="video-preview" id="video" autoplay loop muted src="${imageLink}">
+							Your browser does not support the video tag.
+						</video>`
+					}
+					walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
+					<a href="${optionalLink}" class="image fit"> ${tag}
+					<p><b>${des}</b></p><p>Current Price ${value} BNB</p>
+					<p>Token Id: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
+					<p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
+				</div>`
+			})
+			}
+		})
+		
+	})
 
 }
+
