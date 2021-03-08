@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: artstro.io
-Token: 1c5f698288a477393b7e375ffca829c7dc347ede931fafe12f0ff127a73860c1

@@ -122,6 +122,15 @@
 		background-attachment: fixed;
 	}
 }
+.recommended {
+	vertical-align:middle;
+	max-height: 28px;
+	width: auto;
+	margin: 0 3px;
+}
+.recommended-txt {
+	color: white;
+}
 
 /* MODIFICADO HACIA ARRIBA */
 
