@@ -782,10 +782,7 @@ function getTokenOfUserFromEvent() {
 	contract.events.Minted({ fromBlock: 0 }, (err, r) => {
 		userTokenID.map((index) => {
 		  if (r.returnValues.id === index) {
-			// setTimeout(() => {
-				walletLoader.hidden = true;
-			// }, 4000);
-			
+			walletLoader.hidden = true;			
 			let uri = r.returnValues.uri;
 			let id = r.returnValues.id;
 			let value = web3.utils.fromWei(r.returnValues.value);
@@ -815,4 +812,22 @@ function getTokenOfUserFromEvent() {
 	  });
   }, 1000);
   
+}
+
+function transferToken() {
+	let tokenId = tokenid.value;
+	let toAddress = destination.value;
+	let fromAddress = accounts[0];
+
+	transfertoken.value = "Approving Transaction (please Wait)";
+
+	contract.methods.transferFrom(fromAddress,toAddress,tokenId).send({from: accounts[0]}).then(() => {
+		transfertoken.value = "Transaction confirmed";
+	}).catch((e) => {
+		transfertoken.value = 'Transaction Failed '
+		alert(e.message);
+	})
+
+	tokenid.value = ''
+	destination.value = ''
 }
