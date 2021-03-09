@@ -628,10 +628,10 @@ async function connectWallet() {
   if (window.ethereum) {
     web3 = new Web3(window.ethereum);
     let id = await web3.eth.getChainId();
-    if ( id === 56) {
-      contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
-    } else if (id === 97) {
+    if ( id === 97) {
       contractAddress = "0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C";
+    } else if (id === 56) {
+      contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
     } else {
       alert("ERROR: Wrong MetaMask Network");
     }
@@ -803,7 +803,7 @@ function getTokenOfUserFromEvent() {
 			  walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
 						<a href="${optionalLink}" class="image fit"> ${tag}
 						<p><b>${des}</b></p><p>Current Price ${value} BNB</p>
-						<p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
+						<p>Token Id: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
 						<p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
 						</div>`;
 			});
