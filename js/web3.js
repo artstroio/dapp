@@ -639,10 +639,10 @@ async function connectWallet() {
     try {
       contract = new web3.eth.Contract(contractAbi, contractAddress);
       accounts = await ethereum.enable();
-      getTokenOfUserFromEvent();
     } catch (e) {
       console.log(e);
     }
+    getTokenOfUserFromEvent(); 
   }
 }
 
@@ -752,82 +752,95 @@ function mintToken() {
 }
 
 function getTokenOfUserFromEvent() {
+  // const web31 = new Web3('https://bsc-dataseed4.defibit.io/');
+  //  contract1 = new web31.eth.Contract(contractAbi,contractAddress)
+  // console.log(contract1);
+
   walletTokens.innerHTML = "";
 
-  contract.events.Transfer(
-    { filter: { to: accounts[0] }, fromBlock: 0 },
+  contract.getPastEvents(
+    'Transfer',
+    { filter: { to: accounts[0] }, fromBlock: 0 , toBlock:'latest'},
     (err, r) => {
-      returnValuesArr.push(r.returnValues);
-      userTokenID.push(r.returnValues.tokenId);
+      console.log(r)
+      returnValuesArr = r
+      // console.log(r);
+      returnValuesArr = returnValuesArr.map(index => (index.returnValues));
+      userTokenID =  returnValuesArr.map(index => (index.tokenId));
+      console.log(returnValuesArr)
     }
-  );
-
-  contract.events.Transfer(
-    { filter: { from: accounts[0] }, fromBlock: 0 },
-    (err, r) => {
-      deleteId.push(r.returnValues.tokenId);
-      deleteId.map((index) => {
-        returnValuesArr.map((index1, i) => {
-          if (index === index1.tokenId) {
-            // console.log("index", i, "element", index);
-            returnValuesArr.splice(i, 1);
-            userTokenID.splice(i, 1);
-          }
-        });
+  ).then(() => {
+    contract.getPastEvents(
+      'Transfer',
+      { filter: { from: accounts[0] }, fromBlock: 0, toBlock:'latest'},
+      (err, r) => {
+        console.log(r);
+        let tempData = r.map(index => (index.returnValues));
+        deleteId =  tempData.map(index => (index.tokenId));
+        // deleteId.push(r.returnValues.tokenId);
+        console.log(returnValuesArr);
+        console.log(userTokenID)
+        // deleteId.map((index) => {
+        //   returnValuesArr.map((index1, i) => {
+        //     if (index === index1.tokenId) {
+        //       // console.log("index", i, "elementDelet", index,'return',index1);
+        //       returnValuesArr.splice(i, 1);
+        //       userTokenID.splice(i, 1);
+        //     }
+        //   });
+        // });
+      }
+    ).then(() => {
+      
+  contract.events.Minted({ fromBlock: 0 }, (err, r) => {
+    userTokenID.map((index) => {
+      if (r.returnValues.id === index) {
+      walletLoader.hidden = true;     
+      let uri = r.returnValues.uri;
+      let id = r.returnValues.id;
+      let value = web3.utils.fromWei(r.returnValues.value);
+      let imageLink, optionalLink;
+      console.log(uri);
+      axios(uri).then((r) => {
+        optionalLink = r.data.optionalUrl;
+        imageLink = r.data.img;
+        let des = r.data.description;
+        let type1 = r.data.type;
+        if (type1 === "image") {
+        tag = `<img src=${imageLink} alt=""></a>`;
+        } else {
+        tag = `<video class="video-preview" id="video" autoplay loop muted src="${imageLink}">
+                Your browser does not support the video tag.
+              </video>`;
+        }
+        walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
+            <a href="${optionalLink}" class="image fit"> ${tag}
+            <p><b>${des}</b></p><p>Current Price ${value} BNB</p>
+            <p>Token Id: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
+            <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
+            </div>`;
       });
-    }
-  );
-
-  setTimeout(() => {
-	contract.events.Minted({ fromBlock: 0 }, (err, r) => {
-		userTokenID.map((index) => {
-		  if (r.returnValues.id === index) {
-			walletLoader.hidden = true;			
-			let uri = r.returnValues.uri;
-			let id = r.returnValues.id;
-			let value = web3.utils.fromWei(r.returnValues.value);
-			let imageLink, optionalLink;
-			console.log(uri);
-			axios(uri).then((r) => {
-			  optionalLink = r.data.optionalUrl;
-			  imageLink = r.data.img;
-			  let des = r.data.description;
-			  let type1 = r.data.type;
-			  if (type1 === "image") {
-				tag = `<img src=${imageLink} alt=""></a>`;
-			  } else {
-				tag = `<video class="video-preview" id="video" autoplay loop muted src="${imageLink}">
-								Your browser does not support the video tag.
-							</video>`;
-			  }
-			  walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
-						<a href="${optionalLink}" class="image fit"> ${tag}
-						<p><b>${des}</b></p><p>Current Price ${value} BNB</p>
-						<p>Token Id: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
-						<p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-						</div>`;
-			});
-		  }
-		});
-	  });
-  }, 1000);
-  
+      }
+    });
+    });  
+    })
+  }).catch(console.log) 
 }
 
 function transferToken() {
-	let tokenId = tokenid.value;
-	let toAddress = destination.value;
-	let fromAddress = accounts[0];
+  let tokenId = tokenid.value;
+  let toAddress = destination.value;
+  let fromAddress = accounts[0];
 
-	transfertoken.value = "Approving Transaction (please Wait)";
+  transfertoken.value = "Approving Transaction (please Wait)";
 
-	contract.methods.transferFrom(fromAddress,toAddress,tokenId).send({from: accounts[0]}).then(() => {
-		transfertoken.value = "Transaction confirmed";
-	}).catch((e) => {
-		transfertoken.value = 'Transaction Failed '
-		alert(e.message);
-	})
+  contract.methods.transferFrom(fromAddress,toAddress,tokenId).send({from: accounts[0]}).then(() => {
+    transfertoken.value = "Transaction confirmed";
+  }).catch((e) => {
+    transfertoken.value = 'Transaction Failed '
+    alert(e.message);
+  })
 
-	tokenid.value = ''
-	destination.value = ''
+  tokenid.value = ''
+  destination.value = ''
 }
