@@ -752,24 +752,25 @@ function mintToken() {
 }
 
 function getTokenOfUserFromEvent() {
-  const web31 = new Web3('https://bsc-dataseed1.binance.org:443');
-  const contract1 = new web31.eth.Contract(contractAbi,contractAddress)
-  console.log(contract1);
+  // const web31 = new Web3('https://bsc-dataseed4.defibit.io/');
+  //  contract1 = new web31.eth.Contract(contractAbi,contractAddress)
+  // console.log(contract1);
 
   walletTokens.innerHTML = "";
 
-  contract1.getPastEvents(
+  contract.getPastEvents(
     'Transfer',
     { filter: { to: accounts[0] }, fromBlock: 0 , toBlock:'latest'},
     (err, r) => {
+      console.log(r)
       returnValuesArr = r
-      console.log(r);
+      // console.log(r);
       returnValuesArr = returnValuesArr.map(index => (index.returnValues));
       userTokenID =  returnValuesArr.map(index => (index.tokenId));
       console.log(returnValuesArr)
     }
   ).then(() => {
-    contract1.getPastEvents(
+    contract.getPastEvents(
       'Transfer',
       { filter: { from: accounts[0] }, fromBlock: 0, toBlock:'latest'},
       (err, r) => {
@@ -791,7 +792,7 @@ function getTokenOfUserFromEvent() {
       }
     ).then(() => {
       
-	contract1.events.Minted({ fromBlock: 0 }, (err, r) => {
+	contract.events.Minted({ fromBlock: 0 }, (err, r) => {
 		userTokenID.map((index) => {
 		  if (r.returnValues.id === index) {
 			walletLoader.hidden = true;			
@@ -823,7 +824,7 @@ function getTokenOfUserFromEvent() {
 		});
 	  });  
     })
-  })
+  }).catch(console.log) 
 }
 
 function transferToken() {
