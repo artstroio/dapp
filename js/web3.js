@@ -633,7 +633,7 @@ async function connectWallet() {
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
     } else {
-      alert("ERROR: Wrong metamask Network");
+      alert("ERROR: Wrong MetaMask Network");
     }
 
     try {
