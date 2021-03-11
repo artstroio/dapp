@@ -639,10 +639,10 @@ async function connectWallet() {
     try {
       contract = new web3.eth.Contract(contractAbi, contractAddress);
       accounts = await ethereum.enable();
-      getTokenOfUserFromEvent();
     } catch (e) {
       console.log(e);
     }
+    getTokenOfUserFromEvent(); 
   }
 }
 
@@ -752,34 +752,46 @@ function mintToken() {
 }
 
 function getTokenOfUserFromEvent() {
+  const web31 = new Web3('https://bsc-dataseed1.binance.org:443');
+  const contract1 = new web31.eth.Contract(contractAbi,contractAddress)
+  console.log(contract1);
+
   walletTokens.innerHTML = "";
 
-  contract.events.Transfer(
-    { filter: { to: accounts[0] }, fromBlock: 0 },
+  contract1.getPastEvents(
+    'Transfer',
+    { filter: { to: accounts[0] }, fromBlock: 0 , toBlock:'latest'},
     (err, r) => {
-      returnValuesArr.push(r.returnValues);
-      userTokenID.push(r.returnValues.tokenId);
+      returnValuesArr = r
+      console.log(r);
+      returnValuesArr = returnValuesArr.map(index => (index.returnValues));
+      userTokenID =  returnValuesArr.map(index => (index.tokenId));
+      console.log(returnValuesArr)
     }
-  );
-
-  contract.events.Transfer(
-    { filter: { from: accounts[0] }, fromBlock: 0 },
-    (err, r) => {
-      deleteId.push(r.returnValues.tokenId);
-      deleteId.map((index) => {
-        returnValuesArr.map((index1, i) => {
-          if (index === index1.tokenId) {
-            // console.log("index", i, "element", index);
-            returnValuesArr.splice(i, 1);
-            userTokenID.splice(i, 1);
-          }
-        });
-      });
-    }
-  );
-
-  setTimeout(() => {
-	contract.events.Minted({ fromBlock: 0 }, (err, r) => {
+  ).then(() => {
+    contract1.getPastEvents(
+      'Transfer',
+      { filter: { from: accounts[0] }, fromBlock: 0, toBlock:'latest'},
+      (err, r) => {
+        console.log(r);
+        let tempData = r.map(index => (index.returnValues));
+        deleteId =  tempData.map(index => (index.tokenId));
+        // deleteId.push(r.returnValues.tokenId);
+        console.log(returnValuesArr);
+        console.log(userTokenID)
+        // deleteId.map((index) => {
+        //   returnValuesArr.map((index1, i) => {
+        //     if (index === index1.tokenId) {
+        //       // console.log("index", i, "elementDelet", index,'return',index1);
+        //       returnValuesArr.splice(i, 1);
+        //       userTokenID.splice(i, 1);
+        //     }
+        //   });
+        // });
+      }
+    ).then(() => {
+      
+	contract1.events.Minted({ fromBlock: 0 }, (err, r) => {
 		userTokenID.map((index) => {
 		  if (r.returnValues.id === index) {
 			walletLoader.hidden = true;			
@@ -809,9 +821,9 @@ function getTokenOfUserFromEvent() {
 			});
 		  }
 		});
-	  });
-  }, 1000);
-  
+	  });  
+    })
+  })
 }
 
 function transferToken() {
