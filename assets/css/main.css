@@ -105,9 +105,6 @@
 #connectBtn {
 	width: 100%;
 }
-.#nav a {
-	font-size: 2em;
-}
 .video-preview {
 	max-width: 87.25%;
 	text-align: center;
@@ -137,7 +134,20 @@
 #wallet p {
 	line-height: 24px;
 }
-
+#trade {
+	margin: 20px 0 0 0;
+}
+#trade a {
+	margin: 10px;
+	color: #fff;
+}
+#trade a:hover {
+	text-decoration: underline;
+	font-weight: inherit;
+}
+#trade a.icon:before {
+	padding-right: 10px;
+}
 
 /* MODIFICADO HACIA ARRIBA */
 
