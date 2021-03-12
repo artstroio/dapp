@@ -141,6 +141,7 @@
 	font-size: 0.80em;	
 	color: rgb(255,255,255, 0.75);
 	font-weight: bolder;
+	text-align: center;
 }
 .trade a {
 	margin: 10px;
