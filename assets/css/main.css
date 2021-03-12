@@ -141,7 +141,7 @@
 	margin: 10px;
 	color: #fff;
 }
-#trade a:hover {
+.trade a:hover {
 	text-decoration: underline;
 	font-weight: inherit;
 }
