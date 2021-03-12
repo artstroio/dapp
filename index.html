@@ -56,11 +56,12 @@
 						<a href="/" class="icon solid fa-user-astronaut"><span>Start</span></a>
 						<a href="#mint" class="icon solid fa-edit"><span>Create Token</span></a>
 						<a href="#wallet" class="icon solid fa-wallet"><span>Your Wallet</span></a>
-						<!-- <a href="#find-token" class="icon solid fa-search"><span>Find Token</span></a>
-						<a href="#buy-token" class="icon solid fa-shopping-basket"><span>Buy Token</span></a> 
-						<a href="#sell-token" class="icon solid fa-handshake"><span>Sell Token</span></a> -->
-						<a target="_blank" href="https://medium.com/artstroio" target="_blank" class="icon brands fa-medium"><span>Medium</span></a>
-						<a target="_blank" href="https://twitter.com/artstroio" target="_blank" class="icon brands fa-twitter"><span>Twitter</span></a>
+						<a href="#find-token" class="icon solid fa-search"><span>Find Token</span></a>
+						<a href="#buy-token" class="icon solid fa-handshake"><span>Buy Token</span></a> 
+						<a href="#send-token-sell" class="icon solid fa-arrow-circle-right"><span>Send to Sell</span></a>
+						<a href="#change-token-price" class="icon solid fa-window-restore"><span>Change Price</span></a>
+						<!-- <a target="_blank" href="https://medium.com/artstroio" target="_blank" class="icon brands fa-medium"><span>Medium</span></a>
+						<a target="_blank" href="https://twitter.com/artstroio" target="_blank" class="icon brands fa-twitter"><span>Twitter</span></a> -->
 					</nav>
 
 				<!-- Main -->
@@ -262,17 +263,16 @@
 									<form action="#" method="post">
 										</br>
 										<div class="row">				
-											<div class="col-6 col-12-medium imagen-token">
-												<img class="token-thumbnail-minting" src="https://img.freepik.com/vector-gratis/astronauta-dabbing-on-rocket-icon-ilustracion-personaje-dibujos-animados-mascota-astronauta-concepto-icono-ciencia-aislado_138676-972.jpg?size=480&ext=jpg&uid=R518281&ga=GA1.2.278836255.1614294689"/>
+										<div class="col-6 col-12-medium">
+											<p style="margin:20px 0 7px 0"><input type="text" name="token-id" placeholder="Token Id." /></p>
 											</div>
 											<div class="col-6 col-12-medium">
-											<h2>ARTSTRO TOKEN</h2>
-											<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07?a=17522">17522</a></p>
-											<p>Current Value: <b>0.5 BNB</b></p>
-											<p style="margin:20px 0 7px 0"><input type="text" name="new-price" placeholder="New Selling Price per Unit (in BNB)" /></p>
+											<p style="margin:20px 0 7px 0"><input type="text" name="new-price" placeholder="New Selling new-price (in BNB)" /></p>		
+											</div>
+											<div class="col-12">									
 											<p><b>IMPORTANT:</b></br>
 												Provide buyer with Token Id number after receiving network confirmation for this transaction.</p>
-											</div>											
+											</div>
 											<div class="col-12 mintbutton">
 												<input type="submit" value="Send Token to Sell Contract" />
 											</div>
@@ -291,11 +291,8 @@
 									<form action="#" method="post">
 										</br>
 										<div class="row">				
-											<div class="col-6 col-12-medium">
+											<div class="col-12">
 											<p style="margin:20px 0 7px 0"><input type="text" name="token-id" placeholder="Token Id." /></p>
-											</div>
-											<div class="col-6 col-12-medium">
-											<p style="margin:20px 0 7px 0"><input type="text" name="new-price" placeholder="New Selling Price (in BNB)" /></p>		
 											</div>
 											<div class="col-12">									
 											<p><b>IMPORTANT:</b></br>
