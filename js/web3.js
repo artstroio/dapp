@@ -816,7 +816,7 @@ function getTokenOfUserFromEvent() {
         walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
             <a href="${optionalLink}" class="image fit"> ${tag}
             <p><b>${des}</b></p><p>Current Price ${value} BNB</p>
-            <p>Token Id: <a target="_blank" href="https://testnet.bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
+            <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
             <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
             </div>`;
       });
