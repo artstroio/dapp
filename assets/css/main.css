@@ -105,9 +105,6 @@
 #connectBtn {
 	width: 100%;
 }
-.#nav a {
-	font-size: 2em;
-}
 .video-preview {
 	max-width: 87.25%;
 	text-align: center;
@@ -137,7 +134,28 @@
 #wallet p {
 	line-height: 24px;
 }
-
+.trade {
+	margin: 20px 0 0 0;
+	list-style: none;
+	padding-left: 0;
+	font-size: 0.80em;	
+	color: rgb(255,255,255, 0.75);
+	font-weight: bolder;
+	text-align: center;
+}
+.trade a {
+	margin: 10px;
+	color: rgb(255,255,255, 0.75);
+}
+.trade a:hover {
+	text-decoration: underline;
+}
+.trade li {
+	display: inline;
+}
+.trade a.icon:before {
+	padding-right: 5px;
+}
 
 /* MODIFICADO HACIA ARRIBA */
 
@@ -2281,7 +2299,7 @@ input, select, textarea {
 	#footer {
 		color: rgba(255, 255, 255, 0.45);
 		text-align: center;
-		padding: 2em 0 0 0;
+		padding: 0em 0 0 0;
 		font-size: 0.75em;
 	}
 
