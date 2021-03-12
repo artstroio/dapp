@@ -134,10 +134,10 @@
 #wallet p {
 	line-height: 24px;
 }
-#trade {
+.trade {
 	margin: 20px 0 0 0;
 }
-#trade a {
+.trade a {
 	margin: 10px;
 	color: #fff;
 }
@@ -145,7 +145,7 @@
 	text-decoration: underline;
 	font-weight: inherit;
 }
-#trade a.icon:before {
+.trade a.icon:before {
 	padding-right: 10px;
 }
 
