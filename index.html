@@ -231,7 +231,7 @@
 								<header>
 									<h2>Buy this Token</h2>
 								</header>
-									<small>Buy Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
 								<section>
 									<form action="#" method="post">
 										</br>
@@ -252,12 +252,12 @@
 								</section>
 							</article>
 
-						<!-- Sell Token -->
-							<article id="sell-token" class="wallet panel">
+						<!-- Change Token Price -->
+							<article id="change-token-price" class="wallet panel">
 								<header>
-									<h2>Send Token to Sell Contract</h2>
+									<h2>Change Token Sell Price</h2>
 								</header>
-									<small>Sell Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>
 								<section>
 									<form action="#" method="post">
 										</br>
@@ -280,6 +280,34 @@
 									</form>
 								</section>
 							</article>
+
+						<!-- Send Token to Sell Contract -->
+							<article id="send-token-sell" class="wallet panel">
+								<header>
+									<h2>Send Token to Sell Contract</h2>
+								</header>
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>
+								<section>
+									<form action="#" method="post">
+										</br>
+										<div class="row">				
+											<div class="col-6 col-12-medium">
+											<p style="margin:20px 0 7px 0"><input type="text" name="token-id" placeholder="Token Id." /></p>
+											</div>
+											<div class="col-6 col-12-medium">
+											<p style="margin:20px 0 7px 0"><input type="text" name="new-price" placeholder="New Selling Price (in BNB)" /></p>		
+											</div>
+											<div class="col-12">									
+											<p><b>IMPORTANT:</b></br>
+												Provide buyer with Token Id number after receiving network confirmation for this transaction.</p>
+											</div>											
+											<div class="col-12 mintbutton">
+												<input type="submit" value="Send Token to Sell Contract" />
+											</div>
+										</div>		
+									</form>
+								</section>
+							</article>							
 
 						<!-- Find Token -->
 							<article id="find-token" class="wallet panel">
