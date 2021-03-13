@@ -1,5 +1,148 @@
 pragma solidity 0.8.2;
 
+library SafeMath {
+    /**
+     * @dev Returns the addition of two unsigned integers, reverting on
+     * overflow.
+     *
+     * Counterpart to Solidity's `+` operator.
+     *
+     * Requirements:
+     *
+     * - Addition cannot overflow.
+     */
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c = a + b;
+        require(c >= a, "SafeMath: addition overflow");
+
+        return c;
+    }
+
+    /**
+     * @dev Returns the subtraction of two unsigned integers, reverting on
+     * overflow (when the result is negative).
+     *
+     * Counterpart to Solidity's `-` operator.
+     *
+     * Requirements:
+     *
+     * - Subtraction cannot overflow.
+     */
+    function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+        return sub(a, b, "SafeMath: subtraction overflow");
+    }
+
+    /**
+     * @dev Returns the subtraction of two unsigned integers, reverting with custom message on
+     * overflow (when the result is negative).
+     *
+     * Counterpart to Solidity's `-` operator.
+     *
+     * Requirements:
+     *
+     * - Subtraction cannot overflow.
+     */
+    function sub(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
+        require(b <= a, errorMessage);
+        uint256 c = a - b;
+
+        return c;
+    }
+
+    /**
+     * @dev Returns the multiplication of two unsigned integers, reverting on
+     * overflow.
+     *
+     * Counterpart to Solidity's `*` operator.
+     *
+     * Requirements:
+     *
+     * - Multiplication cannot overflow.
+     */
+    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+        // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
+        // benefit is lost if 'b' is also tested.
+        // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
+        if (a == 0) {
+            return 0;
+        }
+
+        uint256 c = a * b;
+        require(c / a == b, "SafeMath: multiplication overflow");
+
+        return c;
+    }
+
+    /**
+     * @dev Returns the integer division of two unsigned integers. Reverts on
+     * division by zero. The result is rounded towards zero.
+     *
+     * Counterpart to Solidity's `/` operator. Note: this function uses a
+     * `revert` opcode (which leaves remaining gas untouched) while Solidity
+     * uses an invalid opcode to revert (consuming all remaining gas).
+     *
+     * Requirements:
+     *
+     * - The divisor cannot be zero.
+     */
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
+        return div(a, b, "SafeMath: division by zero");
+    }
+
+    /**
+     * @dev Returns the integer division of two unsigned integers. Reverts with custom message on
+     * division by zero. The result is rounded towards zero.
+     *
+     * Counterpart to Solidity's `/` operator. Note: this function uses a
+     * `revert` opcode (which leaves remaining gas untouched) while Solidity
+     * uses an invalid opcode to revert (consuming all remaining gas).
+     *
+     * Requirements:
+     *
+     * - The divisor cannot be zero.
+     */
+    function div(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
+        require(b > 0, errorMessage);
+        uint256 c = a / b;
+        // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+
+        return c;
+    }
+
+    /**
+     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),
+     * Reverts when dividing by zero.
+     *
+     * Counterpart to Solidity's `%` operator. This function uses a `revert`
+     * opcode (which leaves remaining gas untouched) while Solidity uses an
+     * invalid opcode to revert (consuming all remaining gas).
+     *
+     * Requirements:
+     *
+     * - The divisor cannot be zero.
+     */
+    function mod(uint256 a, uint256 b) internal pure returns (uint256) {
+        return mod(a, b, "SafeMath: modulo by zero");
+    }
+
+    /**
+     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),
+     * Reverts with custom message when dividing by zero.
+     *
+     * Counterpart to Solidity's `%` operator. This function uses a `revert`
+     * opcode (which leaves remaining gas untouched) while Solidity uses an
+     * invalid opcode to revert (consuming all remaining gas).
+     *
+     * Requirements:
+     *
+     * - The divisor cannot be zero.
+     */
+    function mod(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
+        require(b != 0, errorMessage);
+        return a % b;
+    }
+}
+
 
 /**
  * @dev Interface of the ERC165 standard, as defined in the
@@ -155,25 +298,49 @@ interface artstro is IERC721 {
 contract BuySale {
     artstro token; 
     
-    mapping(uint256 => address) buyToken;
+    uint256 fees;
+    using SafeMath for uint256;
+    
+    // mapping(uint256 => address) buyToken;
     mapping(uint256 => bool) isAvailable;
     mapping(uint256 => uint256) tokenPrice;
     
     event NftRegistered(address indexed _user,address indexed _to,uint256 _tokenId,uint256 _price);
+    event tokenSold(address indexed _from, address indexed _to,uint256 _tokenId,uint256 _tokenPrice);
     
     constructor() public {
         token = artstro(0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C);
+        fees = 0.025 ether;
     }
     
-    function registerNFT(uint256 _tokenId) public {
+    function registerNFT(uint256 _tokenId) public payable {
+        require(msg.value >= fees,"ERROR: you don't have enough fees");
         require(token.balanceOf(msg.sender) > 0,"ERROR: not enough balance");
         require(token.ownerOf(_tokenId) == msg.sender,"ERROR: you don't own this token");
-
+        require(!isAvailable[_tokenId],"ERROR: token already registered");
+        
         isAvailable[_tokenId] = true;
         tokenPrice[_tokenId] = getTokenValue(_tokenId);
         token.transferFrom(msg.sender,address(this),_tokenId);
         emit NftRegistered(msg.sender,address(this),_tokenId,tokenPrice[_tokenId]);
     } 
+    
+    function buyToken(uint256 _tokenId) public payable {
+        require(msg.value >= fees,"ERROR: you don't have enough fees");
+        require(isAvailable[_tokenId],"ERROR: this token is not available for sell");
+        require(msg.value >= fees + tokenPrice[_tokenId],"ERROR: not enough price for token");
+        uint256 royalty = getRoyalty(_tokenId);
+        address firstOwner = getFirstOwner(_tokenId);
+        uint256 balance = contarctBalance();
+        payable(firstOwner).transfer(balance.mul(royalty).div(100));
+        token.transferFrom(address(this),msg.sender,_tokenId);
+        emit tokenSold(address(this),msg.sender,_tokenId,tokenPrice[_tokenId]);
+    }
+    
+    function findToken(uint256 _tokenId) public view returns(address _owner){
+        require(isAvailable[_tokenId],"ERROR: this token is not available");
+        return token.ownerOf(_tokenId);
+    }
     
     function contarctBalance() public view returns(uint256) {
         return address(this).balance;
