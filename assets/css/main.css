@@ -95,6 +95,10 @@
 .wallet a:hover {
 	text-decoration: underline;
 }
+.wallet-img img {
+	max-width: 320px; 
+	margin-left: 190px;
+}
 .token-thumbnail-minting {
 	max-width: 100%;
 	height: auto;
