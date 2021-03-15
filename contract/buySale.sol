@@ -289,7 +289,30 @@ interface IERC721 is IERC165 {
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
 }
 
-interface artstro is IERC721 {
+/**
+ * @title ERC-721 Non-Fungible Token Standard, optional metadata extension
+ * @dev See https://eips.ethereum.org/EIPS/eip-721
+ */
+interface IERC721Metadata is IERC721 {
+
+    /**
+     * @dev Returns the token collection name.
+     */
+    function name() external view returns (string memory);
+
+    /**
+     * @dev Returns the token collection symbol.
+     */
+    function symbol() external view returns (string memory);
+
+    /**
+     * @dev Returns the Uniform Resource Identifier (URI) for `tokenId` token.
+     */
+    function tokenURI(uint256 tokenId) external view returns (string memory);
+}
+
+
+interface artstro is IERC721Metadata {
     function tokenRoyaltyShare(uint256 _id) external view returns(uint256); 
     function firstOwnerOfToken(uint256 _id) external view returns(address);
     function NFTValue(uint256 _if) external view returns(uint256);
@@ -301,7 +324,7 @@ contract BuySale {
     uint256 fees;
     using SafeMath for uint256;
     
-    // mapping(uint256 => address) buyToken;
+    mapping(uint256 => address) tokenRegistered;
     mapping(uint256 => bool) isAvailable;
     mapping(uint256 => uint256) tokenPrice;
     
@@ -319,27 +342,40 @@ contract BuySale {
         require(token.ownerOf(_tokenId) == msg.sender,"ERROR: you don't own this token");
         require(!isAvailable[_tokenId],"ERROR: token already registered");
         
+        tokenRegistered[_tokenId] = msg.sender;
         isAvailable[_tokenId] = true;
         tokenPrice[_tokenId] = getTokenValue(_tokenId);
+        
         token.transferFrom(msg.sender,address(this),_tokenId);
+        
         emit NftRegistered(msg.sender,address(this),_tokenId,tokenPrice[_tokenId]);
     } 
     
     function buyToken(uint256 _tokenId) public payable {
-        require(msg.value >= fees,"ERROR: you don't have enough fees");
         require(isAvailable[_tokenId],"ERROR: this token is not available for sell");
         require(msg.value >= fees + tokenPrice[_tokenId],"ERROR: not enough price for token");
+        
         uint256 royalty = getRoyalty(_tokenId);
         address firstOwner = getFirstOwner(_tokenId);
-        uint256 balance = contarctBalance();
+        uint256 balance = tokenPrice[_tokenId];
         payable(firstOwner).transfer(balance.mul(royalty).div(100));
+        
         token.transferFrom(address(this),msg.sender,_tokenId);
+        isAvailable[_tokenId] = false;
         emit tokenSold(address(this),msg.sender,_tokenId,tokenPrice[_tokenId]);
     }
     
-    function findToken(uint256 _tokenId) public view returns(address _owner){
-        require(isAvailable[_tokenId],"ERROR: this token is not available");
-        return token.ownerOf(_tokenId);
+    function changeTokenPrice(uint256 _tokenId,uint256 _newTokenPrice) public {
+        require(msg.sender == tokenRegistered[_tokenId],"ERROR: you are not owner of this token");
+        tokenPrice[_tokenId] = _newTokenPrice;
+    }
+    
+    function findToken(uint256 _tokenId) public view returns(string memory _uri){
+        if(isAvailable[_tokenId]){
+            return token.tokenURI(_tokenId);
+        }else{
+            return 'ERROR';
+        }
     }
     
     function contarctBalance() public view returns(uint256) {

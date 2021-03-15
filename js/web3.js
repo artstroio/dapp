@@ -613,6 +613,7 @@ let mintedArray = [];
 let userTokenData = [];
 
 window.onload = async () => {
+  
   loader.hidden = true;
   mintLoader.hidden = true;
   video.hidden = true;
