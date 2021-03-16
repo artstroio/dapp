@@ -630,7 +630,7 @@ async function connectWallet() {
     let id = await web3.eth.getChainId();
     if (id === 97) {
       contractAddress = "0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C";
-      buySalecontractAddress = "0xdd303a7AB777cAf00BAd1790457787Aa8C0A4719";
+      buySalecontractAddress = "0x81100742562De7a1B7e85063F6fA678Db7A84b65";
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
     } else {
