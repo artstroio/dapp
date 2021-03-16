@@ -444,7 +444,7 @@ function changePriceOfToken() {
 	let price = web3.utils.toWei(newTokenPrice.value);
 	console.log(tokenId)
 	console.log(price)
-	changePriceBtn.value = "sending tarnsaction and approving "
+	changePriceBtn.value = "Sending and Approving Transaction."
 	buySaleContract.methods.changeTokenPrice(tokenId,price).send({from: accounts[0],value: fees}).then(() => {
 		changePriceBtn.value = 'Transaction Confirmed';
 		changePriceBtn.value = 'send token to sales contract'
