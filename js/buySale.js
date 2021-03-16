@@ -361,7 +361,7 @@ const buyToken = document.getElementById("buy-token");
 
 function findToken() {
   findTokenBtn.value =
-    "Finding token (you will be redirected to buy page if found)";
+    "Finding Token (You will be redirected if token is found).";
   let tokenId = findTokenId.value;
   buySaleContract.methods
     .findToken(tokenId)
@@ -369,7 +369,7 @@ function findToken() {
     .then(async (uri) => {
       let price = await buySaleContract.methods.tokenPrice(tokenId).call();
       if (uri === "ERROR") {
-        alert("ERROR: Token not for Sale");
+        alert("ERROR: Token not for available for purchase.");
         return false;
       }
       axios(uri).then((r) => {
@@ -404,34 +404,34 @@ function findToken() {
 
 function sendTokenToSellContract() {
   let tokenId = sendTokenId.value;
-  sendTokenBtn.value = "Checking Approve and sending transaction";
+  sendTokenBtn.value = "Checking approval. Sending transaction.";
   contract.methods
     .isApprovedForAll(accounts[0], buySalecontractAddress)
     .call()
     .then((r) => {
       if (r) {
-        sendTokenBtn.value = "token Approved and sending token transaction";
+        sendTokenBtn.value = "Token approved. Sending transaction.";
         buySaleContract.methods
           .registerNFT(tokenId)
           .send({ from: accounts[0], value: fees })
           .then(() => {
             sendTokenBtn.value =
-              "transaction confirmed token sent to contract for  sell";
+              "Transaction Confirmed. The token was sent to Sales Contract.";
           });
       } else if (!r) {
         sendTokenBtn.value =
-          "token not approved sending approve transaction(please wait)";
+          "Your token has not been approved yet. Sending transaction approval (Please Wait)";
         contract.methods
           .setApprovalForAll(buySalecontractAddress, true)
           .send({ from: accounts[0] })
           .then(() => {
-            sendTokenBtn.value = "token Approved and sending token transaction";
+            sendTokenBtn.value = "Yout token has been approved. Sending transaction.";
             buySaleContract.methods
               .registerNFT(tokenId)
               .send({ from: accounts[0], value: fees })
               .then(() => {
                 sendTokenBtn.value =
-                  "transaction confirmed token sent to contract for  sell";
+                  "Your transaction has been confirmed. The token was sent to Sales Contract.";
               });
           });
       }
