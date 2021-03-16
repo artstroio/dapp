@@ -274,28 +274,34 @@ let buySalecontractAddress = "";
 const fees = "25000000000000000";
 
 /* send token to contract info */
-
 const sendTokenId = document.getElementById("sendTokenID");
 
 /*Find Token INfo*/
-
-const findTokenId = document.getElementById('findTokenID')
+const findTokenId = document.getElementById("findTokenID");
 
 /* Buy Token */
-const buyToken = document.getElementById('buy-token');
+const buyToken = document.getElementById("buy-token");
+
+// /* Change Price Of Token INFO */
+// const 
+
 
 function findToken() {
-	findTokenBtn.value = "Finding token (you will be redirected to buy page if found)"
-	let tokenId =  findTokenId.value;
-	buySaleContract.methods.findToken(tokenId).call().then(async (uri) => {
-		let price = await buySaleContract.methods.tokenPrice(tokenId).call();
-		if(uri === "ERROR") {
-			alert("ERROR: Token not for Sale");
-			return false;
-		}
-		axios(uri).then((r) => {
-			console.log(r.data);
-			buyToken.innerHTML = `<header>
+  findTokenBtn.value =
+    "Finding token (you will be redirected to buy page if found)";
+  let tokenId = findTokenId.value;
+  buySaleContract.methods
+    .findToken(tokenId)
+    .call()
+    .then(async (uri) => {
+      let price = await buySaleContract.methods.tokenPrice(tokenId).call();
+      if (uri === "ERROR") {
+        alert("ERROR: Token not for Sale");
+        return false;
+      }
+      axios(uri).then((r) => {
+        console.log(r.data);
+        buyToken.innerHTML = `<header>
 				<h2>Buy this Token</h2>
 				</header>
 					<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
@@ -316,11 +322,11 @@ function findToken() {
 							</div>
 						</div>		
 					</form>
-				</section>`
-		})
-		window.location.hash = "#buy-token";
-		findTokenBtn.value = "Find Token"
-	})
+				</section>`;
+      });
+      window.location.hash = "#buy-token";
+      findTokenBtn.value = "Find Token";
+    });
 }
 
 function sendTokenToSellContract() {
@@ -357,4 +363,12 @@ function sendTokenToSellContract() {
           });
       }
     });
+}
+
+
+function changePriceOfToken() {
+	let tokenId = changeTokenID.values;
+	let price = newTokenPrice.value;
+
+	buySaleContract.methods.changeTokenPrice(tokenId,price).send({from: accounts[0],value: fees})
 }

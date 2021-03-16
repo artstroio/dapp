@@ -318,15 +318,78 @@ interface artstro is IERC721Metadata {
     function NFTValue(uint256 _if) external view returns(uint256);
 }
 
-contract BuySale {
+abstract contract Context {
+    function _msgSender() internal view virtual returns (address) {
+        return msg.sender;
+    }
+
+    function _msgData() internal view virtual returns (bytes calldata) {
+        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691
+        return msg.data;
+    }
+}
+
+abstract contract Ownable is Context {
+    address private _owner;
+
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+    /**
+     * @dev Initializes the contract setting the deployer as the initial owner.
+     */
+    constructor () {
+        address msgSender = _msgSender();
+        _owner = msgSender;
+        emit OwnershipTransferred(address(0), msgSender);
+    }
+
+    /**
+     * @dev Returns the address of the current owner.
+     */
+    function owner() public view virtual returns (address) {
+        return _owner;
+    }
+
+    /**
+     * @dev Throws if called by any account other than the owner.
+     */
+    modifier onlyOwner() {
+        require(owner() == _msgSender(), "Ownable: caller is not the owner");
+        _;
+    }
+
+    /**
+     * @dev Leaves the contract without owner. It will not be possible to call
+     * `onlyOwner` functions anymore. Can only be called by the current owner.
+     *
+     * NOTE: Renouncing ownership will leave the contract without an owner,
+     * thereby removing any functionality that is only available to the owner.
+     */
+    function renounceOwnership() public virtual onlyOwner {
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
+    }
+
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Can only be called by the current owner.
+     */
+    function transferOwnership(address newOwner) public virtual onlyOwner {
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
+    }
+}
+
+contract BuySale is Ownable(){
     artstro token; 
     
     uint256 fees;
     using SafeMath for uint256;
     
-    mapping(uint256 => address) tokenRegistered;
-    mapping(uint256 => bool) isAvailable;
-    mapping(uint256 => uint256) tokenPrice;
+    mapping(uint256 => address) public tokenRegistered;
+    mapping(uint256 => bool) public isAvailable;
+    mapping(uint256 => uint256) public tokenPrice;
     
     event NftRegistered(address indexed _user,address indexed _to,uint256 _tokenId,uint256 _price);
     event tokenSold(address indexed _from, address indexed _to,uint256 _tokenId,uint256 _tokenPrice);
@@ -365,8 +428,9 @@ contract BuySale {
         emit tokenSold(address(this),msg.sender,_tokenId,tokenPrice[_tokenId]);
     }
     
-    function changeTokenPrice(uint256 _tokenId,uint256 _newTokenPrice) public {
+    function changeTokenPrice(uint256 _tokenId,uint256 _newTokenPrice) public payable {
         require(msg.sender == tokenRegistered[_tokenId],"ERROR: you are not owner of this token");
+        require(msg.value >= fees,"ERRR: not enough fees");
         tokenPrice[_tokenId] = _newTokenPrice;
     }
     
@@ -376,6 +440,16 @@ contract BuySale {
         }else{
             return 'ERROR';
         }
+    }
+    
+    /* ONYL OWNER  */
+    
+    function changeFees(uint256 _newFee) public onlyOwner {
+        fees = _newFee;
+    }
+    
+    function withdrawFees() public onlyOwner {
+        payable(owner()).transfer(address(this).balance);
     }
     
     function contarctBalance() public view returns(uint256) {
