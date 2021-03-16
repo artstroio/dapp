@@ -272,9 +272,56 @@ const buySalecontractAbi = [
 ];
 let buySalecontractAddress = "";
 const fees = "25000000000000000";
+
 /* send token to contract info */
 
 const sendTokenId = document.getElementById("sendTokenID");
+
+/*Find Token INfo*/
+
+const findTokenId = document.getElementById('findTokenID')
+
+/* Buy Token */
+const buyToken = document.getElementById('buy-token');
+
+function findToken() {
+	findTokenBtn.value = "Finding token (you will be redirected to buy page if found)"
+	let tokenId =  findTokenId.value;
+	buySaleContract.methods.findToken(tokenId).call().then(async (uri) => {
+		let price = await buySaleContract.methods.tokenPrice(tokenId).call();
+		if(uri === "ERROR") {
+			alert("ERROR: Token not for Sale");
+			return false;
+		}
+		axios(uri).then((r) => {
+			console.log(r.data);
+			buyToken.innerHTML = `<header>
+				<h2>Buy this Token</h2>
+				</header>
+					<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
+				<section>
+					<form action="#" method="post" onsubmit="return false">
+						</br>
+						<div class="row">				
+							<div class="col-6 col-12-medium imagen-token">
+								<img class="token-thumbnail-minting" src="${r.data.img}"/>
+							</div>
+							<div class="col-6 col-12-medium">
+							<h2>${r.data.description}</h2>
+							<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${tokenId}">${tokenId}</a></p>
+							<h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
+							</div>											
+							<div class="col-12 mintbutton">
+								<input type="submit" value="Buy Token" />
+							</div>
+						</div>		
+					</form>
+				</section>`
+		})
+		window.location.hash = "#buy-token";
+		findTokenBtn.value = "Find Token"
+	})
+}
 
 function sendTokenToSellContract() {
   let tokenId = sendTokenId.value;

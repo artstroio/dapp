@@ -760,7 +760,7 @@ function getTokenOfUserFromEvent() {
       { filter: { to: accounts[0] }, fromBlock: 0, toBlock: "latest" },
       (err, r) => {
         returnValuesArr = r;
-        console.log(r);
+        // console.log(r);
         returnValuesArr = returnValuesArr.map((index) => index.returnValues);
         userTokenID = returnValuesArr.map((index) => index.tokenId);
       }
@@ -774,19 +774,19 @@ function getTokenOfUserFromEvent() {
             let tempData = r.map((index) => index.returnValues);
             deleteId = tempData.map((index) => index.tokenId);
             // deleteId.push(r.returnValues.tokenId);
-            console.log(returnValuesArr);
-            console.log(userTokenID);
+            // console.log(returnValuesArr);
+            // console.log(userTokenID);
             deleteId.map((index) => {
               returnValuesArr.map((index1, i) => {
                 if (index === index1.tokenId) {
-                  console.log(
-                    "index",
-                    i,
-                    "elementDelet",
-                    index,
-                    "return",
-                    index1
-                  );
+                  // console.log(
+                  //   "index",
+                  //   i,
+                  //   "elementDelet",
+                  //   index,
+                  //   "return",
+                  //   index1
+                  // );
                   returnValuesArr.splice(i, 1);
                   userTokenID.splice(i, 1);
                 }

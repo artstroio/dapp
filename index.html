@@ -191,10 +191,10 @@
 
 						<!-- Buy Token -->
 							<article id="buy-token" class="wallet panel">
-								<header>
-									<h2>Buy this Token</h2>
+								 <header>
+									<h2>Find token to see if it is available for buy</h2>
 								</header>
-									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
+								<!--	<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
 								<section>
 									<form action="#" method="post" onsubmit="return false">
 										</br>
@@ -212,7 +212,7 @@
 											</div>
 										</div>		
 									</form>
-								</section>
+								</section> -->
 							</article>
 
 						<!-- Change Token Price -->
@@ -281,7 +281,7 @@
 												<input type="text" id="findTokenID" name="token-id" placeholder="Token Id Number" />
 											</div>
 											<div class="col-6 col-12-medium mintbutton">
-												<input type="submit" value="Find Token" />
+												<input type="submit" id="findTokenBtn" onclick="findToken()" value="Find Token" />
 											</div>
 										</div>
 									</form>
