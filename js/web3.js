@@ -613,7 +613,6 @@ let mintedArray = [];
 let userTokenData = [];
 
 window.onload = async () => {
-  
   loader.hidden = true;
   mintLoader.hidden = true;
   video.hidden = true;
@@ -629,8 +628,9 @@ async function connectWallet() {
   if (window.ethereum) {
     web3 = new Web3(window.ethereum);
     let id = await web3.eth.getChainId();
-    if ( id === 97) {
+    if (id === 97) {
       contractAddress = "0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C";
+      buySalecontractAddress = "0xdd303a7AB777cAf00BAd1790457787Aa8C0A4719";
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
     } else {
@@ -639,19 +639,21 @@ async function connectWallet() {
 
     try {
       contract = new web3.eth.Contract(contractAbi, contractAddress);
+      buySaleContract = new web3.eth.Contract(
+        buySalecontractAbi,
+        buySalecontractAddress
+      );
       accounts = await ethereum.enable();
     } catch (e) {
       console.log(e);
     }
-    getTokenOfUserFromEvent(); 
+    getTokenOfUserFromEvent();
   }
 }
 
 inputELm.addEventListener("change", (e) => {
   loader.hidden = false;
   const file = e.target.files[0];
-  console.log(file);
-  // const file = this.files[0];
   fileType = file["type"];
   validImageTypes = [
     "image/gif",
@@ -685,10 +687,9 @@ let hash;
 async function addData() {
   await ipfs.files.add(imgBuffer, (err, result) => {
     if (err) {
-      console.log(err);
+      alert(err);
     }
     hash = result[0];
-    console.log(hash);
     loader.hidden = true;
     imageUrl = `https://gateway.pinata.cloud/ipfs/${result[0].hash}`;
     const videoType = ["video/webm", "video/mp4", "video/muted"];
@@ -718,10 +719,8 @@ sendJSONToIPFS = async () => {
   });
 
   ipfs.add(ipfs.Buffer(doc)).then((cid) => {
-    console.log("IPFS cid:", cid);
     mintLoader.hidden = true;
     tokenURI = `https://gateway.pinata.cloud/ipfs/${cid[0].hash}`;
-    console.log(`https://gateway.pinata.cloud/ipfs/${cid[0].hash}`);
     mintBtnELm.value = "Approving Transaction to BSC (please wait)";
     mintLoader.hidden = false;
     mintToken();
@@ -753,79 +752,82 @@ function mintToken() {
 }
 
 function getTokenOfUserFromEvent() {
-  // const web31 = new Web3('https://bsc-dataseed4.defibit.io/');
-  //  contract1 = new web31.eth.Contract(contractAbi,contractAddress)
-  // console.log(contract1);
-
   walletTokens.innerHTML = "";
 
-  contract.getPastEvents(
-    'Transfer',
-    { filter: { to: accounts[0] }, fromBlock: 0 , toBlock:'latest'},
-    (err, r) => {
-      console.log(r)
-      returnValuesArr = r
-      // console.log(r);
-      returnValuesArr = returnValuesArr.map(index => (index.returnValues));
-      userTokenID =  returnValuesArr.map(index => (index.tokenId));
-      console.log(returnValuesArr)
-    }
-  ).then(() => {
-    contract.getPastEvents(
-      'Transfer',
-      { filter: { from: accounts[0] }, fromBlock: 0, toBlock:'latest'},
+  contract
+    .getPastEvents(
+      "Transfer",
+      { filter: { to: accounts[0] }, fromBlock: 0, toBlock: "latest" },
       (err, r) => {
+        returnValuesArr = r;
         console.log(r);
-        let tempData = r.map(index => (index.returnValues));
-        deleteId =  tempData.map(index => (index.tokenId));
-        // deleteId.push(r.returnValues.tokenId);
-        console.log(returnValuesArr);
-        console.log(userTokenID)
-        // deleteId.map((index) => {
-        //   returnValuesArr.map((index1, i) => {
-        //     if (index === index1.tokenId) {
-        //       // console.log("index", i, "elementDelet", index,'return',index1);
-        //       returnValuesArr.splice(i, 1);
-        //       userTokenID.splice(i, 1);
-        //     }
-        //   });
-        // });
+        returnValuesArr = returnValuesArr.map((index) => index.returnValues);
+        userTokenID = returnValuesArr.map((index) => index.tokenId);
       }
-    ).then(() => {
-      
-  contract.events.Minted({ fromBlock: 0 }, (err, r) => {
-    userTokenID.map((index) => {
-      if (r.returnValues.id === index) {
-      walletLoader.hidden = true;     
-      let uri = r.returnValues.uri;
-      let id = r.returnValues.id;
-      let value = web3.utils.fromWei(r.returnValues.value);
-      let imageLink, optionalLink;
-      console.log(uri);
-      axios(uri).then((r) => {
-        optionalLink = r.data.optionalUrl;
-        imageLink = r.data.img;
-        let des = r.data.description;
-        let type1 = r.data.type;
-        if (type1 === "image") {
-        tag = `<img src=${imageLink} alt=""></a>`;
-        } else {
-        tag = `<video class="video-preview" id="video" autoplay loop muted src="${imageLink}">
+    )
+    .then(() => {
+      contract
+        .getPastEvents(
+          "Transfer",
+          { filter: { from: accounts[0] }, fromBlock: 0, toBlock: "latest" },
+          (err, r) => {
+            let tempData = r.map((index) => index.returnValues);
+            deleteId = tempData.map((index) => index.tokenId);
+            // deleteId.push(r.returnValues.tokenId);
+            console.log(returnValuesArr);
+            console.log(userTokenID);
+            deleteId.map((index) => {
+              returnValuesArr.map((index1, i) => {
+                if (index === index1.tokenId) {
+                  console.log(
+                    "index",
+                    i,
+                    "elementDelet",
+                    index,
+                    "return",
+                    index1
+                  );
+                  returnValuesArr.splice(i, 1);
+                  userTokenID.splice(i, 1);
+                }
+              });
+            });
+          }
+        )
+        .then(() => {
+          contract.events.Minted({ fromBlock: 0 }, (err, r) => {
+            userTokenID.map((index) => {
+              if (r.returnValues.id === index) {
+                walletLoader.hidden = true;
+                let uri = r.returnValues.uri;
+                let id = r.returnValues.id;
+                let value = web3.utils.fromWei(r.returnValues.value);
+                let imageLink, optionalLink;
+                axios(uri).then((r) => {
+                  optionalLink = r.data.optionalUrl;
+                  imageLink = r.data.img;
+                  let des = r.data.description;
+                  let type1 = r.data.type;
+                  if (type1 === "image") {
+                    tag = `<img src=${imageLink} alt=""></a>`;
+                  } else {
+                    tag = `<video class="video-preview" id="video" autoplay loop muted src="${imageLink}">
                 Your browser does not support the video tag.
               </video>`;
-        }
-        walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
+                  }
+                  walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
             <a href="${optionalLink}" class="image fit"> ${tag}
             <p><b>${des}</b></p><p>Current Price ${value} BNB</p>
             <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
             <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
             </div>`;
-      });
-      }
-    });
-    });  
+                });
+              }
+            });
+          });
+        });
     })
-  }).catch(console.log) 
+    .catch(console.log);
 }
 
 function transferToken() {
@@ -835,13 +837,17 @@ function transferToken() {
 
   transfertoken.value = "Approving Transaction (please Wait)";
 
-  contract.methods.transferFrom(fromAddress,toAddress,tokenId).send({from: accounts[0]}).then(() => {
-    transfertoken.value = "Transaction confirmed";
-  }).catch((e) => {
-    transfertoken.value = 'Transaction Failed '
-    alert(e.message);
-  })
+  contract.methods
+    .transferFrom(fromAddress, toAddress, tokenId)
+    .send({ from: accounts[0] })
+    .then(() => {
+      transfertoken.value = "Transaction confirmed";
+    })
+    .catch((e) => {
+      transfertoken.value = "Transaction Failed ";
+      alert(e.message);
+    });
 
-  tokenid.value = ''
-  destination.value = ''
+  tokenid.value = "";
+  destination.value = "";
 }

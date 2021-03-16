@@ -196,7 +196,7 @@
 								</header>
 									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
 								<section>
-									<form action="#" method="post">
+									<form action="#" method="post" onsubmit="return false">
 										</br>
 										<div class="row">				
 											<div class="col-6 col-12-medium imagen-token">
@@ -222,14 +222,14 @@
 								</header>
 									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>
 								<section>
-									<form action="#" method="post">
+									<form action="#" method="post" onsubmit="return false">
 										</br>
 										<div class="row">				
 										<div class="col-6 col-12-medium">
-											<p style="margin:20px 0 7px 0"><input type="text" name="token-id" placeholder="Token Id." /></p>
+											<p style="margin:20px 0 7px 0"><input type="text" id="changeTokenID" name="token-id" placeholder="Token Id." /></p>
 											</div>
 											<div class="col-6 col-12-medium">
-											<p style="margin:20px 0 7px 0"><input type="text" name="new-price" placeholder="New Selling new-price (in BNB)" /></p>		
+											<p style="margin:20px 0 7px 0"><input type="text" id="newTokenPrice" name="new-price" placeholder="New Selling new-price (in BNB)" /></p>		
 											</div>
 											<div class="col-12">									
 											<p><b>IMPORTANT:</b></br>
@@ -250,18 +250,18 @@
 								</header>
 									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>
 								<section>
-									<form action="#" method="post">
+									<form action="#" method="post" onsubmit="return false">
 										</br>
 										<div class="row">				
 											<div class="col-12">
-											<p style="margin:20px 0 7px 0"><input type="text" name="token-id" placeholder="Token Id." /></p>
+											<p style="margin:20px 0 7px 0"><input type="text" id="sendTokenID" name="token-id" placeholder="Token Id." /></p>
 											</div>
 											<div class="col-12">									
 											<p><b>IMPORTANT:</b></br>
 												Provide buyer with Token Id number after receiving network confirmation for this transaction.</p>
 											</div>											
 											<div class="col-12 mintbutton">
-												<input type="submit" value="Send Token to Sell Contract" />
+												<input type="submit" id="sendTokenBtn" onclick="sendTokenToSellContract()" value="Send Token to Sell Contract" />
 											</div>
 										</div>		
 									</form>
@@ -275,10 +275,10 @@
 								</header>
 								<section>
 									<p>To find a Token you need to know it's Id Number.</p>
-									<form action="#" method="post">
+									<form action="#" method="post" onsubmit="return false">
 										<div class="row">														
 											<div class="col-6 col-12-medium">
-												<input type="text" name="token-id" placeholder="Token Id Number" />
+												<input type="text" id="findTokenID" name="token-id" placeholder="Token Id Number" />
 											</div>
 											<div class="col-6 col-12-medium mintbutton">
 												<input type="submit" value="Find Token" />
@@ -319,6 +319,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="./js/buySale.js"></script>
 			<script src="./js/web3.js"></script>
 			<script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
