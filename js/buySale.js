@@ -355,9 +355,18 @@ const findTokenId = document.getElementById("findTokenID");
 /* Buy Token */
 const buyToken = document.getElementById("buy-token");
 
-// /* Change Price Of Token INFO */
-// const 
 
+function buyTokenBtn() {
+	let tokenId = document.getElementById('tokenId').innerText;
+	let tokenBtn = document.getElementById('buyTokenButton');
+	tokenBtn.value = "Approving transaction"
+	buySaleContract.methods.tokenPrice(tokenId).call().then((r) => {
+		let price = (Number(fees) + Number(r)).toString();
+		buySaleContract.methods.buyToken(tokenId).send({from: accounts[0], value: price}).then(() => {
+			tokenBtn.value = "Transaction Confirmed Token Bought"
+		})
+	})
+}
 
 function findToken() {
   findTokenBtn.value =
@@ -387,11 +396,11 @@ function findToken() {
 							</div>
 							<div class="col-6 col-12-medium">
 							<h2>${r.data.description}</h2>
-							<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${tokenId}">${tokenId}</a></p>
+							<p>Token Id.: <a target="_blank" id='tokenId' href="https://bscscan.com/token/${contractAddress}?a=${tokenId}">${tokenId}</a></p>
 							<h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
 							</div>											
 							<div class="col-12 mintbutton">
-								<input type="submit" value="Buy Token" />
+								<input type="submit" onClick = "buyTokenBtn()" id='buyTokenButton' value="Buy Token" />
 							</div>
 						</div>		
 					</form>
