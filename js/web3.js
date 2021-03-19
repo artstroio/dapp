@@ -622,6 +622,16 @@ window.onload = async () => {
     port: 5001,
     protocol: "https",
   });
+	var url_string = window.location.href
+	var url = new URL(url_string);
+	var searchWallet = url.searchParams.get("wallet");
+  if(searchWallet != null){
+    if(searchWallet.length === 42) {
+      setTimeout(() => {
+        getValueForCatalog(searchWallet)
+      }, 1000);
+    }
+  }
 };
 
 async function connectWallet() {
@@ -630,7 +640,7 @@ async function connectWallet() {
     let id = await web3.eth.getChainId();
     if (id === 97) {
       contractAddress = "0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C";
-      buySalecontractAddress = "0x81100742562De7a1B7e85063F6fA678Db7A84b65";
+      buySalecontractAddress = "0x89A8D8854c59645a69a21AB2a70Acd415b5d079F";
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
     } else {
@@ -752,6 +762,7 @@ function mintToken() {
 }
 
 function getTokenOfUserFromEvent() {
+  let walletTokens = document.getElementById('walletTokens')
   walletTokens.innerHTML = "";
 
   contract

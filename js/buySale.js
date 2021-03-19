@@ -94,6 +94,12 @@ const buySalecontractAbi = [
 				"internalType": "uint256",
 				"name": "_price",
 				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "_uri",
+				"type": "string"
 			}
 		],
 		"name": "NftRegistered",
@@ -144,6 +150,12 @@ const buySalecontractAbi = [
 				"internalType": "uint256",
 				"name": "_tokenPrice",
 				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "_uri",
+				"type": "string"
 			}
 		],
 		"name": "tokenSold",
@@ -341,10 +353,14 @@ const buySalecontractAbi = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-];
+]
 
 let buySalecontractAddress = "";
 const fees = "25000000000000000";
+
+/* Catalog INFO */
+const saleWattletElm = document.querySelectorAll('#for-sale-wallet')[1]
+const showSaleTokenBtn = document.getElementById('showSaleToken');
 
 /* send token to contract info */
 const sendTokenId = document.getElementById("sendTokenID");
@@ -355,17 +371,27 @@ const findTokenId = document.getElementById("findTokenID");
 /* Buy Token */
 const buyToken = document.getElementById("buy-token");
 
+showSaleTokenBtn.addEventListener('click',() =>{
+	getValueForCatalog(WalletSale.value)
+	// console.log(WalletSale.value)
+})
 
 function buyTokenBtn() {
-	let tokenId = document.getElementById('tokenId').innerText;
-	let tokenBtn = document.getElementById('buyTokenButton');
-	tokenBtn.value = "Approving transaction"
-	buySaleContract.methods.tokenPrice(tokenId).call().then((r) => {
-		let price = (Number(fees) + Number(r)).toString();
-		buySaleContract.methods.buyToken(tokenId).send({from: accounts[0], value: price}).then(() => {
-			tokenBtn.value = "Transaction Confirmed Token Bought"
-		})
-	})
+  let tokenId = document.getElementById("tokenId").innerText;
+  let tokenBtn = document.getElementById("buyTokenButton");
+  tokenBtn.value = "Approving transaction";
+  buySaleContract.methods
+    .tokenPrice(tokenId)
+    .call()
+    .then((r) => {
+      let price = (Number(fees) + Number(r)).toString();
+      buySaleContract.methods
+        .buyToken(tokenId)
+        .send({ from: accounts[0], value: price })
+        .then(() => {
+          tokenBtn.value = "Transaction Confirmed Token Bought";
+        });
+    });
 }
 
 function findToken() {
@@ -434,7 +460,8 @@ function sendTokenToSellContract() {
           .setApprovalForAll(buySalecontractAddress, true)
           .send({ from: accounts[0] })
           .then(() => {
-            sendTokenBtn.value = "Yout token has been approved. Sending transaction.";
+            sendTokenBtn.value =
+              "Your token has been approved. Sending transaction.";
             buySaleContract.methods
               .registerNFT(tokenId)
               .send({ from: accounts[0], value: fees })
@@ -444,18 +471,82 @@ function sendTokenToSellContract() {
               });
           });
       }
+    })
+}
+
+function changePriceOfToken() {
+  let tokenId = changeTokenID.value;
+  let price = web3.utils.toWei(newTokenPrice.value);
+  console.log(tokenId);
+  console.log(price);
+  changePriceBtn.value = "Sending and Approving Transaction.";
+  buySaleContract.methods
+    .changeTokenPrice(tokenId, price)
+    .send({ from: accounts[0], value: fees })
+    .then(() => {
+      changePriceBtn.value = "Transaction Confirmed";
+      changePriceBtn.value = "send token to sales contract";
     });
 }
 
-
-function changePriceOfToken() {
-	let tokenId = changeTokenID.value;
-	let price = web3.utils.toWei(newTokenPrice.value);
-	console.log(tokenId)
-	console.log(price)
-	changePriceBtn.value = "Sending and Approving Transaction."
-	buySaleContract.methods.changeTokenPrice(tokenId,price).send({from: accounts[0],value: fees}).then(() => {
-		changePriceBtn.value = 'Transaction Confirmed';
-		changePriceBtn.value = 'send token to sales contract'
-	})
+function getValueForCatalog(address) {
+walletOfSale.innerText = address
+  buySaleContract
+    .getPastEvents(
+      "NftRegistered",
+      { filter: { _user: address }, fromBlock: 0, toBlock: "latest" },
+      (err, r) => {
+        returnValuesArrOfCatalog = r;
+        // console.log(r);
+        returnValuesArrOfCatalog = returnValuesArrOfCatalog.map(
+          (index) => index.returnValues
+        );
+        userTokenIDOfCatalog = returnValuesArrOfCatalog.map(
+          (index) => index._tokenId
+        );
+      }
+    )
+    .then(() => {
+      buySaleContract.getPastEvents(
+        "tokenSold",
+        { filter: { _to: address }, fromBlock: 0, toBlock: "latest" },
+        (err, r) => {
+          let tempData = r.map((index) => index.returnValues);
+          deleteIdOfCatalog = tempData.map((index) => index._tokenId);
+          // deleteIdOfCatalog.push(r.returnValues._tokenId);
+          // console.log(returnValuesArrOfCatalog);
+          // console.log(userTokenIdOfCatalog);
+          deleteIdOfCatalog.map((index) => {
+            returnValuesArrOfCatalog.map((index1, i) => {
+              if (index === index1._tokenId) {
+                // console.log(
+                //   "index",
+                //   i,
+                //   "elementDelet",
+                //   index,
+                //   "return",
+                //   index1
+                // );
+                returnValuesArrOfCatalog.splice(i, 1);
+                userTokenIDOfCatalog.splice(i, 1);
+              }
+            });
+          });
+		  Promise.all(returnValuesArrOfCatalog).then(() => {
+			saleWattletElm.innerHTML = ''
+			returnValuesArrOfCatalog.map(async (index)  => {
+			let tokenId = index._tokenId
+			let price = await buySaleContract.methods.tokenPrice(tokenId).call()
+			let uri = index._uri;
+			axios(uri).then((r) => {
+			saleWattletElm.innerHTML +=	`<div class="col-4 col-6-medium col-12-small">
+					<a href="#" class="image fit"><img src="${r.data.img}" alt=""></a>
+					<p><b>${r.data.description}</b></p><p>Current Price ${web3.utils.fromWei(price)} BNB</p>
+					<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/${buySalecontractAddress}?a=${tokenId}">${tokenId}</a></p>
+				</div>`
+			})
+			})
+		  })
+        });
+    })
 }
