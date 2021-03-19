@@ -624,13 +624,20 @@ window.onload = async () => {
   });
 	var url_string = window.location.href
 	var url = new URL(url_string);
-	var searchWallet = url.searchParams.get("wallet");
+	let searchWallet = url.searchParams.get("wallet");
+  let tokenId = url.searchParams.get("tokenId");
+
   if(searchWallet != null){
     if(searchWallet.length === 42) {
       setTimeout(() => {
         getValueForCatalog(searchWallet)
       }, 1000);
     }
+  }
+  if(tokenId != null){
+    setTimeout(() => {
+    getTokenData(tokenId);
+  }, 1000);
   }
 };
 
