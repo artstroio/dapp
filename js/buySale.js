@@ -373,6 +373,7 @@ const buyToken = document.getElementById("buy-token");
 
 if(showSaleTokenBtn != null) {	
 	showSaleTokenBtn.addEventListener('click',() =>{
+		window.location += `?wallet=${WalletSale.value}`
 		getValueForCatalog(WalletSale.value)
 	})
 }
@@ -412,44 +413,6 @@ function findToken(_tokenId) {
 			alert("ERROR: no Token Found");
 		}
 	})
-
-//   let tokenId = findTokenId.value;
-//   buySaleContract.methods
-//     .findToken(tokenId)
-//     .call()
-//     .then(async (uri) => {
-//       let price = await buySaleContract.methods.tokenPrice(tokenId).call();
-//       if (uri === "ERROR") {
-//         alert("ERROR: Token not for available for purchase.");
-//         return false;
-//       }
-//       axios(uri).then((r) => {
-//         console.log(r.data);
-//         buyToken.innerHTML = `<header>
-// 				<h2>Buy this Token</h2>
-// 				</header>
-// 					<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
-// 				<section>
-// 					<form action="#" method="post" onsubmit="return false">
-// 						</br>
-// 						<div class="row">				
-// 							<div class="col-6 col-12-medium imagen-token">
-// 								<img class="token-thumbnail-minting" src="${r.data.img}"/>
-// 							</div>
-// 							<div class="col-6 col-12-medium">
-// 							<h2>${r.data.description}</h2>
-// 							<p>Token Id.: <a target="_blank" id='tokenId' href="https://bscscan.com/token/${contractAddress}?a=${tokenId}">${tokenId}</a></p>
-// 							<h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
-// 							</div>											
-// 							<div class="col-12 mintbutton">
-// 								<input type="submit" onClick = "buyTokenBtn()" id='buyTokenButton' value="Buy Token" />
-// 							</div>
-// 						</div>		
-// 					</form>
-// 				</section>`;
-//       });
-     
-    // });
 }
 
 function getTokenData(tokenId) {
@@ -566,20 +529,9 @@ walletOfSale.innerText = address
         (err, r) => {
           let tempData = r.map((index) => index.returnValues);
           deleteIdOfCatalog = tempData.map((index) => index._tokenId);
-          // deleteIdOfCatalog.push(r.returnValues._tokenId);
-          // console.log(returnValuesArrOfCatalog);
-          // console.log(userTokenIdOfCatalog);
           deleteIdOfCatalog.map((index) => {
             returnValuesArrOfCatalog.map((index1, i) => {
               if (index === index1._tokenId) {
-                // console.log(
-                //   "index",
-                //   i,
-                //   "elementDelet",
-                //   index,
-                //   "return",
-                //   index1
-                // );
                 returnValuesArrOfCatalog.splice(i, 1);
                 userTokenIDOfCatalog.splice(i, 1);
               }
@@ -593,7 +545,7 @@ walletOfSale.innerText = address
 			let uri = index._uri;
 			axios(uri).then((r) => {
 			saleWattletElm.innerHTML +=	`<div class="col-4 col-6-medium col-12-small">
-					<a href="#" class="image fit"><img id="id${tokenId}" src="${r.data.img}" alt=""></a>
+					<a href="#" class="image fit"><img id="${tokenId}" src="${r.data.img}" alt=""></a>
 					<p><b>${r.data.description}</b></p><p>Current Price ${web3.utils.fromWei(price)} BNB</p>
 					<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/${buySalecontractAddress}?a=${tokenId}">${tokenId}</a></p>
 				</div>`
