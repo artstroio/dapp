@@ -513,7 +513,6 @@ walletOfSale.innerText = address
       { filter: { _user: address }, fromBlock: 0, toBlock: "latest" },
       (err, r) => {
         returnValuesArrOfCatalog = r;
-        // console.log(r);
         returnValuesArrOfCatalog = returnValuesArrOfCatalog.map(
           (index) => index.returnValues
         );
@@ -545,13 +544,26 @@ walletOfSale.innerText = address
 			let uri = index._uri;
 			axios(uri).then((r) => {
 			saleWattletElm.innerHTML +=	`<div class="col-4 col-6-medium col-12-small">
-					<a href="#" class="image fit"><img id="${tokenId}" src="${r.data.img}" alt=""></a>
+					<a href="#" class="image fit"><img id="${tokenId}" onClick="" src="${r.data.img}" alt=""></a>
 					<p><b>${r.data.description}</b></p><p>Current Price ${web3.utils.fromWei(price)} BNB</p>
 					<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/${buySalecontractAddress}?a=${tokenId}">${tokenId}</a></p>
 				</div>`
 			})
 			})
 		  })
-        });
+		  setTimeout(() => {
+		  findTokenInCatalog()
+		  }, 1000);
+        })
     })
+}
+
+function findTokenInCatalog() {
+	let imageOfCatalogElm = document.querySelectorAll('.image');
+	imageOfCatalogElm.forEach(index => {
+		index.addEventListener('click',() => {
+			findToken(index.children[0].id);
+		})
+		
+	})
 }
