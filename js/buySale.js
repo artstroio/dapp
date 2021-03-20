@@ -495,13 +495,13 @@ function changePriceOfToken() {
   let price = web3.utils.toWei(newTokenPrice.value);
   console.log(tokenId);
   console.log(price);
-  changePriceBtn.value = "Sending and Approving Transaction.";
+  changePriceBtn.value = "Sending and approving transaction.";
   buySaleContract.methods
     .changeTokenPrice(tokenId, price)
     .send({ from: accounts[0], value: fees })
     .then(() => {
-      changePriceBtn.value = "Transaction Confirmed";
-      changePriceBtn.value = "send token to sales contract";
+      changePriceBtn.value = "New token price confirmed";
+      changePriceBtn.value = "Updating information on the sales contract";
     });
 }
 
@@ -545,7 +545,7 @@ walletOfSale.innerText = address
 			axios(uri).then((r) => {
 			saleWattletElm.innerHTML +=	`<div class="col-4 col-6-medium col-12-small">
 					<a href="#" class="image fit"><img id="${tokenId}" onClick="" src="${r.data.img}" alt=""></a>
-					<p><b>${r.data.description}</b></p><p>Current Price ${web3.utils.fromWei(price)} BNB</p>
+					<p>${r.data.description}</p><p>Current Price: <b>${web3.utils.fromWei(price)} BNB</b></p>
 					<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/${buySalecontractAddress}?a=${tokenId}">${tokenId}</a></p>
 				</div>`
 			})
