@@ -853,13 +853,13 @@ function transferToken() {
   let toAddress = destination.value;
   let fromAddress = accounts[0];
 
-  transfertoken.value = "Approving Transaction (please Wait)";
+  transfertoken.value = "Approving Transaction (Please Wait)";
 
   contract.methods
     .transferFrom(fromAddress, toAddress, tokenId)
     .send({ from: accounts[0] })
     .then(() => {
-      transfertoken.value = "Transaction confirmed";
+      transfertoken.value = "Transaction Confirmed";
     })
     .catch((e) => {
       transfertoken.value = "Transaction Failed ";
