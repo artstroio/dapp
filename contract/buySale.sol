@@ -430,7 +430,7 @@ contract BuySale is Ownable(){
     
     function changeTokenPrice(uint256 _tokenId,uint256 _newTokenPrice) public payable {
         require(msg.sender == tokenRegistered[_tokenId],"ERROR: you are not owner of this token");
-        require(msg.value >= fees,"ERRR: not enough fees");
+        require(msg.value >= fees,"ERROR: not enough fees");
         tokenPrice[_tokenId] = _newTokenPrice;
     }
     
@@ -442,7 +442,7 @@ contract BuySale is Ownable(){
         }
     }
     
-    /* ONYL OWNER  */
+    /* ONLY OWNER  */
     
     function changeFees(uint256 _newFee) public onlyOwner {
         fees = _newFee;
@@ -452,7 +452,7 @@ contract BuySale is Ownable(){
         payable(owner()).transfer(address(this).balance);
     }
     
-    function contarctBalance() public view returns(uint256) {
+    function contractBalance() public view returns(uint256) {
         return address(this).balance;
     }
     
