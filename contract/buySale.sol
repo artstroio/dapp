@@ -452,7 +452,7 @@ contract BuySale is Ownable(){
         payable(owner()).transfer(address(this).balance);
     }
     
-    function contractBalance() public view returns(uint256) {
+    function contarctBalance() public view returns(uint256) {
         return address(this).balance;
     }
     
