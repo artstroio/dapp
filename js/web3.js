@@ -6,6 +6,9 @@ const royaltyELm = document.querySelector("#royalty");
 const optionalURLELm = document.querySelector("#optionalURL");
 const mintBtnELm = document.querySelector("#mintBtn");
 const walletLoader = document.querySelector("#walletLoader");
+const loader = document.querySelector('#loader');
+const mintLoader = document.querySelector('#mintLoader');
+const video = document.querySelector('#video');
 
 const contractAbi = [
   {
@@ -613,9 +616,9 @@ let mintedArray = [];
 let userTokenData = [];
 
 window.onload = async () => {
-  loader.hidden = true;
-  mintLoader.hidden = true;
-  video.hidden = true;
+  if(loader != null) {loader.hidden = true};
+  if(mintLoader != null) {mintLoader.hidden = true};
+  if(video != null) {video.hidden = true};
   connectWallet();
   ipfs = IpfsApi({
     host: "ipfs.infura.io",
@@ -627,6 +630,7 @@ window.onload = async () => {
 	let searchWallet = url.searchParams.get("wallet");
   let tokenId = url.searchParams.get("tokenId");
 
+  console.log(searchWallet);
   if(searchWallet != null){
     if(searchWallet.length === 42) {
       setTimeout(() => {
@@ -767,6 +771,11 @@ function mintToken() {
       alert("ERROR:", e);
     });
 }
+
+
+findTokenBtn.addEventListener('click',() => {
+	findToken(findTokenId.value);
+})
 
 function getTokenOfUserFromEvent() {
   let walletTokens = document.getElementById('walletTokens')

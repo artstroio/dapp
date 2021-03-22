@@ -378,9 +378,6 @@ if(showSaleTokenBtn != null) {
 	})
 }
 
-findTokenBtn.addEventListener('click',() => {
-	findToken(findTokenId.value);
-})
 
 function buyTokenBtn() {
   let tokenId = document.getElementById("tokenId").innerText;
