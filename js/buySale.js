@@ -156,6 +156,12 @@ const buySalecontractAbi = [
 				"internalType": "string",
 				"name": "_uri",
 				"type": "string"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "tokenOwner",
+				"type": "address"
 			}
 		],
 		"name": "tokenSold",
@@ -537,7 +543,7 @@ walletOfSale.innerText = address
     .then(() => {
       buySaleContract.getPastEvents(
         "tokenSold",
-        { filter: { _to: address }, fromBlock: 0, toBlock: "latest" },
+        { filter: { _tokenOwner: address }, fromBlock: 0, toBlock: "latest" },
         (err, r) => {
           let tempData = r.map((index) => index.returnValues);
           deleteIdOfCatalog = tempData.map((index) => index._tokenId);

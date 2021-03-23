@@ -651,8 +651,8 @@ async function connectWallet() {
     let id = await web3.eth.getChainId();
     if (id === 97) {
       contractAddress = "0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C";
-      buySalecontractAddress = "0x0793dDafe3C1d678EF13e9F12edBeE90196ac44a";
-      //0x656093A5051769187476453761Af29b67F11020B
+      buySalecontractAddress = "0xcd622eFB5e6dc4e3c255fFCc43fC24cFC92B5beD";
+      //0x0793dDafe3C1d678EF13e9F12edBeE90196ac44a
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
     } else {
@@ -788,7 +788,6 @@ function getTokenOfUserFromEvent() {
       { filter: { to: accounts[0] }, fromBlock: 0, toBlock: "latest" },
       (err, r) => {
         returnValuesArr = r;
-        // console.log(r);
         returnValuesArr = returnValuesArr.map((index) => index.returnValues);
         userTokenID = returnValuesArr.map((index) => index.tokenId);
       }
@@ -801,20 +800,9 @@ function getTokenOfUserFromEvent() {
           (err, r) => {
             let tempData = r.map((index) => index.returnValues);
             deleteId = tempData.map((index) => index.tokenId);
-            // deleteId.push(r.returnValues.tokenId);
-            // console.log(returnValuesArr);
-            // console.log(userTokenID);
             deleteId.map((index) => {
               returnValuesArr.map((index1, i) => {
                 if (index === index1.tokenId) {
-                  // console.log(
-                  //   "index",
-                  //   i,
-                  //   "elementDelet",
-                  //   index,
-                  //   "return",
-                  //   index1
-                  // );
                   returnValuesArr.splice(i, 1);
                   userTokenID.splice(i, 1);
                 }
@@ -824,12 +812,12 @@ function getTokenOfUserFromEvent() {
         )
         .then(() => {
           contract.events.Minted({ fromBlock: 0 }, (err, r) => {
-            userTokenID.map((index) => {
+            userTokenID.map(async (index) => {
               if (r.returnValues.id === index) {
                 walletLoader.hidden = true;
                 let uri = r.returnValues.uri;
                 let id = r.returnValues.id;
-                let value = web3.utils.fromWei(r.returnValues.value);
+                let value = web3.utils.fromWei(await  buySaleContract.methods.tokenPrice(id).call());
                 let imageLink, optionalLink;
                 axios(uri).then((r) => {
                   optionalLink = r.data.optionalUrl;

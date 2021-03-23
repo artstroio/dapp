@@ -1,4 +1,4 @@
-pragma solidity 0.8.2;
+pragma solidity ^0.8.0;
 
 library SafeMath {
     /**
@@ -391,8 +391,8 @@ contract BuySale is Ownable(){
     mapping(uint256 => bool) public isAvailable;
     mapping(uint256 => uint256) public tokenPrice;
     
-    event NftRegistered(address indexed _user,address indexed _to,uint256 _tokenId,uint256 _price);
-    event tokenSold(address indexed _from, address indexed _to,uint256 _tokenId,uint256 _tokenPrice);
+    event NftRegistered(address indexed _user,address indexed _to,uint256 _tokenId,uint256 _price,string _uri);
+    event tokenSold(address indexed _from, address indexed _to,uint256 _tokenId,uint256 _tokenPrice,string _uri,address indexed tokenOwner);
     
     constructor() public {
         token = artstro(0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C);
@@ -411,7 +411,7 @@ contract BuySale is Ownable(){
         
         token.transferFrom(msg.sender,address(this),_tokenId);
         
-        emit NftRegistered(msg.sender,address(this),_tokenId,tokenPrice[_tokenId]);
+        emit NftRegistered(msg.sender,address(this),_tokenId,tokenPrice[_tokenId],token.tokenURI(_tokenId));
     } 
     
     function buyToken(uint256 _tokenId) public payable {
@@ -421,11 +421,17 @@ contract BuySale is Ownable(){
         uint256 royalty = getRoyalty(_tokenId);
         address firstOwner = getFirstOwner(_tokenId);
         uint256 balance = tokenPrice[_tokenId];
-        payable(firstOwner).transfer(balance.mul(royalty).div(100));
+        address seller = tokenRegistered[_tokenId];
+        uint256 royaltyBalance = balance.mul(royalty).div(100);
+        balance = balance.sub(royaltyBalance);
+        
+        payable(firstOwner).transfer(royaltyBalance);
+        payable(seller).transfer(balance);
         
         token.transferFrom(address(this),msg.sender,_tokenId);
         isAvailable[_tokenId] = false;
-        emit tokenSold(address(this),msg.sender,_tokenId,tokenPrice[_tokenId]);
+        tokenRegistered[_tokenId] = msg.sender;
+        emit tokenSold(address(this),msg.sender,_tokenId,tokenPrice[_tokenId],token.tokenURI(_tokenId),seller);
     }
     
     function changeTokenPrice(uint256 _tokenId,uint256 _newTokenPrice) public payable {
