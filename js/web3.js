@@ -6,9 +6,9 @@ const royaltyELm = document.querySelector("#royalty");
 const optionalURLELm = document.querySelector("#optionalURL");
 const mintBtnELm = document.querySelector("#mintBtn");
 const walletLoader = document.querySelector("#walletLoader");
-const loader = document.querySelector('#loader');
-const mintLoader = document.querySelector('#mintLoader');
-const video = document.querySelector('#video');
+const loader = document.querySelector("#loader");
+const mintLoader = document.querySelector("#mintLoader");
+const video = document.querySelector("#video");
 
 const contractAbi = [
   {
@@ -616,32 +616,38 @@ let mintedArray = [];
 let userTokenData = [];
 
 window.onload = async () => {
-  if(loader != null) {loader.hidden = true};
-  if(mintLoader != null) {mintLoader.hidden = true};
-  if(video != null) {video.hidden = true};
+  if (loader != null) {
+    loader.hidden = true;
+  }
+  if (mintLoader != null) {
+    mintLoader.hidden = true;
+  }
+  if (video != null) {
+    video.hidden = true;
+  }
   connectWallet();
   ipfs = IpfsApi({
     host: "ipfs.infura.io",
     port: 5001,
     protocol: "https",
   });
-	var url_string = window.location.href
-	var url = new URL(url_string);
-	let searchWallet = url.searchParams.get("wallet");
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+  let searchWallet = url.searchParams.get("wallet");
   let tokenId = url.searchParams.get("tokenId");
 
   console.log(searchWallet);
-  if(searchWallet != null){
-    if(searchWallet.length === 42) {
+  if (searchWallet != null) {
+    if (searchWallet.length === 42) {
       setTimeout(() => {
-        getValueForCatalog(searchWallet)
+        getValueForCatalog(searchWallet);
       }, 1000);
     }
   }
-  if(tokenId != null){
+  if (tokenId != null) {
     setTimeout(() => {
-    getTokenData(tokenId);
-  }, 1000);
+      getTokenData(tokenId);
+    }, 1000);
   }
 };
 
@@ -773,13 +779,12 @@ function mintToken() {
     });
 }
 
-
-findTokenBtn.addEventListener('click',() => {
-	findToken(findTokenId.value);
-})
+findTokenBtn.addEventListener("click", () => {
+  findToken(findTokenId.value);
+});
 
 function getTokenOfUserFromEvent() {
-  let walletTokens = document.getElementById('walletTokens')
+  let walletTokens = document.getElementById("walletTokens");
   walletTokens.innerHTML = "";
 
   contract
@@ -817,7 +822,9 @@ function getTokenOfUserFromEvent() {
                 walletLoader.hidden = true;
                 let uri = r.returnValues.uri;
                 let id = r.returnValues.id;
-                let value = web3.utils.fromWei(await  buySaleContract.methods.tokenPrice(id).call());
+                let value = web3.utils.fromWei(
+                  await buySaleContract.methods.tokenPrice(id).call()
+                );
                 let imageLink, optionalLink;
                 axios(uri).then((r) => {
                   optionalLink = r.data.optionalUrl;
