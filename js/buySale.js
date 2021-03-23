@@ -367,6 +367,7 @@ const sendTokenId = document.getElementById("sendTokenID");
 
 /*Find Token INfo*/
 const findTokenId = document.getElementById("findTokenID");
+const findTokenBtn = document.querySelector('#findTokenBtn');
 
 /* Buy Token */
 const buyToken = document.getElementById("buy-token");
@@ -398,13 +399,15 @@ function buyTokenBtn() {
 }
 
 function findToken(_tokenId) {
-  findTokenBtn.value =
-    "Finding Token (You will be redirected if token is found).";
+	if(findTokenBtn != null){
+		findTokenBtn.value =
+		"Finding Token (You will be redirected if token is found).";
+	}
 	console.log(_tokenId)
 	buySaleContract.methods.isAvailable(_tokenId).call().then((r) => {
 		console.log(r)
 		if(r) {
-			window.location = `?tokenId=${_tokenId}#buy-token`;
+			window.location = `https://artstro.io/?tokenId=${_tokenId}#buy-token`;
 			findTokenBtn.value = "Find Token";
 		}else{
 			alert("ERROR: no Token Found");
@@ -424,6 +427,14 @@ function getTokenData(tokenId) {
       }
       axios(uri).then((r) => {
         console.log(r.data);
+		let tokenType = r.data.type;
+		if (tokenType === "image") {
+			tag = `<img src=${r.data.img} class="token-thumbnail-minting" id=${tokenId} alt=""></a>`;
+		} else {
+			tag = `<video class="video-preview" id="${tokenId}" autoplay loop muted src="${r.data.img}">
+			Your browser does not support the video tag.
+		</video>`;
+			}
         buyToken.innerHTML = `<header>
 				<h2>Buy this Token</h2>
 				</header>
@@ -433,7 +444,7 @@ function getTokenData(tokenId) {
 						</br>
 						<div class="row">				
 							<div class="col-6 col-12-medium imagen-token">
-								<img class="token-thumbnail-minting" src="${r.data.img}"/>
+								${tag}
 							</div>
 							<div class="col-6 col-12-medium">
 							<h2>${r.data.description}</h2>
@@ -503,12 +514,17 @@ function changePriceOfToken() {
 }
 
 function getValueForCatalog(address) {
+	console.log(address)
 walletOfSale.innerText = address
   buySaleContract
     .getPastEvents(
       "NftRegistered",
       { filter: { _user: address }, fromBlock: 0, toBlock: "latest" },
       (err, r) => {
+		if(r.length == 0 ){
+			alert('“There is no token available for sale from this wallet address.”');
+			return false;
+		}
         returnValuesArrOfCatalog = r;
         returnValuesArrOfCatalog = returnValuesArrOfCatalog.map(
           (index) => index.returnValues
@@ -540,8 +556,16 @@ walletOfSale.innerText = address
 			let price = await buySaleContract.methods.tokenPrice(tokenId).call()
 			let uri = index._uri;
 			axios(uri).then((r) => {
+			let tokenType = r.data.type;
+			if (tokenType === "image") {
+				tag = `<img src=${r.data.img} id=${tokenId} alt=""></a>`;
+			} else {
+				tag = `<video class="video-preview" id="${tokenId}" autoplay loop muted src="${r.data.img}">
+                Your browser does not support the video tag.
+              </video>`;
+                  }
 			saleWattletElm.innerHTML +=	`<div class="col-4 col-6-medium col-12-small">
-					<a href="#" class="image fit"><img id="${tokenId}" onClick="" src="${r.data.img}" alt=""></a>
+					<a href="#" class="image fit">${tag}</a>
 					<p>${r.data.description}</p><p>Current Price: <b>${web3.utils.fromWei(price)} BNB</b></p>
 					<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/${buySalecontractAddress}?a=${tokenId}">${tokenId}</a></p>
 				</div>`
@@ -559,6 +583,7 @@ function findTokenInCatalog() {
 	let imageOfCatalogElm = document.querySelectorAll('.image');
 	imageOfCatalogElm.forEach(index => {
 		index.addEventListener('click',() => {
+			// console.log(index.children[0])
 			findToken(index.children[0].id);
 		})
 		
