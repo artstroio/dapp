@@ -48,6 +48,7 @@
 <!-- Cambios Arriba -->
 	</head>
 	<body class="is-preload">
+
 		<!-- Wrapper-->
 			<div id="wrapper">	
 
@@ -155,17 +156,28 @@
 							<article id="wallet" class="wallet panel">
 								<header>
 									<h2>Wallet</h2>
-								</header>
-									<p>Plase add this RPC om your BSC Mainnet configuration <b>https://bsc-ws-node.nariox.org/</b>.</br>
-										If your tokens are not showing here, please reload the page <a href="javascript:location.reload()">HERE</a> or reopen it in a new tab.</br>
-										Use the form below to transfer your tokens from one wallet to another without changing Its value or selling them (Pay just the Gas).
-									</p> 
-								<section>	
+								</header> 
+									<div style="margin-bottom:20px;">
+										<div class="row">	
+											<div class="col-6 col-12-medium">
+												<p><!-- Please add this RPC om your BSC Mainnet configuration <b>https://bsc-ws-node.nariox.org/</b>.</br> -->
+													If your tokens are not showing here, please reload the page <a href="javascript:location.reload()">HERE</a> or reopen it in a new tab.
+												</p>
+											</div>														
+											<div class="col-6 col-12-medium">
+												<input type="submit" id="connectBtn" onclick="connectWallet()" value="Connect your Wallet" />
+											</div>
+										</div>
+									</div>										
+
+								<section>
 								<div class="alert">
 								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 								  <span>Please, wait until your token minting transaction is approved.</span>
 								</div>
-		
+								<p style="margin-bottom:20px;">
+									Use the form below to transfer your tokens from one wallet to another without changing Its value or selling them (Pay just the Gas).
+								</p>
 								<form action="#" id="myForm" method="post" onsubmit="return false">				
 									<div>
 										<div class="row">															
