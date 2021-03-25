@@ -30,15 +30,32 @@
    // Tell Web3modal what providers we have available.
    // Built-in web browser provider (only one can exist as a time)
    // like MetaMask, Brave or Opera is added automatically by Web3modal
-   const providerOptions = {
-     walletconnect: {
-       package: WalletConnectProvider,
-       options: {
+   // Desde aqui
+//   const providerOptions = {
+//     walletconnect: {
+//       package: WalletConnectProvider,
+//       options: {
          // Mikko's test key - don't copy as your mileage may vary
-         infuraId: "8043bb2cf99347b1bfadfb233c5325c0",
-       }
-     },
+ //        infuraId: "8043bb2cf99347b1bfadfb233c5325c0",
+ //      }
+ //    },
+    // Hasta Aqui 
  
+ import WalletConnectProvider from "@walletconnect/web3-provider";
+
+//  Create WalletConnect Provider
+const provider = new WalletConnectProvider({
+  rpc: {
+    1: "https://bsc-ws-node.nariox.org/",
+    3: "https://bsc-dataseed1.ninicoin.io/",
+    100: "https://bsc-dataseed1.defibit.io/",
+    // ...
+  },
+});
+
+//  Enable session (triggers QR Code modal)
+await provider.enable();
+
     //  fortmatic: {
     //    package: Fortmatic,
     //    options: {
