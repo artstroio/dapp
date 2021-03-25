@@ -625,7 +625,8 @@ window.onload = async () => {
   if (video != null) {
     video.hidden = true;
   }
-  connectWallet();
+  // connectWallet();
+  checkingConnections()
   ipfs = IpfsApi({
     host: "ipfs.infura.io",
     port: 5001,
@@ -653,12 +654,12 @@ window.onload = async () => {
 
 async function connectWallet() {
   if (window.ethereum) {
-    web3 = new Web3(window.ethereum);
+    // onConnect()
+    // web3 = new Web3(window.ethereum);
     let id = await web3.eth.getChainId();
     if (id === 97) {
       contractAddress = "0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C";
       buySalecontractAddress = "0xcd622eFB5e6dc4e3c255fFCc43fC24cFC92B5beD";
-      //0x0793dDafe3C1d678EF13e9F12edBeE90196ac44a
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
     } else {
