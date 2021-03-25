@@ -395,7 +395,7 @@ contract BuySale is Ownable(){
     event tokenSold(address indexed _from, address indexed _to,uint256 _tokenId,uint256 _tokenPrice,string _uri,address indexed tokenOwner);
     
     constructor() public {
-        token = artstro(0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C);
+        token = artstro(0x92595603D198B4Dc99098701DDC313D2fEc56E88);
         fees = 0.025 ether;
     }
     
