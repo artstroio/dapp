@@ -493,7 +493,7 @@ function sendTokenToSellContract() {
           .send({ from: accounts[0] })
           .then(() => {
             sendTokenBtn.value =
-              "Your token has been approved. Sending transaction.";
+              "Your token has been approved. Transaction Sent.";
             buySaleContract.methods
               .registerNFT(tokenId)
               .send({ from: accounts[0], value: fees })
