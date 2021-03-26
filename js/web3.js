@@ -654,7 +654,7 @@ window.onload = async () => {
 
 async function connectWallet() {
   if (window.ethereum) {
-     onConnect()
+    // onConnect()
     // web3 = new Web3(window.ethereum);
     let id = await web3.eth.getChainId();
     console.log(id)
