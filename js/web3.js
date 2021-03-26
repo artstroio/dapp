@@ -657,11 +657,13 @@ async function connectWallet() {
     // onConnect()
     // web3 = new Web3(window.ethereum);
     let id = await web3.eth.getChainId();
+    console.log(id)
     if (id === 97) {
       contractAddress = "0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C";
       buySalecontractAddress = "0xcd622eFB5e6dc4e3c255fFCc43fC24cFC92B5beD";
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
+      buySalecontractAddress = "0xc90EcA83aC8b56f350129588b73B31feE67fE9D0"
     } else {
       alert("ERROR: Wrong MetaMask Network");
     }
