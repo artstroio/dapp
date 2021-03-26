@@ -660,10 +660,14 @@ async function connectWallet() {
     console.log(id)
     if (id === 97) {
       contractAddress = "0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C";
-      buySalecontractAddress = "0xcd622eFB5e6dc4e3c255fFCc43fC24cFC92B5beD";
+      buySalecontractAddress = "0xD1EEbD53598f424c11Dd870f18f71910e1B26ccb";
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
+<<<<<<< HEAD
       buySalecontractAddress = "0xc90EcA83aC8b56f350129588b73B31feE67fE9D0"
+=======
+      buySalecontractAddress = "0xc90EcA83aC8b56f350129588b73B31feE67fE9D0";
+>>>>>>> d36be12e16a50f6a7e35fce9c1bb6db9f2109086
     } else {
       alert("ERROR: Wrong MetaMask Network");
     }
