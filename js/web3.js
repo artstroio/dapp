@@ -687,7 +687,6 @@ async function connectWallet() {
 //    } else {
 //      alert("ERROR: Wrong MetaMask Network");
 //    }
-
     try {
       contract = new web3.eth.Contract(contractAbi, contractAddress);
       buySaleContract = new web3.eth.Contract(
