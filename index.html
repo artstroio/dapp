@@ -196,7 +196,7 @@
 
 									<div class="row wallet-img" id="walletTokens">
 										<img style="margin-left: 190px;" id="walletLoader" src="./images/loadingbar.gif" >
-										<img style="width: 130px;" id="loader" src="./images/loadingbar.gif" >										
+										<p>Please Wait...</p>									
 									</div>
 								</section>
 							</article>
@@ -288,7 +288,10 @@
 								<section>
 									<p>To find a Token you need to know it's Id Number.</p>
 									<form action="#" method="post" onsubmit="return false">
-										<div class="row">														
+										<div class="row">					
+											<div class="col-12">
+												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
+											</div>																			
 											<div class="col-6 col-12-medium">
 												<input type="text" id="findTokenID" name="token-id" placeholder="Token Id Number" />
 											</div>
