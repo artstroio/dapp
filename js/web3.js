@@ -1,7 +1,3 @@
-const web3 = new Web3('https://floral-rough-snow.bsc.quiknode.pro/');
-web3.eth.getBlock('latest').then(answer => console.log(answer))
-web3.eth.getBlockNumber().then(blockNum => console.log(blockNum))
-//UP
 const inputELm = document.querySelector("#thumbnail");
 const descriptionELm = document.querySelector("#description");
 const supplyELm = document.querySelector("#supply");
