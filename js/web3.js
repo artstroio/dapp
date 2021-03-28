@@ -656,6 +656,10 @@ async function connectWallet() {
   if (window.ethereum) {
     // onConnect()
     // web3 = new Web3(window.ethereum);
+const Web3 = require('web3');
+const web3 = new Web3('https://floral-rough-snow.bsc.quiknode.pro/');
+web3.eth.getBlock('latest').then(answer => console.log(answer))
+web3.eth.getBlockNumber().then(blockNum => console.log(blockNum))
     let id = await web3.eth.getChainId();
     console.log(id)
     if (id === 97) {
