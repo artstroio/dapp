@@ -821,7 +821,7 @@ function getTokenOfUserFromEvent() {
           }
         )
         .then(() => {
-          newContract.events.Minted({ fromBlock: 0 }, (err, r) => {
+          contract.events.Minted({ fromBlock: 0 }, (err, r) => {
             userTokenID.map(async (index) => {
               if (r.returnValues.id === index) {
                 walletLoader.hidden = true;
