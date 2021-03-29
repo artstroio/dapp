@@ -1,4 +1,3 @@
-
  // Unpkg imports
  const Web3Modal = window.Web3Modal.default;
  const WalletConnectProvider = window.WalletConnectProvider.default;
@@ -77,6 +76,7 @@ async function onConnect() {
             console.log(provider);
             connectBtn[0].value = "Connected"
             connectBtn[1].value = "Connected"
+            connectBtn[2].value = "Connected"
             web3 = new Web3(provider);
             connectWallet()
         } catch(e) {
@@ -111,5 +111,6 @@ async function checkingConnections() {
         connected = false;
         connectBtn[0].value = "Connected"
         connectBtn[1].value = "Connected"
+        connectBtn[2].value = "Connected"        
     }
 }

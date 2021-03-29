@@ -654,16 +654,26 @@ window.onload = async () => {
 
 async function connectWallet() {
   if (window.ethereum) {
-    // onConnect()
-    // web3 = new Web3(window.ethereum);
+      // onConnect()
+      // web3 = new Web3(window.ethereum);
+    //Desde Aqui
+    //const Web3 = require('web3');
+    //const web3 = new Web3('https://floral-rough-snow.bsc.quiknode.pro/');
+    //web3.eth.getBlock('latest').then(answer => console.log(answer))
+    //web3.eth.getBlockNumber().then(blockNum => console.log(blockNum))
+    //Hasta Aqui
     let id = await web3.eth.getChainId();
     console.log(id)
     if (id === 97) {
       contractAddress = "0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C";
-      buySalecontractAddress = "0xD1EEbD53598f424c11Dd870f18f71910e1B26ccb";
+      buySalecontractAddress = "0xcd622eFB5e6dc4e3c255fFCc43fC24cFC92B5beD";
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
+<<<<<<< HEAD
       buySalecontractAddress = "0xc90EcA83aC8b56f350129588b73B31feE67fE9D0"
+=======
+      buySalecontractAddress = "0xc90EcA83aC8b56f350129588b73B31feE67fE9D0";      
+>>>>>>> 3c03ca2447371e6b78626f0876dc92d4f9c4d6d3
     } else {
       alert("ERROR: Wrong MetaMask Network");
     }
