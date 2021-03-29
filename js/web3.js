@@ -663,11 +663,7 @@ async function connectWallet() {
       buySalecontractAddress = "0xD1EEbD53598f424c11Dd870f18f71910e1B26ccb";
     } else if (id === 56) {
       contractAddress = "0x92595603D198B4Dc99098701DDC313D2fEc56E88";
-<<<<<<< HEAD
       buySalecontractAddress = "0xc90EcA83aC8b56f350129588b73B31feE67fE9D0"
-=======
-      buySalecontractAddress = "0xc90EcA83aC8b56f350129588b73B31feE67fE9D0";
->>>>>>> d36be12e16a50f6a7e35fce9c1bb6db9f2109086
     } else {
       alert("ERROR: Wrong MetaMask Network");
     }
