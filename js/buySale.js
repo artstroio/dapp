@@ -522,9 +522,12 @@ function changePriceOfToken() {
 }
 
 function getValueForCatalog(address) {
+  const newWeb3 = new Web3('https://floral-rough-snow.bsc.quiknode.pro/');
+  const newbuySaleContract = new newWeb3.eth.Contract(buySalecontractAbi, buySalecontractAddress);
+
   console.log(address);
   walletOfSale.innerText = address;
-  buySaleContract
+  newbuySaleContract
     .getPastEvents(
       "NftRegistered",
       { filter: { _user: address }, fromBlock: 0, toBlock: "latest" },
@@ -545,7 +548,7 @@ function getValueForCatalog(address) {
       }
     )
     .then(() => {
-      buySaleContract.getPastEvents(
+      newbuySaleContract.getPastEvents(
         "tokenSold",
         { filter: { _tokenOwner: address }, fromBlock: 0, toBlock: "latest" },
         (err, r) => {
