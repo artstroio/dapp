@@ -315,6 +315,46 @@
 							<!-- <li><a href="https://artstro.io/catalog.html" class="icon solid fa-arrow-circle-right"><span>Sales Catalog</span></a></li> -->
 						</ul>
 
+				<!-- Catalog -->
+					<div id="catalog">
+
+						<!-- For Sale Wallet -->
+							<article id="for-sale-wallet" class="wallet panel">
+								<header>
+									<h2>Tokens for Sale</h2>
+								</header>
+									<p style="line-height: 22px; margin-bottom: 20px;">
+										If the tokens are not showing, please reload the page <a href="https://artstro.io/catalog.html">HERE.</a>
+										Use the form below to find out the tokens a determined wallet has for availabe for purchase on the Sales Contract. 
+									</p> 
+									<p style="margin-bottom: 20px;">
+									Use Token Id number on <a href="https://artstro.io/#find-token">Find Token</a> to purchase the token of your choice.
+									</p>
+								<section>
+		
+								<form action="#" id="myForm" method="post" onsubmit="return false">				
+									<div>
+										<div class="row">		
+											<div class="col-12">
+												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
+											</div>											
+											<div class="col-6 col-12-medium">	
+												<input type="text" name="destination" id="WalletSale" placeholder="Wallet Address" />
+											</div>
+											<div class="col-6 col-12-medium mintbutton">
+												<input type="submit" id="showSaleToken" value="Show Tokens for Sale" />
+											</div>			
+										</div>
+									</div>											
+								</form>
+
+									<p>Tokens available for purchase from <b id="walletOfSale">this Catalog Wallet Address</b>.</p>
+									<div class="row wallet-img" id="for-sale-wallet">
+									</div>
+								</section>
+							</article>
+					</div>						
+
 				<!-- Footer -->					
 					<div id="footer">
 						<ul class="copyright">						
