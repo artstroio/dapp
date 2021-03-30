@@ -40,14 +40,7 @@
           // ...
         },
         chainId: 56,
-        rpcUrl: 'wss://floral-rough-snow.bsc.quiknode.pro/'
-        // ...
-        rpc: {
-          97: "https://data-seed-prebsc-1-s1.binance.org:8545/"
-          // ...
-        },
-        chainId: 97,
-        rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545/'        
+        rpcUrl: 'wss://floral-rough-snow.bsc.quiknode.pro/'        
        }
      },
  
