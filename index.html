@@ -128,7 +128,6 @@
 											</div>					
 											<div class="col-6 col-12-medium imagen-token">
 												<img class="tok173169en-thumbnail-minting" id="tokenImg" src="./images/nft-preview.jpg"/>
-													<!-- We have to create an HTML player for .mp4 and .webm files uploaded during minting to display as token preview images -->
 													<video class="video-preview" id="video" autoplay loop muted src="./images/bullish.webm">
 													  Your browser does not support the video tag.
 												</video> 												
@@ -160,9 +159,7 @@
 									<div style="margin-bottom:20px;">
 										<div class="row">	
 											<div class="col-6 col-12-medium">
-												<p><!-- Please add this RPC om your BSC Mainnet configuration <b>https://bsc-ws-node.nariox.org/</b>.</br> -->
-													If your tokens are not showing here, please reload the page <a href="javascript:location.reload()">HERE</a> or reopen it in a new tab.
-												</p>
+												<p>For better wallet performance, please add this RPC to your MetaMask BSC configuration:	</br> <b>https://floral-rough-snow.bsc.quiknode.pro/</b>.</p>
 											</div>														
 											<div class="col-6 col-12-medium">
 												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
@@ -175,7 +172,9 @@
 								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 								  <span>Please, wait until your token minting transaction is approved.</span>
 								</div>
-								<p style="margin-bottom:20px;">
+								<p style="margin:20px 0;">
+									If your tokens are not showing, please reload the page <a href="javascript:location.reload()">HERE</a> or reopen it in a new tab.</p>
+								<p>	
 									Use the form below to transfer your tokens from one wallet to another without changing Its value or selling them (Pay just the Gas).
 								</p>
 								<form action="#" id="myForm" method="post" onsubmit="return false">				
