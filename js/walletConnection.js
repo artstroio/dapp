@@ -36,11 +36,11 @@
          // Mikko's test key - don't copy as your mileage may vary
         //  infuraId: "8043bb2cf99347b1bfadfb233c5325c0",
         rpc: {
-          56: "https://floral-rough-snow.bsc.quiknode.pro/"
+          56: "wss://floral-rough-snow.bsc.quiknode.pro/"
           // ...
         },
         chainId: 56,
-        rpcUrl: 'https://floral-rough-snow.bsc.quiknode.pro/'
+        rpcUrl: 'wss://floral-rough-snow.bsc.quiknode.pro/'
        }
      },
  
