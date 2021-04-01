@@ -66,6 +66,9 @@ async function onConnect() {
             provider = await web3Modal.connect();
             console.log(provider);
             connectBtn.value = "Connected"
+            connectBtn[0].value = "Connected"
+            connectBtn[1].value = "Connected"
+            connectBtn[2].value = "Connected"
             web3 = new Web3(provider);
             connectWallet()
         } catch(e) {
@@ -99,5 +102,8 @@ async function checkingConnections() {
         connectWallet()
         connected = false;
         connectBtn.value = "Connected"        
+        connectBtn[0].value = "Connected"
+        connectBtn[1].value = "Connected"
+        connectBtn[2].value = "Connected"
     }
 }
