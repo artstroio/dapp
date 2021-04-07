@@ -415,7 +415,7 @@ function findToken(_tokenId) {
     .then((r) => {
       console.log(r);
       if (r) {
-        window.location = `https://artstro.io/?tokenId=${_tokenId}#buy-token`;
+        window.location = `https://artstro.io/?tokenId=${_tokenId}`;
         findTokenBtn.value = "Find Token";
       } else {
         alert("ERROR: no Token Found");
