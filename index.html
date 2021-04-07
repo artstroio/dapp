@@ -286,7 +286,7 @@
 									<h2>Find Token</h2>
 								</header>
 								<section>
-									<p>To find a token you need to know it's id number. This function is only available for tokens available for purchase on Sales Contract.</p>
+									<p>To find a token you need to know its id number. With this function, you can either find a token available on the Sales Contract or view a token held in your Wallet.</p>
 									<form action="#" method="post" onsubmit="return false">
 										<div class="row">					
 											<div class="col-12">
@@ -296,8 +296,15 @@
 												<input type="text" id="findTokenID" name="token-id" placeholder="Token Id Number" />
 											</div>
 											<div class="col-6 col-12-medium mintbutton">
-												<input type="submit" id="findTokenBtn" onclick="findToken()" value="Find Token" />
+												<input type="submit" id="findTokenBtn" onclick="findToken()" value="Find Token On Sale" />
 											</div>
+											<div class="col-6 col-12-medium">
+												<input type="text" id="findTokenID" name="token-id" placeholder="Token Id Number" />
+											</div>
+											<div class="col-6 col-12-medium mintbutton">
+												<input type="submit" id="findTokenBtn" onclick="findToken()" value="Find Token You Own" />
+											</div>
+
 										</div>
 									</form>
 								</section>
