@@ -923,7 +923,7 @@ function findTokenInYouWallet(id) {
 								</header>	
 									<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
 
-      <div class="row">	<h1>Token Not Found</h1> </div>`;
+      <div class="row">	<h1>Thhis token is not in your Wallet</h1> </div>`;
       }
     });
 }
