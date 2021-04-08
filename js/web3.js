@@ -781,8 +781,8 @@ function mintToken() {
     });
 }
 
-findTokenBtn.addEventListener("click", () => {
-  findToken(findTokenId.value);
+findTokenBtn[0].addEventListener("click", () => {
+  findToken(findTokenId[0].value);
 });
 
 function getTokenOfUserFromEvent() {
