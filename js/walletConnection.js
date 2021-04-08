@@ -34,11 +34,11 @@
        options: {
 
         rpc: {
-          56: "wss://apis.ankr.com/wss/13fcc698359b44aa971ed71dec279857/e0eccff31da3eb9772f92fab8e12a185/binance/full/main"
+          56: "https://bsc-dataseed.binance.org/"
           // ...
         },
         chainId: 56,
-        rpcUrl: 'wss://apis.ankr.com/wss/13fcc698359b44aa971ed71dec279857/e0eccff31da3eb9772f92fab8e12a185/binance/full/main'        
+        rpcUrl: 'https://bsc-dataseed.binance.org/'        
        }
      },
 
