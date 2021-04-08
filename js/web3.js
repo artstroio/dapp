@@ -904,7 +904,7 @@ function findTokenInYouWallet(id) {
               </div>
               <div class="col-6 col-12-medium" style="margin-top:20px;">
               <h2>${des}</h2>
-              <p>Token Id.: <a target="_blank" href="https://bscscan.com/token/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07?a=17522">17522</a></p>
+              <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
               <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
               <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
               <b>Token not available for sale.</b>
