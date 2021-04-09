@@ -904,7 +904,7 @@ function findTokenInYouWallet(id) {
               </div>
               <div class="col-6 col-12-medium" style="margin-top:20px;">
               <h2>${des}</h2>
-              <p>Token Id.: <a target="_blank" href="https://bscscan.com/token/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07?a=17522">17522</a></p>
+              <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
               <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
               <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
               <b>Token not available for sale.</b>
@@ -923,7 +923,7 @@ function findTokenInYouWallet(id) {
 								</header>	
 									<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
 
-      <div class="row">	<h1>Token Not Found</h1> </div>`;
+      <div class="row">	<h1>This token is not in your Wallet</h1> </div>`;
       }
     });
 }
