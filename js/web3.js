@@ -790,7 +790,7 @@ findTokenBtn[1].addEventListener('click', () => {
 });
 
 function getTokenOfUserFromEvent() {
-  const newWeb3 = new Web3('https://bsc-dataseed.binance.org/');
+  const newWeb3 = new Web3('wss://dex.binance.org/api/ws/7e8a6dc9-06a1-475a-a118-d54c90451b77');
   newContract = new newWeb3.eth.Contract(contractAbi, contractAddress);
 
   let walletTokens = document.getElementById('walletTokens');
