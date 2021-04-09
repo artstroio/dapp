@@ -372,8 +372,8 @@ const showSaleTokenBtn = document.getElementById("showSaleToken");
 const sendTokenId = document.getElementById("sendTokenID");
 
 /*Find Token INfo*/
-const findTokenId = document.querySelectorAll("#findTokenID");
-const findTokenBtn = document.querySelectorAll("#findTokenBtn");
+const findTokenId = document.getElementById("findTokenID");
+const findTokenBtn = document.querySelector("#findTokenBtn");
 
 /* Buy Token */
 const buyToken = document.getElementById("buy-token");
