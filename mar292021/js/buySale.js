@@ -522,7 +522,7 @@ function changePriceOfToken() {
 }
 
 function getValueForCatalog(address) {
-  const newWeb3 = new Web3('wss://apis.ankr.com/wss/13fcc698359b44aa971ed71dec279857/e0eccff31da3eb9772f92fab8e12a185/binance/full/main');
+  const newWeb3 = new Web3('https://floral-rough-snow.bsc.quiknode.pro/');
   const newbuySaleContract = new newWeb3.eth.Contract(buySalecontractAbi, buySalecontractAddress);
 
   console.log(address);

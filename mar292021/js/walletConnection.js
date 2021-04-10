@@ -1,6 +1,7 @@
  // Unpkg imports
  const Web3Modal = window.Web3Modal.default;
  const WalletConnectProvider = window.WalletConnectProvider.default;
+//  const Fortmatic = window.Fortmatic;
  const evmChains = window.evmChains;
  
  // Web3modal instance
@@ -32,16 +33,24 @@
      walletconnect: {
        package: WalletConnectProvider,
        options: {
-
+         // Mikko's test key - don't copy as your mileage may vary
+        //  infuraId: "8043bb2cf99347b1bfadfb233c5325c0",
         rpc: {
-          56: "wss://apis.ankr.com/wss/13fcc698359b44aa971ed71dec279857/e0eccff31da3eb9772f92fab8e12a185/binance/full/main"
+          56: "wss://floral-rough-snow.bsc.quiknode.pro/"
           // ...
         },
         chainId: 56,
-        rpcUrl: 'wss://apis.ankr.com/wss/13fcc698359b44aa971ed71dec279857/e0eccff31da3eb9772f92fab8e12a185/binance/full/main'        
+        rpcUrl: 'wss://floral-rough-snow.bsc.quiknode.pro/'
        }
      },
-
+ 
+    //  fortmatic: {
+    //    package: Fortmatic,
+    //    options: {
+    //      // Mikko's TESTNET api key
+    //      key: "pk_test_391E26A3B43A3350"
+    //    }
+    //  }
    };
  
    web3Modal = new Web3Modal({
@@ -65,7 +74,6 @@ async function onConnect() {
         try {
             provider = await web3Modal.connect();
             console.log(provider);
-            connectBtn.value = "Connected"
             connectBtn[0].value = "Connected"
             connectBtn[1].value = "Connected"
             connectBtn[2].value = "Connected"
@@ -101,9 +109,8 @@ async function checkingConnections() {
         ethereum.enable()
         connectWallet()
         connected = false;
-        connectBtn.value = "Connected"        
         connectBtn[0].value = "Connected"
         connectBtn[1].value = "Connected"
-        connectBtn[2].value = "Connected"
+        connectBtn[2].value = "Connected"        
     }
 }

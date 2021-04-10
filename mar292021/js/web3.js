@@ -786,7 +786,7 @@ findTokenBtn.addEventListener("click", () => {
 });
 
 function getTokenOfUserFromEvent() {
-  const newWeb3 = new Web3('wss://apis.ankr.com/wss/13fcc698359b44aa971ed71dec279857/e0eccff31da3eb9772f92fab8e12a185/binance/full/main');
+  const newWeb3 = new Web3('https://floral-rough-snow.bsc.quiknode.pro/');
   newContract = new newWeb3.eth.Contract(contractAbi, contractAddress);
 
   let walletTokens = document.getElementById("walletTokens");
@@ -821,7 +821,7 @@ function getTokenOfUserFromEvent() {
           }
         )
         .then(() => {
-          newContract.events.Minted({ fromBlock: 0 }, (err, r) => {
+          contract.events.Minted({ fromBlock: 0 }, (err, r) => {
             userTokenID.map(async (index) => {
               if (r.returnValues.id === index) {
                 walletLoader.hidden = true;
