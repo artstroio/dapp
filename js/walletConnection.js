@@ -34,11 +34,11 @@
        options: {
 
         rpc: {
-          56: "wss://floral-rough-snow.bsc.quiknode.pro/e473fd7bfefc30ec7236e9963a7ac2b083f43b34"
+          56: "wss://floral-rough-snow.bsc.quiknode.pro/"
           // ...
         },
         chainId: 56,
-        rpcUrl: 'wss://floral-rough-snow.bsc.quiknode.pro/e473fd7bfefc30ec7236e9963a7ac2b083f43b34'        
+        rpcUrl: 'wss://floral-rough-snow.bsc.quiknode.pro/'        
        }
      },
 

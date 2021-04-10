@@ -522,7 +522,7 @@ function changePriceOfToken() {
 }
 
 function getValueForCatalog(address) {
-  const newWeb3 = new Web3('wss://floral-rough-snow.bsc.quiknode.pro/e473fd7bfefc30ec7236e9963a7ac2b083f43b34');
+  const newWeb3 = new Web3('wss://floral-rough-snow.bsc.quiknode.pro/');
   const newbuySaleContract = new newWeb3.eth.Contract(buySalecontractAbi, buySalecontractAddress);
 
   console.log(address);

@@ -790,7 +790,7 @@ findTokenBtn[1].addEventListener('click', () => {
 });
 
 function getTokenOfUserFromEvent() {
-  const newWeb3 = new Web3('wss://floral-rough-snow.bsc.quiknode.pro/e473fd7bfefc30ec7236e9963a7ac2b083f43b34');
+  const newWeb3 = new Web3('wss://floral-rough-snow.bsc.quiknode.pro/');
   newContract = new newWeb3.eth.Contract(contractAbi, contractAddress);
 
   let walletTokens = document.getElementById('walletTokens');
