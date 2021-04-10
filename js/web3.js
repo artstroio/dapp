@@ -865,11 +865,21 @@ function getTokenOfUserFromEvent() {
 function findTokenInYouWallet(id) {
   let show_token = document.querySelector('#show-token');
   window.location.hash = '#show-token';
+  // console.log(id)
+  show_token.innerHTML = `
+      <article id="show-token" class="wallet panel">
+								 <header>
+									<h2>Show Token</h2>
+								</header>	
+									<small> Finding token Please Wait...<a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
+
+      <div class="row">	<h1>This token is not in your Wallet</h1> </div>`;
+      
   contract.methods
     .ownerOf(id)
     .call()
     .then((r) => {
-      if (r === accounts[0]) {
+      if (web3.utils.toChecksumAddress(r) == web3.utils.toChecksumAddress(accounts[0])) {
         contract.methods
           .tokenURI(id)
           .call()
