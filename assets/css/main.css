@@ -120,9 +120,9 @@
 		background-image: url("./images/no-video.png");
 		background-repeat: no-repeat;
 		background-attachment: fixed;
+	}	
 	#wallet {
 		display: none;
-	}	
 	}
 }
 .recommended {
