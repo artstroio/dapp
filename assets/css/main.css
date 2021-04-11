@@ -121,7 +121,7 @@
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 	}	
-	#wallet {
+	#wallet, #wallet li {
 		display: none;
 	}
 }
