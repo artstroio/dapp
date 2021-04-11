@@ -120,6 +120,9 @@
 		background-image: url("./images/no-video.png");
 		background-repeat: no-repeat;
 		background-attachment: fixed;
+	#wallet {
+		display: none;
+	}	
 	}
 }
 .recommended {
@@ -158,6 +161,10 @@
 }
 .trade a.icon:before {
 	padding-right: 5px;
+}
+img {
+	max-width: 340px;
+	height: auto;
 }
 
 /* MODIFICADO HACIA ARRIBA */
