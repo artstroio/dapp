@@ -121,9 +121,6 @@
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 	}	
-	#wallet, #wallet li {
-		display: none;
-	}
 }
 .recommended {
 	vertical-align:middle;
