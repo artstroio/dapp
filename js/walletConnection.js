@@ -34,11 +34,11 @@
        options: {
 
         rpc: {
-          56: "wss://dex.binance.org/api/ws/7e8a6dc9-06a1-475a-a118-d54c90451b77"
+          56: "wss://floral-rough-snow.bsc.quiknode.pro/"
           // ...
         },
         chainId: 56,
-        rpcUrl: 'wss://dex.binance.org/api/ws/7e8a6dc9-06a1-475a-a118-d54c90451b77'        
+        rpcUrl: 'wss://floral-rough-snow.bsc.quiknode.pro/'        
        }
      },
 
@@ -69,6 +69,7 @@ async function onConnect() {
             connectBtn[0].value = "Connected"
             connectBtn[1].value = "Connected"
             connectBtn[2].value = "Connected"
+            connectBtn[3].value = "Connected"            
             web3 = new Web3(provider);
             connectWallet()
         } catch(e) {
@@ -105,5 +106,6 @@ async function checkingConnections() {
         connectBtn[0].value = "Connected"
         connectBtn[1].value = "Connected"
         connectBtn[2].value = "Connected"
+        connectBtn[3].value = "Connected"        
     }
 }
