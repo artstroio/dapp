@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<!--
+	Astral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>ARTSTRO</title>
+		<meta name="title" content="ARTSTRO">
+		<meta name="copyright"content="ARTSTRO">
+		<meta name="description" content="NFT Generator for the Binance Smart Chain.">
+		<meta name="keywords" content="BSC, BNB, Binance, Crypto, Bep20, NFT, Token, Non-Fungible, ERC721, ERC1155,">
+		<meta name="robots" content="index, follow">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="language" content="English">
+		<meta name="revisit-after" content="1 days">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<link rel="apple-touch-icon" href="images/icono.png" />
+		<meta name="apple-mobile-web-app-title" content="Artstro">
+		<meta name="application-name" content="Artstro">
+	    <link rel="shortcut icon" sizes="128x128" href="images/icono.png">
+    	<meta name="mobile-web-app-capable" content="yes">
+    	<meta name="apple-mobile-web-app-capable" content="yes">
+    	<link rel="apple-touch-startup-image" href="images/splash.png">
+		<meta property="og:title" content="ARTSTRO"> 
+		<meta name="og:type" content="image"/>
+		<meta name="og:url" content="https://artstro.io/"/>
+		<meta property="og:image" content="https://artstro.io/images/me.jpg">
+		<meta name="og:site_name" content="ARTSTRO"/>
+		<meta name="og:description" content="NFT Generator for the Binance Smart Chain."/>
+		<meta name="fb:page_id" content="101259668694401" />
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-GKVGKE9LP2"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'G-GKVGKE9LP2');
+		</script>
+
+<!-- Cambios Arriba -->
+	</head>
+	<body class="is-preload">
+<input type="hidden" id="acc1" value="">
+		<!-- Wrapper-->
+			<div id="wrapper">	
+
+				<!-- Nav -->				
+					<nav id="nav">
+						<a href="/" class="icon solid fa-user-astronaut"><span>Start</span></a>
+						<a href="#mint" class="icon solid fa-edit"><span>Create NFT</span></a>
+						<a href="#wallet" class="icon solid fa-wallet"><span>Your Wallet</span></a>
+						<!-- <a target="_blank" href="https://medium.com/artstroio" target="_blank" class="icon brands fa-medium"><span>Medium</span></a>
+						<a target="_blank" href="https://twitter.com/artstroio" target="_blank" class="icon brands fa-twitter"><span>Twitter</span></a> -->
+						<a href="https://artstro.io/#find-token" class="icon solid fa-search"><span>Find Token</span></a>		
+						<a href="https://artstro.io/catalog.html" class="icon solid fa-arrow-circle-right"><span>For Sale</span></a>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Me -->
+							<article id="home" class="panel intro">
+								<header>
+									<h1 class="titulo">This is <span><img class="logo" src="images/artstro.svg"></span></h1>
+									<p class="sub-titulo">NFT Generator for the Binance Smart Chain</p>
+									<span class="beta"><small>Currently on Beta</small><span>
+								</header>
+								<a href="#mint" class="jumplink pic">
+									<span class="arrow icon solid fa-chevron-right"><span>Create</span></span>
+									<img src="images/me.jpg" alt="ARTSTRO" />
+								</a>
+							</article>
+
+
+						<!-- Mint -->
+							<article id="mint" class="panel">
+								<header>
+									<h2 style="line-height:4px;">Create your NFT Token</h2>
+								</header>
+
+								<div class="row">
+											<div class="col-6 col-12-medium">
+												<p style="line-height:22px; margin-bottom:15px;">
+												<small>Connect your WEB3 wallet, and fill-up the form.</br>
+												All fields marked with <b>*</b> are mandatories.</br>
+												<b> Minting Fee is 0.05 $BNB + Network Gas Fee.</b></small></p>		
+											</div>											
+											<div class="col-6 col-12-medium">
+												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
+											</div>
+								</div>	
+
+								<div class="alert">
+								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+								  <span>Please allow network to approve your token creation before it can appear in your wallet.</span>
+								</div>
+
+								<form action="#" id="myForm" method="post" onsubmit="return false">
+									<div>
+										<div class="row">
+											<div class="col-12">
+												<input type="text" name="description" id="description" placeholder="Token Name* (Description)" />
+											</div>
+											<div style="display:none;" class="col-6 col-12-medium">
+												<input type="text" name="supply" id="supply" value="1" />	 <!-- placeholder="Supply* (Max 50)" -->					
+											</div>
+											<div class="col-6 col-12-medium">
+												<input type="text" name="other" id="value" placeholder="Value per Unit (in BNB)*" />
+											</div>
+											<div class="col-6 col-12-medium">
+												<input type="text" name="royalty" id="royalty" placeholder="% of Future Sells going to Creator's Wallet*" />
+											</div>											
+											<div class="col-6 col-12-medium disclaimer">
+												<label for="thumbnail">Token Thumbnail:</label>
+												<input type="file"
+												       id="thumbnail" name="thumbnail"
+												       accept="image/png, image/jpeg, image/gif, video/mp4, video/webm">
+													   <img style="width: 130px;" id="loader" src="./images/loadingbar.gif" >
+												<p style="margin-top:20px;"><strong>Specifications:</strong></br> Max. File Size: 30mb</br>Ideal Image Proportions: 3:4</p><p>Files Allowed:</br>.png, .jpg, and .gif, muted .mp4, and muted .webm.</br></p><p>Note: Do not use 3rd party creations to mint an NFT in our platform without legal authorization.</p>
+											</div>					
+											<div class="col-6 col-12-medium imagen-token">
+												<img class="tok173169en-thumbnail-minting" id="tokenImg" src="./images/nft-preview.jpg"/>
+													<video class="video-preview" id="video" autoplay loop muted src="./images/bullish.webm">
+													  Your browser does not support the video tag.
+												</video> 												
+											</div>
+											<div class="col-12">
+												<input type="text" name="url" id="optionalURL" placeholder="Attachment URL - Recommended Format .ZIP (Optional)" />
+											</div>
+											<div class="col-6 col-12-medium mintbutton">
+												<input type="submit" id="clearBtn" onclick='document.getElementById("myForm").reset();' value="Clear Form" />
+											</div>																						
+											<div class="col-6 col-12-medium mintbutton">
+												<input type="submit" id="mintBtn" onclick="sendJSONToIPFS()" value="Mint Token" />
+												<img style="width: 100px; margin-left: 130px;" id="mintLoader" src="./images/loadingbar.gif" >
+											</div>
+											<div class="col-12 disclaimer">
+												<p style="margin-top:20px;"><strong>DISCLAIMER:</strong> By using this platform, we, the users and the creators of the tool, strongly reject the use of it for the purpose of creating content that contains or supports any sample of discrimination, abuse of morals and good customs, child pornography, the violation of personal privacy, piracy and violations of intellectual property rights, terrorism of any kind, and any other violation of the fundamental rights of individuals or entities.</p>
+											</div>											
+										</div>
+									</div>
+								</form>
+							</article>
+
+
+						<!-- Wallet -->
+							<article id="wallet" class="wallet panel">
+								<header>
+									<h2>Wallet</h2>
+								</header> 
+									<div style="margin-bottom:20px;">
+										<div class="row">	
+											<div class="col-6 col-12-medium">
+											<p>	
+												If your tokens are not showing, please reload the page <a href="javascript:location.reload()">HERE</a> or reopen it in a new tab.
+											</p>	
+									
+												<!-- ><p>For better wallet performance, please add this RPC to your MetaMask BSC configuration:	</br> <b>https://floral-rough-snow.bsc.quiknode.pro/</b>.</p> -->
+											</div>														
+											<div class="col-6 col-12-medium">
+												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
+											</div>
+										</div>
+									</div>										
+
+								<section>
+								<div class="alert" id="warning1" style="display: none;">
+								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+								  <span>Please, wait until your tokens appear on your Wallet. It might take some time.</span>
+								</div>
+                <p>
+                  <div id="tokensList" style="width: 100%;"></div>
+				  <div id="tokensList2" style="width: 100%;"></div>
+                </p>		
+									<p style="margin:20px 0;">
+										Use the form below to transfer your tokens from one wallet to another without changing Its value or selling them (Pay just the Gas).
+									</p>
+								<form action="#" id="myForm" method="post" onsubmit="return false">				
+									<div>
+										<div class="row">															
+											<div class="col-6 col-12-medium">
+												<input type="text" name="tokenid" id="tokenid" placeholder="Token Id*" value="" />
+											</div>
+											<div class="col-6 col-12-medium">	
+												<input type="text" name="destination" id="destination" placeholder="Destination Wallet*" />
+											</div>
+											<div class="col-12 mintbutton">
+												<input type="submit" id="transfertoken" onclick="transferToken()" value="Transfer Token" />
+											</div>		
+										</div>
+									</div>											
+								</form>
+
+									<div class="row wallet-img" id="walletTokens">
+										<img style="margin-left: 190px;" id="walletLoader" src="./images/loadingbar.gif" >
+										<p>Please Wait...</p>									
+									</div>
+								</section>
+
+								<article id="show-token2" class="wallet panel"></article>
+							</article>
+
+						<!-- Buy Token -->
+							<article id="buy-token" class="wallet panel">
+								 <header>
+									<h2>Go to <a href="#find-token">Find Token</a> to see if it is available for purchase.</h2>
+								</header>
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
+								<!--<section>
+									<form action="#" method="post" onsubmit="return false">
+										</br>
+										<div class="row">				
+											<div class="col-6 col-12-medium imagen-token">
+												<img class="token-thumbnail-minting" src="https://img.freepik.com/vector-gratis/astronauta-dabbing-on-rocket-icon-ilustracion-personaje-dibujos-animados-mascota-astronauta-concepto-icono-ciencia-aislado_138676-972.jpg?size=480&ext=jpg&uid=R518281&ga=GA1.2.278836255.1614294689"/>
+											</div>
+											<div class="col-6 col-12-medium">
+											<h2>ARTSTRO TOKEN</h2>
+											<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07?a=17522">17522</a></p>
+											<h3>Current Price 0.5 BNB</h3>
+											</div>											
+											<div class="col-12 mintbutton">
+												<input type="submit" value="Buy Token" />
+											</div>
+										</div>		
+									</form>
+								</section> -->
+							</article>
+
+						<!-- Show Token -->
+							<article id="show-token" class="wallet panel">
+<p id="show_token_item"></p>
+								<!-- <section> 
+									<form action="#" method="post" onsubmit="return false">
+										</br>										
+										<div class="row">	
+                      kokokokokokookok=======================
+											<div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
+												<img class="token-thumbnail-minting" src="https://img.freepik.com/vector-gratis/astronauta-dabbing-on-rocket-icon-ilustracion-personaje-dibujos-animados-mascota-astronauta-concepto-icono-ciencia-aislado_138676-972.jpg?size=480&ext=jpg&uid=R518281&ga=GA1.2.278836255.1614294689"/>
+											</div>
+											<div class="col-6 col-12-medium" style="margin-top:20px;">
+											<h2>ARTSTRO TOKEN</h2>
+											<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07?a=17522">17522</a></p>
+											<h3>Current Price 0.5 BNB</h3>
+											<p><a target="_blank" href="#">Download Attachment</a> (if any)</p>
+											<b>Token not available for sale.</b>
+											</div>											
+										</div>	
+									</form>
+								</section>-->
+							</article>							
+
+						<!-- Change Token Price -->
+							<article id="change-token-price" class="wallet panel">
+								<header>
+									<h2>Change Token Sell Price</h2>
+								</header>
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>
+								<section>
+									<form action="#" method="post" onsubmit="return false">
+										</br>
+										<div class="row">				
+										<div class="col-6 col-12-medium">
+											<p style="margin:20px 0 7px 0"><input type="text" id="changeTokenID" name="token-id" placeholder="Token Id." /></p>
+											</div>
+											<div class="col-6 col-12-medium">
+											<p style="margin:20px 0 7px 0"><input type="text" id="newTokenPrice" name="new-price" placeholder="New Selling new-price (in BNB)" /></p>		
+											</div>
+											<div class="col-12">									
+											<p><b>IMPORTANT:</b></br>
+												Provide buyer with Token Id number after receiving network confirmation for this transaction.</p>
+											</div>
+											<div class="col-12 mintbutton">
+												<input type="submit" id="changePriceBtn" onclick="changePriceOfToken()" value="Send Token to Sales Contract" />
+											</div>
+										</div>		
+									</form>
+								</section>
+							</article>
+
+						<!-- Send Token to Sell Contract -->
+							<article id="send-token-sell" class="wallet panel">
+								<header>
+									<h2>Send Token to Sell Contract</h2>
+								</header>
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>
+								<section>
+									<form action="#" method="post" onsubmit="return false">
+										</br>
+										<div class="row">				
+											<div class="col-12">
+											<p style="margin:20px 0 7px 0"><input type="text" id="sendTokenID" name="token-id" placeholder="Token Id." /></p>
+											</div>
+											<div class="col-12">									
+											<p><b>IMPORTANT:</b></br>
+												Provide buyer with Token Id number after receiving network confirmation for this transaction.</p>
+											</div>											
+											<div class="col-12 mintbutton">
+												<input type="submit" id="sendTokenBtn" onclick="sendTokenToSellContract()" value="Send Token to Sell Contract" />
+											</div>
+										</div>		
+									</form>
+								</section>
+							</article>							
+
+						<!-- Find Token -->
+							<article id="find-token" class="wallet panel">
+								<header>
+									<h2>Find Token</h2>
+								</header>
+								<section>
+									<p>To find a token you need to know its id number. With this function, you can either find a token available on the Sales Contract or view a token held in your Wallet.</p>
+									<form action="#" method="post" onsubmit="return false">
+										<div class="row">					
+											<div class="col-12">
+												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
+											</div>																			
+											<div class="col-6 col-12-medium">
+												<input type="text" id="findTokenID" name="token-id" placeholder="Token Id Number" value="" />
+											</div>
+											<div class="col-6 col-12-medium mintbutton">
+												<input type="submit" id="findTokenBtn" onclick="findToken()" value="Find Token On Sale" />
+											</div>
+											<div class="col-6 col-12-medium">
+												<input type="text" id="showTokenID" name="token-id" placeholder="Token Id Number" value="" />
+											</div>
+											<div class="col-6 col-12-medium mintbutton">
+												<input type="submit" id="findTokenBtn" onclick="findToken_busca(document.getElementById('showTokenID').value)" value="Find a Token in your Wallet" />
+											</div>
+										</div>
+									</form>
+								</section>
+							</article>
+					</div>			
+
+						<ul class="trade" style="margin-bottom:20px;">
+							<!-- <li><a href="/" class="icon solid fa-user-astronaut"><span>Home</span></a></li> -->
+							<!-- <li><a href="https://artstro.io/#find-token" class="icon solid fa-search"><span>Find Token</span></a></li> -->
+							<li><a href="https://artstro.io/#buy-token" class="icon solid fa-handshake"><span>Buy Token</span></a></li>		
+							<li><a href="https://artstro.io/#change-token-price" class="icon solid fa-window-restore"><span>Change Token Price</span></a></li>
+							<li><a href="https://artstro.io/#send-token-sell" class="icon solid fa-arrow-circle-right"><span>Send Token to Sell Contract</span></a></li>
+							<li><a target="_blank" href="https://medium.com/artstroio" target="_blank" class="icon brands fa-medium"><span>Medium</span></a></li>
+							<li><a target="_blank" href="https://twitter.com/artstroio" target="_blank" class="icon brands fa-twitter"><span>Twitter</span></a></li>	
+							<!-- <li><a href="https://artstro.io/catalog.html" class="icon solid fa-arrow-circle-right"><span>Sales Catalog</span></a></li> -->
+						</ul>			
+				<!-- Footer -->					
+					<div id="footer">
+						<ul class="copyright">						
+							<li><a target="_blank" href="https://jfscaramazza.com/product-category/main/artstro">Official Store</a></li>
+							<li>Web by <a target="_blank" href="http://html5up.net">HTML5 UP</a></li>
+							<li>Graphics by <a target="_blank" href="https://www.freepik.com/catalyststuff">Freepik.com</a></li>
+							<li><a target="_blank" href="https://bscscan.com/address/0x92595603d198b4dc99098701ddc313d2fec56e88">DApp Contract on BSC</a></li>	
+							<li><a target="_blank" href="https://bscscan.com/address/0xc90EcA83aC8b56f350129588b73B31feE67fE9D0">Token Sales Contract on BSC</a></li>												
+						</ul>			
+
+						<!-- <p class="recommended-txt">We recommend <a target="_blank" href="https://brave.com/download/"><img class="recommended" src="./images/brave-logo-color.svg" /></a> and <a target="_blank" href="https://metamask.io/download.html"><img class="recommended" src="./images/metamask-logo.svg" /></a> for better experience.</p> -->
+
+						<p class="descripcion">ARTSTRO is an effort to give artists like you, or me, the proper space to profit your talent taking advantage of the constantly growing crypto market, cutting out of the equation any middle-man | <strong>DISCLAIMER</strong>: All projects are subject to both high market risk and volatility. Please, <b>do your own research</b> and full due diligence before even considering to invest your funds in any project and please, make your investments very cautiously. <b>ARTSTRO</b> will not be held responsible for any investment losses.
+						</p>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+			<script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"></script>
+			<!-- This was the one active <script src="https://unpkg.com/ipfs/dist/index.min.js"></script>-->			
+			<script src="https://unpkg.com/ipfs@0.54.2/dist/index.min.js"></script>
+
+			<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+			<script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+			<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+			<!-- <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script> -->
+			
+			<script src="./js/walletConnection.js"></script>
+			<script src="./js/buySale.js"></script>
+			<script src="./js/web3.js"></script>
+      <script src="./js/loadData.js"></script>
+			<!-- <script src="assets/js/browser-buffer.min.js"></script> -->
+			<!-- <script src="https://unpkg.com/ipfs-http-client/dist/index.min.js" ></script> -->
+			<!-- <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script> -->
+			<!-- <script src="https://wzrd.in/standalone/buffer"></script> -->
+			<!-- <script src="https://cdn.jsdelivr.net/npm/@walletconnect/eth-provider@1.0.0/dist/cjs/index.min.js"></script>-->	
+
+	</body> 
+</html>
