@@ -404,16 +404,22 @@ function buyTokenBtn() {
 }
 
 function findToken(_tokenId) {
+
+
+
   if (findTokenBtn != null) {
     findTokenBtn.value =
       "Finding Token (You will be redirected if token is found).";
   }
-  console.log(_tokenId);
+
+
+
   buySaleContract.methods
     .isAvailable(_tokenId)
     .call()
     .then((r) => {
-      console.log(r);
+     //console.log(':::::::findToken::::r:::::::::::');
+     //console.log(r);
       if (r) {
         window.location = `https://artstro.io/?tokenId=${_tokenId}#buy-token`;
         findTokenBtn.value = "Find Token";
@@ -423,25 +429,49 @@ function findToken(_tokenId) {
     });
 }
 
+function findToken_busca(_tokenId) {
+  findTokenInYouWallet_page_show_token(_tokenId);
+}
+
+
 function getTokenData(tokenId) {
+ //console.log('tokenId *:::');
+ //console.log(tokenId);
+
   buySaleContract.methods
     .findToken(tokenId)
     .call()
     .then(async (uri) => {
+
+     //console.log('');
+     //console.log('tokenId **:::');
+     //console.log(tokenId);
+     //console.log('uri *:::');
+     //console.log(uri);
+     //console.log('----');
+
       let price = await buySaleContract.methods.tokenPrice(tokenId).call();
+
+     //console.log('price:');
+     //console.log(price);
+
+
       if (uri === "ERROR") {
-        alert("ERROR: Token not for available for purchase.");
-        return false;
+        // alert("ERROR: Token not for available for purchase.");
+       //return false;
       }
       axios(uri).then((r) => {
-        console.log(r.data);
+
+       //console.log('r.data:::');
+       //console.log(r.data);
+
         let tokenType = r.data.type;
         if (tokenType === "image") {
           tag = `<img src=${r.data.img} class="token-thumbnail-minting" id=${tokenId} alt=""></a>`;
         } else {
           tag = `<video class="video-preview" id="${tokenId}" autoplay loop muted src="${r.data.img}">
-			Your browser does not support the video tag.
-		</video>`;
+			    Your browser does not support the video tag.
+		      </video>`;
         }
         buyToken.innerHTML = `<header>
 				<h2>Buy this Token</h2>
@@ -466,6 +496,10 @@ function getTokenData(tokenId) {
 					</form>
 				</section>`;
       });
+    })
+    .catch((e) =>{
+     //console.log('erro wallet:');
+     //console.log(e);
     });
 }
 
@@ -509,8 +543,8 @@ function sendTokenToSellContract() {
 function changePriceOfToken() {
   let tokenId = changeTokenID.value;
   let price = web3.utils.toWei(newTokenPrice.value);
-  console.log(tokenId);
-  console.log(price);
+ //console.log(tokenId);
+ //console.log(price);
   changePriceBtn.value = "Sending and approving transaction.";
   buySaleContract.methods
     .changeTokenPrice(tokenId, price)
@@ -522,10 +556,10 @@ function changePriceOfToken() {
 }
 
 function getValueForCatalog(address) {
-  const newWeb3 = new Web3('wss://floral-rough-snow.bsc.quiknode.pro/');
+  const newWeb3 = new Web3('wss://apis.ankr.com/wss/13fcc698359b44aa971ed71dec279857/e0eccff31da3eb9772f92fab8e12a185/binance/full/main');
   const newbuySaleContract = new newWeb3.eth.Contract(buySalecontractAbi, buySalecontractAddress);
-
-  console.log(address);
+ //console.log('address');
+ //console.log(address);
   walletOfSale.innerText = address;
   newbuySaleContract
     .getPastEvents(
@@ -570,6 +604,10 @@ function getValueForCatalog(address) {
                 .tokenPrice(tokenId)
                 .call();
               let uri = index._uri;
+
+             //console.log('index._uri');
+             //console.log(index._uri);
+
               axios(uri).then((r) => {
                 let tokenType = r.data.type;
                 if (tokenType === "image") {
@@ -601,7 +639,8 @@ function findTokenInCatalog() {
   let imageOfCatalogElm = document.querySelectorAll(".image");
   imageOfCatalogElm.forEach((index) => {
     index.addEventListener("click", () => {
-      // console.log(index.children[0])
+      //console.log('index.children[0]:::');
+      //console.log(index.children[0])
       findToken(index.children[0].id);
     });
   });
