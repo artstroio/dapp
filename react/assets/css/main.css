@@ -87,6 +87,7 @@
 }
 .imagen-token img{
 	max-width: 320px;
+	height: auto;
 }
 .wallet header {
 	margin-bottom:10px;
@@ -161,10 +162,6 @@
 }
 .trade a.icon:before {
 	padding-right: 5px;
-}
-img  {
-	max-width: 340px;
-	height: auto;
 }
 video {
 	max-width: 340px;
