@@ -1223,6 +1223,8 @@ function findTokenInYouWallet_page_show_token(id) {
               <div class="row">	
                 <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
                     <a target="_blank" href=${optionalLink} class="image fit">${tag}</a>
+                </div>
+                <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">                      
                 <h2>${des}</h2>
                 <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                 <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
