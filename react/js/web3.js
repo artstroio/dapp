@@ -1074,8 +1074,10 @@ function findTokenInYouWallet_walletPage() {
               <form action="#" method="post" onsubmit="return false">
                 </br>										
                 <div class="row">	    
-                  <div class="col-4 col-6-medium col-12-small imagen-token" style="margin-top:20px;">
+                  <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
                       <a href=${optionalLink} class="image fit">${tag}</a>
+                  </div>
+                  <div class="col-6 col-12-medium" style="margin-top:20px;">
                   <h2>${des}</h2>
                   <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                   <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
@@ -1148,6 +1150,8 @@ function findTokenInYouWallet_walletPage_individual(id) {
     
                   <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
                       <a target="_blank" href=${optionalLink} class="image fit">${tag}</a>
+                  </div>
+                  <div class="col-6 col-12-medium" style="margin-top:20px;">    
                   <h2>${des}</h2>
                   <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                   <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
