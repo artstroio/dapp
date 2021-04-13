@@ -928,7 +928,7 @@ function getTokenOfUserFromEvent() {
               </video>`;
                   }
                   walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
-            <a href="${optionalLink}" class="image fit"> ${tag}
+            <a target="_blank" href="${optionalLink}" class="image fit"> ${tag}
             <p><b>${des}</b></p><p>Current Price ${value} BNB</p>
             <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
             <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
@@ -1146,7 +1146,10 @@ function findTokenInYouWallet_walletPage_individual(id) {
                   }
                   listaTokens += `
               <article id="show-token" class="wallet panel">
-                     
+                    <header>
+                      <h2>Show Token</h2>
+                    </header> 
+                      <small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>                     
               <section>
               <form action="#" method="post" onsubmit="return false">
                 </br>										
