@@ -1146,18 +1146,14 @@ function findTokenInYouWallet_walletPage_individual(id) {
                   }
                   listaTokens += `
               <article id="show-token" class="wallet panel">
-                     <header>
-                      <h2>Show Token</h2>
-                    </header>	
-                      <small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
-    
+                     
               <section>
               <form action="#" method="post" onsubmit="return false">
                 </br>										
                 <div class="row">	
     
                   <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-                      <a href="#" class="image fit">${tag}</a>
+                      <a href=${optionalLink} class="image fit">${tag}</a>
                   </div>
                   <div class="col-6 col-12-medium" style="margin-top:20px;">
                   <h2>${des}</h2>
