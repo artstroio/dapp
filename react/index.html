@@ -58,8 +58,8 @@
 						<a href="#wallet" class="icon solid fa-wallet"><span>Your Wallet</span></a>
 						<!-- <a target="_blank" href="https://medium.com/artstroio" target="_blank" class="icon brands fa-medium"><span>Medium</span></a>
 						<a target="_blank" href="https://twitter.com/artstroio" target="_blank" class="icon brands fa-twitter"><span>Twitter</span></a> -->
-						<a href="https://artstro.io/#find-token" class="icon solid fa-search"><span>Find Token</span></a>		
-						<a href="https://artstro.io/catalog.html" class="icon solid fa-arrow-circle-right"><span>For Sale</span></a>
+						<a href="#find-token" class="icon solid fa-search"><span>Find Token</span></a>		
+						<a href="./catalog.html" class="icon solid fa-arrow-circle-right"><span>For Sale</span></a>
 					</nav>
 
 				<!-- Main -->
@@ -105,11 +105,11 @@
 								<form action="#" id="myForm" method="post" onsubmit="return false">
 									<div>
 										<div class="row">
-											<div class="col-12">
+											<div class="col-6 col-12-medium">
 												<input type="text" name="description" id="description" placeholder="Token Name* (Description)" />
 											</div>
-											<div style="display:none;" class="col-6 col-12-medium">
-												<input type="text" name="supply" id="supply" value="1" />	 <!-- placeholder="Supply* (Max 50)" -->					
+											<div class="col-6 col-12-medium"> <!-- style="display:none;" -->
+												<input type="text" name="supply" id="supply" placeholder="Supply* (Max 50)" />	 <!-- value="1" -->					
 											</div>
 											<div class="col-6 col-12-medium">
 												<input type="text" name="other" id="value" placeholder="Value per Unit (in BNB)*" />
@@ -212,7 +212,13 @@
 								 <header>
 									<h2>Go to <a href="#find-token">Find Token</a> to see if it is available for purchase.</h2>
 								</header>
-									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 	
+										<div class="row">					
+											<div style="marging-top: 30px;" class="col-12">
+												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
+											</div>
+										</div>																				
+
 								<!--<section>
 									<form action="#" method="post" onsubmit="return false">
 										</br>
@@ -235,7 +241,7 @@
 
 						<!-- Show Token -->
 							<article id="show-token" class="wallet panel">
-<p id="show_token_item"></p>
+							<p id="show_token_item"></p>
 								<!-- <section> 
 									<form action="#" method="post" onsubmit="return false">
 										</br>										
@@ -342,9 +348,9 @@
 						<ul class="trade" style="margin-bottom:20px;">
 							<!-- <li><a href="/" class="icon solid fa-user-astronaut"><span>Home</span></a></li> -->
 							<!-- <li><a href="https://artstro.io/#find-token" class="icon solid fa-search"><span>Find Token</span></a></li> -->
-							<li><a href="https://artstro.io/#buy-token" class="icon solid fa-handshake"><span>Buy Token</span></a></li>		
-							<li><a href="https://artstro.io/#change-token-price" class="icon solid fa-window-restore"><span>Change Token Price</span></a></li>
-							<li><a href="https://artstro.io/#send-token-sell" class="icon solid fa-arrow-circle-right"><span>Send Token to Sell Contract</span></a></li>
+							<li><a href="./#buy-token" class="icon solid fa-handshake"><span>Buy Token</span></a></li>		
+							<li><a href="./#change-token-price" class="icon solid fa-window-restore"><span>Change Token Price</span></a></li>
+							<li><a href="./#send-token-sell" class="icon solid fa-arrow-circle-right"><span>Send Token to Sell Contract</span></a></li>
 							<li><a target="_blank" href="https://medium.com/artstroio" target="_blank" class="icon brands fa-medium"><span>Medium</span></a></li>
 							<li><a target="_blank" href="https://twitter.com/artstroio" target="_blank" class="icon brands fa-twitter"><span>Twitter</span></a></li>	
 							<!-- <li><a href="https://artstro.io/catalog.html" class="icon solid fa-arrow-circle-right"><span>Sales Catalog</span></a></li> -->
