@@ -838,7 +838,7 @@ function mintToken() {
       getTokenOfUserFromEvent();
       mintBtnELm.value = 'Transaction Confirmed (token minted)';
       mintLoader.hidden = true;
-      window.location.hash = '#wallet';
+      window.location.hash = './react/#wallet';
       document.getElementById('myForm').reset();
     })
     .catch((e) => {
