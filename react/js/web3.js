@@ -996,10 +996,10 @@ function findTokenInYouWallet(id) {
               }
               show_token.innerHTML = `
           <article id="show-token" class="wallet panel">
-								 //<header>
-									//<h2>Show Token</h2>
-								//</header>	
-									//<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
+								<header>
+									<h2>Show Token</h2>
+								</header>	
+									<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
 
           <section>
           <form action="#" method="post" onsubmit="return false">
@@ -1025,10 +1025,10 @@ function findTokenInYouWallet(id) {
        //console.log('*** show-token owner Not Found');
         show_token.innerHTML = `
       <article id="show-token" class="wallet panel">
-								 //<header>
-									//<h2>Show Token</h2>
-								//</header>	
-									//<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
+								<header>
+									<h2>Show Token</h2>
+								</header>	
+									<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
 
       <div class="row">	<h1>This token is not in your Wallet</h1> </div>`;
       }
@@ -1078,10 +1078,8 @@ function findTokenInYouWallet_walletPage() {
               <form action="#" method="post" onsubmit="return false">
                 </br>										
                 <div class="row">	    
-                  <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
+                  <div class="col-4 col-6-medium col-12-small imagen-token" style="margin-top:20px;">
                       <a href=${optionalLink} class="image fit">${tag}</a>
-                  </div>
-                  <div class="col-6 col-12-medium" style="margin-top:20px;">
                   <h2>${des}</h2>
                   <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                   <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
@@ -1146,10 +1144,7 @@ function findTokenInYouWallet_walletPage_individual(id) {
                   }
                   listaTokens += `
               <article id="show-token" class="wallet panel">
-                   // <header>
-                      //<h2>Show Token</h2>
-                    //</header> 
-                      //<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>                     
+                     
               <section>
               <form action="#" method="post" onsubmit="return false">
                 </br>										
@@ -1222,10 +1217,7 @@ function findTokenInYouWallet_page_show_token(id) {
                 }
                 listaTokens += `
             <article id="show-token" class="wallet panel">
-                  // <header>
-                  //  <h2>Show Token</h2>
-                  //</header>	
-                    //<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
+
             <section>
             <form action="#" method="post" onsubmit="return false">
               </br>										
@@ -1237,7 +1229,7 @@ function findTokenInYouWallet_page_show_token(id) {
                 <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                 <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
                 <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-                //<b>Token not available for sale.</b>
+                <b>Token not available for sale.</b>
                 </div>											
               </div>	
             </form>
