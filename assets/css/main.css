@@ -84,6 +84,8 @@
 }
 .imagen-token {
 	text-align: center;
+	max-width: 320px;
+	height: auto;
 }
 .wallet header {
 	margin-bottom:10px;
@@ -99,7 +101,7 @@
 	max-width: 320px;
 	height: auto;
 }
-#token-image {
+#tokenImg {
 	max-width: 320px;
 	height: auto;	
 }
