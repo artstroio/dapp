@@ -58,8 +58,8 @@
 						<a href="#wallet" class="icon solid fa-wallet"><span>Your Wallet</span></a>
 						<!-- <a target="_blank" href="https://medium.com/artstroio" target="_blank" class="icon brands fa-medium"><span>Medium</span></a>
 						<a target="_blank" href="https://twitter.com/artstroio" target="_blank" class="icon brands fa-twitter"><span>Twitter</span></a> -->
-						<a href="#find-token" class="icon solid fa-search"><span>Find Token</span></a>		
-						<a href="#catalog.html" class="icon solid fa-arrow-circle-right"><span>For Sale</span></a>
+						<a href="https://artstro.io/#find-token" class="icon solid fa-search"><span>Find Token</span></a>		
+						<a href="https://artstro.io/catalog.html" class="icon solid fa-arrow-circle-right"><span>For Sale</span></a>
 					</nav>
 
 				<!-- Main -->
@@ -105,11 +105,11 @@
 								<form action="#" id="myForm" method="post" onsubmit="return false">
 									<div>
 										<div class="row">
-											<div class="col-6 col-12-medium">
+											<div class="col-12">
 												<input type="text" name="description" id="description" placeholder="Token Name* (Description)" />
 											</div>
-											<div class="col-6 col-12-medium"> <!-- style="display:none;" -->
-												<input type="text" name="supply" id="supply" placeholder="Supply* (Max 50)" /> <!-- value="1" -->		
+											<div style="display:none;" class="col-6 col-12-medium">
+												<input type="text" name="supply" id="supply" value="1" />	 <!-- placeholder="Supply* (Max 50)" -->					
 											</div>
 											<div class="col-6 col-12-medium">
 												<input type="text" name="other" id="value" placeholder="Value per Unit (in BNB)*" />
@@ -161,6 +161,8 @@
 											<p>	
 												If your tokens are not showing, please reload the page <a href="javascript:location.reload()">HERE</a> or reopen it in a new tab.
 											</p>	
+									
+												<!-- ><p>For better wallet performance, please add this RPC to your MetaMask BSC configuration:	</br> <b>https://floral-rough-snow.bsc.quiknode.pro/</b>.</p> -->
 											</div>														
 											<div class="col-6 col-12-medium">
 												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
@@ -210,29 +212,45 @@
 								 <header>
 									<h2>Go to <a href="#find-token">Find Token</a> to see if it is available for purchase.</h2>
 								</header>
-									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee (if you are buying a batch minted token use SafePal or Trust Wallet for lower Gas fees).</small> 	
-
-								<section>
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
+								<!--<section>
 									<form action="#" method="post" onsubmit="return false">
 										</br>
 										<div class="row">				
-											<div style="margin-top:20px;" class="col-12">
-												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
+											<div class="col-6 col-12-medium imagen-token">
+												<img class="token-thumbnail-minting" src="https://img.freepik.com/vector-gratis/astronauta-dabbing-on-rocket-icon-ilustracion-personaje-dibujos-animados-mascota-astronauta-concepto-icono-ciencia-aislado_138676-972.jpg?size=480&ext=jpg&uid=R518281&ga=GA1.2.278836255.1614294689"/>
+											</div>
+											<div class="col-6 col-12-medium">
+											<h2>ARTSTRO TOKEN</h2>
+											<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07?a=17522">17522</a></p>
+											<h3>Current Price 0.5 BNB</h3>
 											</div>											
+											<div class="col-12 mintbutton">
+												<input type="submit" value="Buy Token" />
+											</div>
 										</div>		
 									</form>
-								</section>
-
+								</section> -->
 							</article>
 
 						<!-- Show Token -->
 							<article id="show-token" class="wallet panel">
-								<p id="show_token_item"></p>
+<p id="show_token_item"></p>
 								<!-- <section> 
 									<form action="#" method="post" onsubmit="return false">
 										</br>										
 										<div class="row">	
-										
+                      kokokokokokookok=======================
+											<div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
+												<img class="token-thumbnail-minting" src="https://img.freepik.com/vector-gratis/astronauta-dabbing-on-rocket-icon-ilustracion-personaje-dibujos-animados-mascota-astronauta-concepto-icono-ciencia-aislado_138676-972.jpg?size=480&ext=jpg&uid=R518281&ga=GA1.2.278836255.1614294689"/>
+											</div>
+											<div class="col-6 col-12-medium" style="margin-top:20px;">
+											<h2>ARTSTRO TOKEN</h2>
+											<p>Token Id.: <a target="_blank" href="https://bscscan.com/token/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07?a=17522">17522</a></p>
+											<h3>Current Price 0.5 BNB</h3>
+											<p><a target="_blank" href="#">Download Attachment</a> (if any)</p>
+											<b>Token not available for sale.</b>
+											</div>											
 										</div>	
 									</form>
 								</section>-->
@@ -243,7 +261,7 @@
 								<header>
 									<h2>Change Token Sell Price</h2>
 								</header>
-									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee (if you are transacting a batch minted token use SafePal or Trust Wallet for lower Gas fees).</small>
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>
 								<section>
 									<form action="#" method="post" onsubmit="return false">
 										</br>
@@ -271,7 +289,7 @@
 								<header>
 									<h2>Send Token to Sell Contract</h2>
 								</header>
-									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee (if you are selling a batch minted token use SafePal or Trust Wallet for lower Gas fees).</small>
+									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>
 								<section>
 									<form action="#" method="post" onsubmit="return false">
 										</br>
@@ -319,51 +337,6 @@
 									</form>
 								</section>
 							</article>
-
-				<!-- Catalog -->
-					<div id="catalog">
-
-						<!-- For Sale Wallet -->
-							<article id="for-sale-wallet" class="wallet panel">
-								<header>
-									<h2>Tokens for Sale</h2>
-								</header>
-									<p style="line-height: 22px; margin-bottom: 20px;">
-										If the tokens are not showing, please reload the page <a href="https://artstro.io/catalog.html">HERE.</a>
-										Use the form below to find out the tokens a determined wallet has for availabe for purchase on the Sales Contract. 
-									</p> 
-									<p style="margin-bottom: 20px;">
-									Use Token Id number on <a href="https://artstro.io/#find-token">Find Token</a> to purchase the token of your choice.
-									</p>
-								<section>
-								<form action="#" id="myForm" method="post" onsubmit="return false">				
-									<div>
-										<div class="alert">
-								  		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-								  		<span>Please, wait until your tokens appear on your Catalog. It might take some time.</span>
-										</div>										
-										<div class="row">		
-											<div class="col-12">
-												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
-											</div>											
-											<div class="col-6 col-12-medium">	
-												<input type="text" name="destination" id="WalletSale" placeholder="Wallet Address" />
-											</div>
-											<div class="col-6 col-12-medium mintbutton">
-												<input type="submit" id="showSaleToken" value="Show Tokens for Sale" />
-											</div>			
-										</div>
-									</div>											
-								</form>
-
-									<p>Tokens available for purchase from <b id="walletOfSale">this Catalog Wallet Address</b>.</p>
-									<div class="row wallet-img" id="for-sale-wallet">
-									</div>
-								</section>
-							</article>
-					</div>
-								
-						<img style="width: 130px;" id="loader" src="./images/loadingbar.gif" >							
 					</div>			
 
 						<ul class="trade" style="margin-bottom:20px;">

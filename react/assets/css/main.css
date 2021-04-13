@@ -85,10 +85,6 @@
 .imagen-token {
 	text-align: center;
 }
-.imagen-token img{
-	max-width: 320px;
-	height: auto;
-}
 .wallet header {
 	margin-bottom:10px;
 }
@@ -162,10 +158,6 @@
 }
 .trade a.icon:before {
 	padding-right: 5px;
-}
-video {
-	max-width: 340px;
-	height: auto;	
 }
 
 /* MODIFICADO HACIA ARRIBA */

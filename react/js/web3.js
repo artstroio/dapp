@@ -736,7 +736,7 @@ async function connectWallet() {
      //console.log(accounts[0]);
 
       // https://api-testnet.bscscan.com/api?module=account&action=tokennfttx&address='+conta1+'&startblock=0&endblock=999999999&sort=asc
-      document.getElementById("acc1").value = String("https://api.bscscan.com/api?module=account&action=tokennfttx&address="+accounts[0]+"&startblock=0&endblock=999999999&sort=asc");
+      document.getElementById("acc1").value = String("https://api-testnet.bscscan.com/api?module=account&action=tokennfttx&address="+accounts[0]+"&startblock=0&endblock=999999999&sort=asc");
 
     } catch (e) {
      //console.log(e);
@@ -928,7 +928,7 @@ function getTokenOfUserFromEvent() {
               </video>`;
                   }
                   walletTokens.innerHTML += `<div class="col-4 col-6-medium col-12-small">
-            <a target="_blank" href="${optionalLink}" class="image fit"> ${tag}
+            <a href="${optionalLink}" class="image fit"> ${tag}
             <p><b>${des}</b></p><p>Current Price ${value} BNB</p>
             <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
             <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
@@ -996,6 +996,10 @@ function findTokenInYouWallet(id) {
               }
               show_token.innerHTML = `
           <article id="show-token" class="wallet panel">
+								 <header>
+									<h2>Show Token</h2>
+								</header>	
+									<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
 
           <section>
           <form action="#" method="post" onsubmit="return false">
@@ -1003,7 +1007,7 @@ function findTokenInYouWallet(id) {
             <div class="row">	
 
               <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-					        <a href=${optionalLink} class="image fit">${tag}</a>
+					        <a href="#" class="image fit">${tag}</a>
               </div>
               <div class="col-6 col-12-medium" style="margin-top:20px;">
               <h2>${des}</h2>
@@ -1021,7 +1025,7 @@ function findTokenInYouWallet(id) {
        //console.log('*** show-token owner Not Found');
         show_token.innerHTML = `
       <article id="show-token" class="wallet panel">
-								<header>
+								 <header>
 									<h2>Show Token</h2>
 								</header>	
 									<small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
@@ -1070,12 +1074,18 @@ function findTokenInYouWallet_walletPage() {
                   }
                   listaTokens += `
               <article id="show-token" class="wallet panel">
+                     <header>
+                      <h2>Show Token</h2>
+                    </header>	
+                      <small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
+    
               <section>
               <form action="#" method="post" onsubmit="return false">
                 </br>										
-                <div class="row">	    
+                <div class="row">	
+    
                   <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-                      <a href=${optionalLink} class="image fit">${tag}</a>
+                      <a href="#" class="image fit">${tag}</a>
                   </div>
                   <div class="col-6 col-12-medium" style="margin-top:20px;">
                   <h2>${des}</h2>
@@ -1142,16 +1152,20 @@ function findTokenInYouWallet_walletPage_individual(id) {
                   }
                   listaTokens += `
               <article id="show-token" class="wallet panel">
-  
+                     <header>
+                      <h2>Show Token</h2>
+                    </header>	
+                      <small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
+    
               <section>
               <form action="#" method="post" onsubmit="return false">
                 </br>										
                 <div class="row">	
     
                   <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-                      <a target="_blank" href=${optionalLink} class="image fit">${tag}</a>
+                      <a href="#" class="image fit">${tag}</a>
                   </div>
-                  <div class="col-6 col-12-medium" style="margin-top:20px;">    
+                  <div class="col-6 col-12-medium" style="margin-top:20px;">
                   <h2>${des}</h2>
                   <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                   <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
@@ -1218,17 +1232,19 @@ function findTokenInYouWallet_page_show_token(id) {
                 listaTokens += `
             <article id="show-token" class="wallet panel">
                    <header>
-                      <h2>Show Token</h2>
-                    </header> 
-                      <small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
+                    <h2>Show Token</h2>
+                  </header>	
+                    <small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
+  
             <section>
             <form action="#" method="post" onsubmit="return false">
               </br>										
               <div class="row">	
+  
                 <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-                    <a target="_blank" href=${optionalLink} class="image fit">${tag}</a>
+                    <a href="#" class="image fit">${tag}</a>
                 </div>
-                <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">                      
+                <div class="col-6 col-12-medium" style="margin-top:20px;">
                 <h2>${des}</h2>
                 <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                 <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
