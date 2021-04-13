@@ -1007,7 +1007,7 @@ function findTokenInYouWallet(id) {
             <div class="row">	
 
               <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-					        <a href="#" class="image fit">${tag}</a>
+					        <a href=${optionalLink} class="image fit">${tag}</a>
               </div>
               <div class="col-6 col-12-medium" style="margin-top:20px;">
               <h2>${des}</h2>
