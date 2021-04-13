@@ -1143,8 +1143,6 @@ function findTokenInYouWallet_walletPage_individual(id) {
                   }
                   listaTokens += `
               <article id="show-token" class="wallet panel">
-                     <header>
-                      <h2>Show Token</h2>
     
               <section>
               <form action="#" method="post" onsubmit="return false">
