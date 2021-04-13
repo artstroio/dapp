@@ -159,6 +159,10 @@
 .trade a.icon:before {
 	padding-right: 5px;
 }
+img, video {
+	max-width: 340px;
+	height: auto;
+}
 
 /* MODIFICADO HACIA ARRIBA */
 
