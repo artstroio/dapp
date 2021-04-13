@@ -96,10 +96,15 @@
 	text-decoration: underline;
 }
 .wallet-img img {
-	max-width: 320px; 
+	max-width: 320px;
+	height: auto;
+}
+#token-image {
+	max-width: 320px;
+	height: auto;	
 }
 .token-thumbnail-minting {
-	max-width: 100%;
+	max-width: 320px;
 	height: auto;
 }
 .mintbutton input {
@@ -158,10 +163,6 @@
 }
 .trade a.icon:before {
 	padding-right: 5px;
-}
-img {
-	max-width: 320px;
-	height: auto;
 }
 
 /* MODIFICADO HACIA ARRIBA */
