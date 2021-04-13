@@ -1234,15 +1234,13 @@ function findTokenInYouWallet_page_show_token(id) {
               </br>										
               <div class="row">	
   
-                <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
+                <div class="col-4 col-6-medium col-12-small imagen-token" style="margin-top:20px;">
                     <a href="#" class="image fit">${tag}</a>
-                </div>
-                <div class="col-6 col-12-medium" style="margin-top:20px;">
                 <h2>${des}</h2>
                 <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                 <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
                 <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-                <b>Token not available for sale.</b>
+                //<b>Token not available for sale.</b>
                 </div>											
               </div>	
             </form>
