@@ -462,7 +462,7 @@ function getTokenData(tokenId) {
               <div class="col-6 col-12-medium mintbutton">
                     <input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
               </div>      
-							<div class="colr-6 col-12-medium mintbutton">
+							<div class="col-6 col-12-medium mintbutton">
 								<input type="submit" onClick = "buyTokenBtn()" id='buyTokenButton' value="Buy Token" />
 							</div>
 						</div>		
