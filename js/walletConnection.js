@@ -70,6 +70,7 @@ async function onConnect() {
             connectBtn[1].value = "Connected"
             connectBtn[2].value = "Connected"
             connectBtn[3].value = "Connected"            
+            connectBtn[4].value = "Connected"
             web3 = new Web3(provider);
             connectWallet()
         } catch(e) {
@@ -107,5 +108,6 @@ async function checkingConnections() {
         connectBtn[1].value = "Connected"
         connectBtn[2].value = "Connected"
         connectBtn[3].value = "Connected"        
+        connectBtn[4].value = "Connected"                
     }
 }
