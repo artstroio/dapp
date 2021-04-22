@@ -107,9 +107,9 @@ function transferToken_update(_tid, _wallet){
         document.getElementById("tokenid").value =_tid ;
         document.getElementById("destination").value = document.getElementById(dest).value;
         document.getElementById("selWallet").innerHTML = document.getElementById(dest).value;  
-        /*
-        //document.getElementById("transfertoken").click();
-        */
+        
+        document.getElementById("transfertoken").click();
+        
     } else {
         alert("Please inform the destination wallet.");
     }
