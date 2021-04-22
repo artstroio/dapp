@@ -435,8 +435,8 @@ function findToken_busca(_tokenId) {
 
 
 function getTokenData(tokenId) {
-  console.log('tokenId *:::');
-  console.log(tokenId);
+ //console.log('tokenId *:::');
+ //console.log(tokenId);
 
   buySaleContract.methods
     .findToken(tokenId)
@@ -502,52 +502,6 @@ function getTokenData(tokenId) {
      //console.log(e);
     });
 }
-
-
-
-function sendTokenToSellContract_pgWallet(_sendTokenId){
-  let tokenId = _sendTokenId; // sendTokenId.value;
-  console.log('====>>> send token tosell contract');
-  console.log(tokenId);
-
-
-  /**/ 
-  sendTokenBtn.value = "Checking approval. Sending transaction.";
-  contract.methods
-    .isApprovedForAll(accounts[0], buySalecontractAddress)
-    .call()
-    .then((r) => {
-      if (r) {
-        sendTokenBtn.value = "Token approved. Sending transaction.";
-        buySaleContract.methods
-          .registerNFT(tokenId)
-          .send({ from: accounts[0], value: fees })
-          .then(() => {
-            sendTokenBtn.value =
-              "Transaction Confirmed. The token was sent to Sales Contract.";
-          });
-      } else if (!r) {
-        sendTokenBtn.value =
-          "Your token has not been approved yet. Sending transaction approval (Please Wait)";
-        contract.methods
-          .setApprovalForAll(buySalecontractAddress, true)
-          .send({ from: accounts[0] })
-          .then(() => {
-            sendTokenBtn.value =
-              "Your token has been approved. Transaction Sent.";
-            buySaleContract.methods
-              .registerNFT(tokenId)
-              .send({ from: accounts[0], value: fees })
-              .then(() => {
-                sendTokenBtn.value =
-                  "Your transaction has been confirmed. The token was sent to Sales Contract.";
-              });
-          });
-      }
-    }); 
-    
-}
-
 
 function sendTokenToSellContract() {
   let tokenId = sendTokenId.value;
