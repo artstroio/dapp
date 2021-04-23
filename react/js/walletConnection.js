@@ -54,76 +54,9 @@
  }
 
 
-/* verify connection */
-
-async function verifyConnect() {
-  if (document.getElementById("conn").value == "1"){
-    // already conn
-  } else{
-    onConnect();
-  }
-
-}
-
-
-
- /* autoconnect */
- async function autoConnect() {
-
-   if (document.getElementById("connectBtn0").value == "Connect your Wallet"){
-    console.log("Opening autoConnect... 001");
-    init()
-  console.log("Opening autoConnect... 002", web3Modal);
-
-  if(connected){
-      try {
-          provider = await web3Modal.connect();
-          console.log('provider:::>>>');
-          connectBtn0.value = "Connected+++";
-          console.log(provider);
-          connectBtn.value = "Connected"
-          connectBtn[0].value = "Connected"
-          connectBtn[1].value = "Connected"
-          connectBtn[2].value = "Connected"
-          web3 = new Web3(provider);
-          connectWallet()
-      } catch(e) {
-          console.log("Could not get a wallet connection", e);
-
-          return;
-        }
-          
-      // Subscribe to accounts change
-      provider.on("accountsChanged", (accounts) => {
-          window.location.reload()
-      });
-  
-      // Subscribe to chainId change
-      provider.on("chainChanged", (chainId) => {
-          window.location.reload()
-      });
-  
-      // Subscribe to networkId change
-      provider.on("networkChanged", (networkId) => {
-          window.location.reload()
-      });
-  
-      } else {
-
-        //
-      }
-   } else {
-     // already connected.
-
-   }
-
-
-  
-}
  /**
  * Connect wallet button pressed.
  */
-
 async function onConnect() {
     init()
     console.log("Opening a dialog", web3Modal);
@@ -131,18 +64,16 @@ async function onConnect() {
     if(connected){
         try {
             provider = await web3Modal.connect();
-            console.log('provider:::>>>');
-            connectBtn0.value = "Connected+";
             console.log(provider);
             connectBtn.value = "Connected"
             connectBtn[0].value = "Connected"
             connectBtn[1].value = "Connected"
             connectBtn[2].value = "Connected"
+            connectBtn[3].value = "Connected"
             web3 = new Web3(provider);
             connectWallet()
         } catch(e) {
             console.log("Could not get a wallet connection", e);
-
             return;
           }
             
@@ -161,9 +92,6 @@ async function onConnect() {
             window.location.reload()
         });
     
-    } else {
-
-      //
     }
  }
 
@@ -178,5 +106,6 @@ async function checkingConnections() {
         connectBtn[0].value = "Connected"
         connectBtn[1].value = "Connected"
         connectBtn[2].value = "Connected"
+        connectBtn[3].value = "Connected"
     }
 }
