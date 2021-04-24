@@ -1175,7 +1175,7 @@ function findTokenInYouWallet_walletPage_individual(id) {
                   <form action="#" method="post" onsubmit="return false">
 
                     <div class="row"> 
-                      <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
+                      <div class="col-4 col-6-medium col-12-small imagen-token" style="margin-top:20px;">
 
 
                           <p><a href="#" class="image fit">${tag}</a></p>
@@ -1185,16 +1185,14 @@ function findTokenInYouWallet_walletPage_individual(id) {
                           <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
                           <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
                           <div style="width:100%">
-                          <table>
-                          <tr>
-                          <td style="width:260px"><button onClick="sendTokenToSellContract_pgWallet(${id})" style="padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Send token to sell contract</button></td>
-                          <td><button onClick="ShowFormTransfer(${id})" id="btTransfer_${id}" style="display:block;padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Transfer token</button></td>
-                          </tr>
-                          </table>
-                          
-                          
-                          </div>
-                          
+                          <button onClick="sendTokenToSellContract_pgWallet(${id})" style="padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Send token to sell contract</button> 
+                          </br>
+                          <button onClick="ShowFormTransfer(${id})" id="btTransfer_${id}" style="display:block;padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Transfer token</button>
+                           
+                      </div>
+
+                      <div class="col-8 col-6-medium">
+
                           <div id="formTransfer_${id}" style="display:none;" ><input type="text" placeholder="Destination wallet" id="destinationWallet_backup${id}" style="display:none;">
                           
                           
