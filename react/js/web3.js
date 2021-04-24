@@ -1148,7 +1148,7 @@ function findTokenInYouWallet_walletPage_individual(id) {
            <section>"`;
 
            var listaTokens = ""; 
-           var list_tokens_end = `"</tr></table></section>"`;
+           var list_tokens_end = `"</section>"`;
     
           if (String(r).toUpperCase() == String(accounts[0]).toUpperCase()) {
             contract.methods
