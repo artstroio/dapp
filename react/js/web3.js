@@ -1179,18 +1179,18 @@ function findTokenInYouWallet_walletPage_individual(id) {
                           <a href=${optionalLink} class="image fit">${tag}</a>
                       </div>    
 
-                      <div class="col-6 col-12-medium imagen-token">
+                      <div class="col-6 col-12-medium imagen-token" style="margin-top:100px;">
                           <h2>${des}</h2>
                           <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                           <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
                           <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
                           <b>Token not available for sale.</b>
-                          <input type="submit" class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})" value="Send to Sales Contract">
+                          <input style="width:100%; margin-top:10px;" type="submit" class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})" value="Sell Token">
                           <!-- <button class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})">Send token to sell contract</button> -->
                       </div>
 
                       <div class="col-12">
-                          <!-- <input class="mintBtn" type="submit" id="btTransfer_${id}" onClick="ShowFormTransfer(${id})" value="Show Transfer Token Option">                      
+                          <!-- <input style:"display:none;" class="mintBtn" type="submit" id="btTransfer_${id}" onClick="ShowFormTransfer(${id})" value="Show Transfer Token Option">                      
                           <button class="mintBtn" onClick="ShowFormTransfer(${id})" id="btTransfer_${id}">Transfer Token</button> -->
                           <div style="width:100%;" id="formTransfer_${id}" style="visibility:hidden;" >
                               <input type="text" placeholder="Destination Wallet" id="destinationWallet_backup${id}" style="visibility:hidden;">
@@ -1198,8 +1198,8 @@ function findTokenInYouWallet_walletPage_individual(id) {
                                       <option>Previously Used Addresses</option>
                                   </select>
                                   </br>
-                            <input type="text" id="destinationWallet_${id}" value="" placeholder="New Destination Address"/>
-                            <input class="mintBtn" type="submit" onClick="transferToken_update(${id}, ${id})" value="Transfer Token"> 
+                            <input style="margin-top:10px;" type="text" id="destinationWallet_${id}" value="" placeholder="New Destination Address"/>
+                            <input style="width:100%;" class="mintBtn" type="submit" onClick="transferToken_update(${id}, ${id})" value="Transfer Token"> 
                             <!-- <button class="mintBtn" onClick="transferToken_update(${id}, ${id})">Transfer Token</button> -->
                           </div>
                       </div>    
