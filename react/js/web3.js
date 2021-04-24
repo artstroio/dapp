@@ -1172,7 +1172,7 @@ function findTokenInYouWallet_walletPage_individual(id) {
                 </video>`;
                   }
                   listaTokens += `
-                  <form action="#" method="post" onsubmit="return false">
+                  <!-- <form action="#" method="post" onsubmit="return false"> -->
 
                     <div class="row"> 
                       <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
@@ -1190,9 +1190,9 @@ function findTokenInYouWallet_walletPage_individual(id) {
                       </div>
 
                       <div class="col-12">
-                          <!-- <input style:"display:none;" class="mintBtn" type="submit" id="btTransfer_${id}" onClick="ShowFormTransfer(${id})" value="Show Transfer Token Option">                      
+                          <!-- <input class="mintBtn" type="submit" id="btTransfer_${id}" onClick="ShowFormTransfer(${id})" value="Show Transfer Token Option">                      
                           <button class="mintBtn" onClick="ShowFormTransfer(${id})" id="btTransfer_${id}">Transfer Token</button> -->
-                          <div style="width:100%;" id="formTransfer_${id}" style="visibility:hidden;" >
+                          <div style="width:100%;" id="formTransfer_${id}" style="display:none;" >
                               <input type="text" placeholder="Destination Wallet" id="destinationWallet_backup${id}">
                                   <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value">
                                       <option>Previously Used Addresses</option>
@@ -1207,7 +1207,8 @@ function findTokenInYouWallet_walletPage_individual(id) {
                     </div>      
                                                       
 
-                  </form><hr>`;
+                  <!-- </form> -->
+                  <hr>`;
 
                   fillCombo(id);
 
