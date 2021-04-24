@@ -1176,7 +1176,7 @@ function findTokenInYouWallet_walletPage_individual(id) {
 
                     <div class="row"> 
                       <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-                          <a href=${optionalLink} class="image fit">${tag}</a>
+                          <a target="_blank" href=${optionalLink} class="image fit">${tag}</a>
                       </div>    
 
                       <div class="col-6 col-12-medium imagen-token" style="margin-top:100px;">
@@ -1184,16 +1184,16 @@ function findTokenInYouWallet_walletPage_individual(id) {
                           <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                           <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
                           <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-                          <b>Token not available for sale.</b>
                           <input style="width:100%; margin-top:10px;" type="submit" class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})" value="Sell Token">
-                          <!-- <button class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})">Send token to sell contract</button> -->
+                          <!-- <button class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})"> Send token to sell contract</button> -->
+                          <!-- <h3>Token not available for sale.</h3> -->
                       </div>
 
                       <div class="col-12">
                           <!-- <input style:"display:none;" class="mintBtn" type="submit" id="btTransfer_${id}" onClick="ShowFormTransfer(${id})" value="Show Transfer Token Option">                      
                           <button class="mintBtn" onClick="ShowFormTransfer(${id})" id="btTransfer_${id}">Transfer Token</button> -->
                           <div style="width:100%;" id="formTransfer_${id}" style="visibility:hidden;" >
-                              <input type="text" placeholder="Destination Wallet" id="destinationWallet_backup${id}" style="display:none;">
+                              <input type="text" placeholder="Destination Wallet" id="destinationWallet_backup${id}">
                                   <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value">
                                       <option>Previously Used Addresses</option>
                                   </select>
