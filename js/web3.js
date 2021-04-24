@@ -746,7 +746,8 @@ async function connectWallet() {
      //console.log(accounts[0]);
 
       // https://api-testnet.bscscan.com/api?module=account&action=tokennfttx&address='+conta1+'&startblock=0&endblock=999999999&sort=asc
-      document.getElementById("acc1").value = String("https://api-testnet.bscscan.com/api?module=account&action=tokennfttx&address="+accounts[0]+"&startblock=0&endblock=999999999&sort=asc");
+      //document.getElementById("acc1").value = String("https://api-testnet.bscscan.com/api?module=account&action=tokennfttx&address="+accounts[0]+"&startblock=0&endblock=999999999&sort=asc");
+      document.getElementById("acc1").value = String("https://api.bscscan.com/api?module=account&action=tokennfttx&address="+accounts[0]+"&startblock=0&endblock=999999999&sort=asc");
       document.getElementById("acc2").value = String(accounts[0]);
       
       //document.getElementById("conn").value = "";

@@ -164,45 +164,44 @@
 									<div style="margin-bottom:20px;">
 										<div class="row">	
 											<div class="col-6 col-12-medium">
-											<p>	
-												If your tokens are not showing, please reload the page <a href="javascript:location.reload()">HERE</a> or reopen it in a new tab.
-											</p>	
-									
-												<!-- ><p>For better wallet performance, please add this RPC to your MetaMask BSC configuration:	</br> <b>https://floral-rough-snow.bsc.quiknode.pro/</b>.</p> -->
+												<p>	
+													If your tokens are not showing, please reload the page <a href="javascript:location.reload()">HERE</a> or reopen it in a new tab.
+												</p>	
 											</div>														
+
 											<div class="col-6 col-12-medium">
 												<input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
 											</div>
+
 										</div>
 									</div>										
 
 								<section>
-								<div class="alert" id="warning1" style="display: none;">
-								  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-								  <span>Please, wait until your tokens appear on your Wallet. It might take some time.</span>
-								</div>
-                <p>
-                  <div id="tokensList" style="width: 100%;"></div>
-				  <div id="tokensList2" style="width: 100%;"></div>
-                </p>		
-
+									<div class="alert" id="warning1" style="display: none;">
+									  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+									  <span>Please, wait until your tokens appear on your Wallet. It might take some time.</span>
+									</div>
 					
-					<form action="#" id="myForm" method="post" onsubmit="return false">				
-						<div>
-							<div class="row">															
-								<div class="col-6 col-12-medium">
-									<input type="text" name="tokenid" id="tokenid" placeholder="Token Id*" value="" />
-								</div>
-								<div class="col-6 col-12-medium">	
-									<input type="text" name="destination" id="destination" placeholder="Destination Wallet*" value=""/>
-								</div>
-								<div class="col-12 mintbutton">
-									<input type="submit" id="transfertoken" onclick="transferToken()" value="Transfer Token" />
-								</div>		
-							</div>
-						</div>											
-					</form>
-				
+					                <p>
+					                  <div id="tokensList" style="width: 100%;"></div>
+									  <div id="tokensList2" style="width: 100%;"></div>
+					                </p>		
+
+									<form action="#" id="myForm" method="post" onsubmit="return false">				
+										<div>
+											<div class="row">															
+												<div class="col-6 col-12-medium">
+													<input type="text" name="tokenid" id="tokenid" placeholder="Token Id*" value="" />
+												</div>
+												<div class="col-6 col-12-medium">	
+													<input type="text" name="destination" id="destination" placeholder="Destination Wallet*" value=""/>
+												</div>
+												<div class="col-12 mintbutton">
+													<input type="submit" id="transfertoken" onclick="transferToken()" value="Transfer Token" />
+												</div>		
+											</div>
+										</div>											
+									</form>
 
 									<div class="row wallet-img" id="walletTokens">
 										<img style="margin-left: 190px;" id="walletLoader" src="./images/loadingbar.gif" >
@@ -211,15 +210,15 @@
 								</section>
 
 								<article id="show-token2" class="wallet panel"></article>
-							</article>
+								<!--</article> -->
 
 						<!-- Buy Token -->
 							<article id="buy-token" class="wallet panel">
-								 <header>
+							<!--<header>
 									<h2>Go to <a href="#find-token">Find Token</a> to see if it is available for purchase.</h2>
 								</header>
 									<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
-								<!--<section>
+								<section>
 									<form action="#" method="post" onsubmit="return false">
 										</br>
 										<div class="row">				
