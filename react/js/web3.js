@@ -1171,44 +1171,46 @@ function findTokenInYouWallet_walletPage_individual(id) {
                 Your browser does not support the video tag.
                 </video>`;
                   }
-                  listaTokens += `<p>
+                  listaTokens += `
                   <form action="#" method="post" onsubmit="return false">
 
-                      <p><a href="#" class="image fit">${tag}</a></p>
+                    <div class="row"> 
+                      <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
 
-                      <h2>${des}</h2>
-                      <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
-                      <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
-                      <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-                      <div style="width:100%">
-                      <table>
-                      <tr>
-                      <td style="width:260px"><button onClick="sendTokenToSellContract_pgWallet(${id})" style="padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Send token to sell contract</button></td>
-                      <td><button onClick="ShowFormTransfer(${id})" id="btTransfer_${id}" style="display:block;padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Transfer token</button></td>
-                      </tr>
-                      </table>
-                      
-                      
-                      </div>
-                      
-                      <div id="formTransfer_${id}" style="display:none;" ><input type="text" placeholder="Destination wallet" id="destinationWallet_backup${id}" style="display:none;">
-                      
-                      
-                      <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value" style="font-size:10px; background-color:gray;">
-                      <option></option>
-                      </select>
-                      <input type="text" id="destinationWallet_${id}" style="width: 80%; margin-top: 1px; border: none; position:absolute; left:50px; margin-right: 25px; background-color:#CCCCCC;" value="" placeholder="Destination wallet"/>
-                      <p style="font-size:14px;">Transfer your tokens from one wallet to another without changing Its value or selling them (Pay just the Gas).</p><button onClick="transferToken_update(${id}, ${id})">Transfer to this wallet</button>
-                      </div>
-                      <b>Token not available for sale.</b>
 
+                          <p><a href="#" class="image fit">${tag}</a></p>
+
+                          <h2>${des}</h2>
+                          <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
+                          <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
+                          <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
+                          <div style="width:100%">
+                          <table>
+                          <tr>
+                          <td style="width:260px"><button onClick="sendTokenToSellContract_pgWallet(${id})" style="padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Send token to sell contract</button></td>
+                          <td><button onClick="ShowFormTransfer(${id})" id="btTransfer_${id}" style="display:block;padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Transfer token</button></td>
+                          </tr>
+                          </table>
+                          
+                          
+                          </div>
+                          
+                          <div id="formTransfer_${id}" style="display:none;" ><input type="text" placeholder="Destination wallet" id="destinationWallet_backup${id}" style="display:none;">
+                          
+                          
+                          <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value" style="font-size:10px; background-color:gray;">
+                          <option></option>
+                          </select>
+                          <input type="text" id="destinationWallet_${id}" style="width: 80%; margin-top: 1px; border: none; position:absolute; left:50px; margin-right: 25px; background-color:#CCCCCC;" value="" placeholder="Destination wallet"/>
+                          <p style="font-size:14px;">Transfer your tokens from one wallet to another without changing Its value or selling them (Pay just the Gas).</p><button onClick="transferToken_update(${id}, ${id})">Transfer to this wallet</button>
+                          </div>
+                          <b>Token not available for sale.</b>
+
+                      </div>
+                    </div>      
                                                       
 
-
-
-
-
-                  </form><hr></p>`;
+                  </form><hr>`;
 
                   fillCombo(id);
 
