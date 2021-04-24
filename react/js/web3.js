@@ -1185,9 +1185,9 @@ function findTokenInYouWallet_walletPage_individual(id) {
                           <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
                           <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
                           <div style="width:100%">
-                          <button onClick="sendTokenToSellContract_pgWallet(${id})" style="padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Send token to sell contract</button> 
+                          <button class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})">Send token to sell contract</button> 
                           </br>
-                          <button onClick="ShowFormTransfer(${id})" id="btTransfer_${id}" style="display:block;padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Transfer token</button>
+                          <button class="mintBtn" onClick="ShowFormTransfer(${id})" id="btTransfer_${id}">Transfer token</button>
                            </div>
 
                           <div style="width:100%;" id="formTransfer_${id}" style="display:none;" ><input type="text" placeholder="Destination wallet" id="destinationWallet_backup${id}" style="display:none;">
@@ -1195,9 +1195,9 @@ function findTokenInYouWallet_walletPage_individual(id) {
                           <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value" style="font-size:10px; background-color:gray;">
                           <option></option>
                           </select>
-                          
-                          <input type="text" id="destinationWallet_${id}" style="width: 80%; margin-top: 1px; border: none; position:absolute; left:50px; margin-right: 25px; background-color:#CCCCCC;" value="" placeholder="Destination wallet"/>
-                          <p style="font-size:14px;">Transfer your tokens from one wallet to another without changing Its value or selling them (Pay just the Gas).</p><button onClick="transferToken_update(${id}, ${id})">Transfer to this wallet</button>
+
+                          <input type="text" id="destinationWallet_${id}" style="width: 400px; margin-top: 1px; margin-right: 25px; border: none; position:absolute; left:50px; background-color:#CCCCCC;" value="" placeholder="Destination wallet"/>
+                          <button class="mintBtn" onClick="transferToken_update(${id}, ${id})">Transfer Token</button>
                           </div>
                           <b>Token not available for sale.</b>
 
