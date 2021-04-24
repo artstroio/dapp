@@ -1186,20 +1186,21 @@ function findTokenInYouWallet_walletPage_individual(id) {
                           <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
                           <b>Token not available for sale.</b>
                           <input type="submit" class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})" value="Send to Sales Contract">
-                          //<!-- <button class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})">Send token to sell contract</button> -->
+                          <!-- <button class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})">Send token to sell contract</button> -->
                       </div>
 
                       <div class="col-12">
-                          <input class="mintBtn" type="submit" id="btTransfer_${id}" onClick="ShowFormTransfer(${id})" value="Show Transfer Token Option">                      
-                          //<!--<button class="mintBtn" onClick="ShowFormTransfer(${id})" id="btTransfer_${id}">Transfer Token</button> -->
+                          <!-- <input class="mintBtn" type="submit" id="btTransfer_${id}" onClick="ShowFormTransfer(${id})" value="Show Transfer Token Option">                      
+                          <button class="mintBtn" onClick="ShowFormTransfer(${id})" id="btTransfer_${id}">Transfer Token</button> -->
                           <div style="width:100%;" id="formTransfer_${id}" style="visibility:hidden;" >
-                              <input type="text" placeholder="Destination wallet" id="destinationWallet_backup${id}" style="display:none;">
-                                  <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value" style="font-size:10px; background-color:gray;">
+                              <input type="text" placeholder="Destination Wallet" id="destinationWallet_backup${id}" style="visibility:hidden;">
+                                  <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value">
                                       <option>Previously Used Addresses</option>
                                   </select>
+                                  </br>
                             <input type="text" id="destinationWallet_${id}" value="" placeholder="New Destination Address"/>
                             <input class="mintBtn" type="submit" onClick="transferToken_update(${id}, ${id})" value="Transfer Token"> 
-                            //<1-- <button class="mintBtn" onClick="transferToken_update(${id}, ${id})">Transfer Token</button> -->
+                            <!-- <button class="mintBtn" onClick="transferToken_update(${id}, ${id})">Transfer Token</button> -->
                           </div>
                       </div>    
 
