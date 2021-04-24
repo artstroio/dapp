@@ -1192,8 +1192,8 @@ function findTokenInYouWallet_walletPage_individual(id) {
                       <div class="col-12">
                           <!-- <input class="mintBtn" type="submit" id="btTransfer_${id}" onClick="ShowFormTransfer(${id})" value="Show Transfer Token Option"> -->
                           <div style="width:100%;" id="formTransfer_${id}" >
-                              <input type="text" placeholder="Destination Wallet" id="destinationWallet_backup${id}">
-                                  <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value">
+                              <input style="display:none;" type="text" placeholder="Destination Wallet" id="destinationWallet_backup${id}">
+                                  <select style="display:none;" id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value">
                                       <option>Previously Used Addresses</option>
                                   </select>
                                   </br>
