@@ -1184,24 +1184,22 @@ function findTokenInYouWallet_walletPage_individual(id) {
                           <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                           <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
                           <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-                          <div style="width:100%">
-                          <button class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})">Send token to sell contract</button> 
-                          </br>
-                          <button class="mintBtn" onClick="ShowFormTransfer(${id})" id="btTransfer_${id}">Transfer token</button>
-                           </div>
-
-                          <div style="width:100%;" id="formTransfer_${id}" style="display:none;" ><input type="text" placeholder="Destination wallet" id="destinationWallet_backup${id}" style="display:none;">
-                          
-                          <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value" style="font-size:10px; background-color:gray;">
-                          <option></option>
-                          </select>
-
-                          <input type="text" id="destinationWallet_${id}" style="width: 400px; margin-top: 1px; margin-right: 25px; border: none; position:absolute; left:50px; background-color:#CCCCCC;" value="" placeholder="Destination wallet"/>
-                          <button class="mintBtn" onClick="transferToken_update(${id}, ${id})">Transfer Token</button>
-                          </div>
                           <b>Token not available for sale.</b>
-
+                          <button class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})">Send token to sell contract</button> 
                       </div>
+
+                      <div class="col-12">
+                          <button class="mintBtn" onClick="ShowFormTransfer(${id})" id="btTransfer_${id}">Transfer token</button>
+                          <div style="width:100%;" id="formTransfer_${id}" style="display:none;" >
+                              <input type="text" placeholder="Destination wallet" id="destinationWallet_backup${id}" style="display:none;">
+                                  <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value" style="font-size:10px; background-color:gray;">
+                                      <option>Lastest Wallets</option>
+                                  </select>
+                            <input type="text" id="destinationWallet_${id}" style="width: 100%; margin-top: 1px; margin-right: 25px; border: none; position:absolute; left:50px; background-color:#CCCCCC;" value="" placeholder="Destination wallet"/>
+                            <button class="mintBtn" onClick="transferToken_update(${id}, ${id})">Transfer Token</button>
+                          </div>
+                      </div>    
+
                     </div>      
                                                       
 
