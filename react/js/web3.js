@@ -1176,10 +1176,10 @@ function findTokenInYouWallet_walletPage_individual(id) {
 
                     <div class="row"> 
                       <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
+                          <a href=${optionalLink} class="image fit">${tag}</a>
+                      </div>    
 
-
-                          <p><a href="#" class="image fit">${tag}</a></p>
-
+                      <div class="col-6 col-12-medium imagen-token">
                           <h2>${des}</h2>
                           <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
                           <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
@@ -1189,16 +1189,13 @@ function findTokenInYouWallet_walletPage_individual(id) {
                           </br>
                           <button onClick="ShowFormTransfer(${id})" id="btTransfer_${id}" style="display:block;padding: 8px 32px;margin: 4px 2px;border: 2px solid #555555;color: black; background-color: white;">Transfer token</button>
                            </div>
-                           
-                      </div>     
-                      <div class="col-6 col-12-medium imagen-token">
 
-                          <div id="formTransfer_${id}" style="display:none;" ><input type="text" placeholder="Destination wallet" id="destinationWallet_backup${id}" style="display:none;">
-                          
+                          <div style="width:100%;" id="formTransfer_${id}" style="display:none;" ><input type="text" placeholder="Destination wallet" id="destinationWallet_backup${id}" style="display:none;">
                           
                           <select id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value" style="font-size:10px; background-color:gray;">
                           <option></option>
                           </select>
+                          
                           <input type="text" id="destinationWallet_${id}" style="width: 80%; margin-top: 1px; border: none; position:absolute; left:50px; margin-right: 25px; background-color:#CCCCCC;" value="" placeholder="Destination wallet"/>
                           <p style="font-size:14px;">Transfer your tokens from one wallet to another without changing Its value or selling them (Pay just the Gas).</p><button onClick="transferToken_update(${id}, ${id})">Transfer to this wallet</button>
                           </div>
