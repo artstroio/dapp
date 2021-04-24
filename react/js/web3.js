@@ -1172,7 +1172,7 @@ function findTokenInYouWallet_walletPage_individual(id) {
                 </video>`;
                   }
                   listaTokens += `
-                  <!-- <form action="#" method="post" onsubmit="return false"> -->
+                  <form action="#" method="post" onsubmit="return false">
 
                     <div class="row"> 
                       <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
@@ -1207,8 +1207,7 @@ function findTokenInYouWallet_walletPage_individual(id) {
                     </div>      
                                                       
 
-                  <!-- </form> -->
-                  <hr>`;
+                  </form><hr>`;
 
                   fillCombo(id);
 
