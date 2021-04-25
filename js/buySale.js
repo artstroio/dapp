@@ -458,11 +458,8 @@ function getTokenData(tokenId) {
               <h2>${r.data.description}</h2>
               <p>Token Id.: <a target="_blank" id='tokenId' href="https://bscscan.com/token/${contractAddress}?a=${tokenId}">${tokenId}</a></p>
               <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
-              </div>          
-              <div class="col-6 col-12-medium mintbutton">
-                    <input type="submit" id="connectBtn" onClick="onConnect()" value="Connect your Wallet" />
-              </div>      
-              <div class="col-6 col-12-medium mintbutton">
+              </div>               
+              <div class="col-12 mintbutton">
                 <input type="submit" onClick = "buyTokenBtn()" id='buyTokenButton' value="Buy Token" />
               </div>
             </div>    
