@@ -10,8 +10,6 @@ const loader = document.querySelector('#loader');
 const mintLoader = document.querySelector('#mintLoader');
 const video = document.querySelector('#video');
 
-
-
 const contractAbi = [
   {
     inputs: [],
@@ -627,107 +625,45 @@ window.onload = async () => {
   if (video != null) {
     video.hidden = true;
   }
- //console.log('connectWallet...>>');
-  var i;
-  for (i = 87; i <=90; i++){
-   //console.log('wallet tokens >>>>>>>>>>>:::');
-   //console.log(i);
-try{
-  //findTokenInYouWallet_walletPage(i);
-  
-
-}
-catch(err){
- //console.log('erro tokens >>>>>>>>>>>:::');
- //console.log(err);  
-}    
-  }
-
-
- //connectWallet();
+  // connectWallet();
   checkingConnections();
   ipfs = IpfsApi({
     host: 'ipfs.infura.io',
     port: 5001,
     protocol: 'https',
   });
-  var url_string = window.location.href; // window.BinanceChain   window.location.href
-
- //console.log('url_string');
- //console.log(url_string);
-
- //console.log('binance');
- //console.log(window.BinanceChain);
-
- //console.log('ipfs');
- //console.log(ipfs);
-
-
+  var url_string = window.location.href;
   var url = new URL(url_string);
-  let tokenId = 87 ; // 87; // url.searchParams.get('tokenId') ; // url.searchParams.get('tokenId');  // 87
-  let searchWallet =  document.getElementById('acc1').value; //'0xae9a18983cb1131ce4c6e2c7ef7636b23e179e4c'; //'0xae9A18983CB1131CE4c6e2C7ef7636b23e179E4C'; // url.searchParams.get('wallet');
+  let searchWallet = url.searchParams.get('wallet');
+  let tokenId = url.searchParams.get('tokenId');
 
- //console.log('url.searchParams.get');
- //console.log(url.searchParams.get('tokenId'));
-
-
- //console.log('url');
- //console.log(url);
-
- //console.log('tokenId:::');
- //console.log(tokenId);
-
- //console.log('searchWallet');
- //console.log(searchWallet);
-
-
-
+  console.log(searchWallet);
   if (searchWallet != null) {
-    
-    console.log('searchWallet not null :::::::');
-
     if (searchWallet.length === 42) {
       setTimeout(() => {
         getValueForCatalog(searchWallet);
       }, 1000);
     }
-  } else {
-    console.log('searchWallet IS NULL :::::::');
   }
   if (tokenId != null) {
     setTimeout(() => {
       getTokenData(tokenId);
-      lista_tokens_1();
     }, 1000);
-
-    // connected:
-
   }
-
-
-
-
-
-
 };
 
 async function connectWallet() {
   if (window.ethereum) {
-     //onConnect()
+    // onConnect()
     let id = await web3.eth.getChainId();
-
-   //console.log('getChainId:');
-   //console.log(id);
-
+    console.log(id);
     if (id === 97) {
       contractAddress = '0xA1428ba8636bC3FEBC54158e4EDA88D50A0F006C';
       buySalecontractAddress = '0xcd622eFB5e6dc4e3c255fFCc43fC24cFC92B5beD';
     } else if (id === 56) {
       contractAddress = '0x92595603D198B4Dc99098701DDC313D2fEc56E88';
       buySalecontractAddress = '0xc90EcA83aC8b56f350129588b73B31feE67fE9D0';
-      document.getElementById("conn").value = "1";
     } else {
-      document.getElementById("conn").value = "0";
       alert('ERROR: Wrong MetaMask Network');
     }
 
@@ -738,25 +674,12 @@ async function connectWallet() {
         buySalecontractAddress
       );
       accounts = await ethereum.enable();
-
-     //console.log('accounts:::');
-     //console.log(accounts);
-
-     //console.log('accounts 0000:::');
-     //console.log(accounts[0]);
-
-      // https://api-testnet.bscscan.com/api?module=account&action=tokennfttx&address='+conta1+'&startblock=0&endblock=999999999&sort=asc
-      document.getElementById("acc1").value = String("https://api.bscscan.com/api?module=account&action=tokennfttx&address="+accounts[0]+"&startblock=0&endblock=999999999&sort=asc");
-      document.getElementById("acc2").value = String(accounts[0]);
-      
-      //document.getElementById("conn").value = "";
     } catch (e) {
-     //console.log(e);
+      console.log(e);
     }
     getTokenOfUserFromEvent();
   }
 }
-
 
 inputELm.addEventListener('change', (e) => {
   loader.hidden = false;
@@ -859,8 +782,7 @@ function mintToken() {
 }
 
 findTokenBtn[0].addEventListener('click', () => {
-  // findToken(findTokenId[0].value); // findTokenID
-  findToken_busca(document.getElementById('findTokenID').value); // findTokenID
+  findToken(findTokenId[0].value);
 });
 
 findTokenBtn[1].addEventListener('click', () => {
@@ -874,21 +796,11 @@ function getTokenOfUserFromEvent() {
   let walletTokens = document.getElementById('walletTokens');
   walletTokens.innerHTML = '';
 
- //console.log('=======walletTokens==========>>>>>');
- //console.log('=======accounts[0]==========>>>>>');
- //console.log(accounts[0]);
-
   newContract
     .getPastEvents(
       'Transfer',
       { filter: { to: accounts[0] }, fromBlock: 0, toBlock: 'latest' },
       (err, r) => {
-
-       //console.log('=================r>>>>>');
-       //console.log(r);
-       //console.log('=================err>>>>>');
-       //console.log(err);
-
         returnValuesArr = r;
         returnValuesArr = returnValuesArr.map((index) => index.returnValues);
         userTokenID = returnValuesArr.map((index) => index.tokenId);
@@ -900,10 +812,6 @@ function getTokenOfUserFromEvent() {
           'Transfer',
           { filter: { from: accounts[0] }, fromBlock: 0, toBlock: 'latest' },
           (err, r) => {
-
-           //console.log('=================>>>>>');
-           //console.log(r);
-
             let tempData = r.map((index) => index.returnValues);
             deleteId = tempData.map((index) => index.tokenId);
             deleteId.map((index) => {
@@ -951,43 +859,27 @@ function getTokenOfUserFromEvent() {
           });
         });
     })
-    .catch((e) => {
-     //console.log('=================erro>>>>>');
-     //console.log(e);
-    });
+    .catch(console.log);
 }
 
 function findTokenInYouWallet(id) {
   let show_token = document.querySelector('#show-token');
   window.location.hash = '#show-token';
+  // console.log(id)
+  show_token.innerHTML = `
+      <article id="show-token" class="wallet panel">
+								 <header>
+									<h2>Show Token</h2>
+								</header>	
+									<small> Finding token Please Wait...<a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
+
+      <div class="row">	<h1>This token is not in your Wallet</h1> </div>`;
+      
   contract.methods
     .ownerOf(id)
     .call()
     .then((r) => {
-
-     //console.log('===========show-token=======acc');
-
-     //console.log('r data :::');
-     //console.log(r);
-
-     //console.log('accounts :::');
-     //console.log(accounts);
-
-     //console.log('id:');
-     //console.log(id);
-
-     //console.log('accounts[0]:::');
-     //console.log(accounts[0]);
-
-     //console.log('comparative:r::');
-     //console.log(String(r).toUpperCase());      
-
-     //console.log('comparative:accounts::');
-     //console.log(String(accounts).toUpperCase());    
-
-     //console.log('==================');
-
-      if (String(r).toUpperCase() == String(accounts[0]).toUpperCase()) {
+      if (web3.utils.toChecksumAddress(r) == web3.utils.toChecksumAddress(accounts[0])) {
         contract.methods
           .tokenURI(id)
           .call()
@@ -998,7 +890,6 @@ function findTokenInYouWallet(id) {
               let des = r.data.description;
               let tokenType = r.data.type;
               let price = await buySaleContract.methods.tokenPrice(id).call();
-
               if (tokenType === 'image') {
                 tag = `<img src=${r.data.img} id=${id} alt=""></a>`;
               } else {
@@ -1034,7 +925,7 @@ function findTokenInYouWallet(id) {
             });
           });
       } else {
-       //console.log('*** show-token owner Not Found');
+        console.log('owner Not Found');
         show_token.innerHTML = `
       <article id="show-token" class="wallet panel">
 								 <header>
@@ -1046,281 +937,6 @@ function findTokenInYouWallet(id) {
       }
     });
 }
-function findTokenInYouWallet_walletPage() {
-  var n;
-  for (n = 0; n <= 100;n++){
-    id = n;
-    try{
-     //console.log('=============0001=====findTokenInYouWallet_walletPage');
-      //let show_token = document.querySelector('#show-token2');
-      //window.location.hash = '#show-token2';
-      contract.methods
-        .ownerOf(id)
-        .call()
-        .then((r) => {
-    
-         //console.log('===========0002=======findTokenInYouWallet_walletPage');
-    
-          var listaTokens = ""; // document.getElementById('tokensList2').innerHTML
-    
-          if (String(r).toUpperCase() == String(accounts[0]).toUpperCase()) {
-            contract.methods
-              .tokenURI(id)
-              .call()
-              .then(async (uri) => {
-               //console.log('===========0003=======findTokenInYouWallet_walletPage');
-                axios(uri).then(async (r) => {
-                 //console.log('===========0004=======findTokenInYouWallet_walletPage');
-                  optionalLink = r.data.optionalUrl;
-                  imageLink = r.data.img;
-                  let des = r.data.description;
-                  let tokenType = r.data.type;
-                  let price = await buySaleContract.methods.tokenPrice(id).call();
-                 //console.log('=========plota token on wallet=========');
-                  if (tokenType === 'image') {
-                    tag = `<img src=${r.data.img} id=${id} alt=""></a>`;
-                  } else {
-                    tag = `<video class="video-preview" id="${id}" autoplay loop muted src="${r.data.img}">
-                Your browser does not support the video tag.
-              </video>`;
-                  }
-                  listaTokens += `
-              <article id="show-token" class="wallet panel">
-                     <header>
-                      <h2>Show Token</h2>
-                    </header>	
-                      <small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
-    
-              <section>
-              <form action="#" method="post" onsubmit="return false">
-                </br>										
-                <div class="row">	
-    
-                  <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-                      <a href="#" class="image fit">${tag}</a>
-                  </div>
-                  <div class="col-6 col-12-medium" style="margin-top:20px;">
-                  <h2>${des}</h2>
-                  <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
-                  <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
-                  <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-                  <b>Token not available for sale.</b>
-                  </div>											
-                </div>	
-              </form>
-            </section>`;
-    
-            document.getElementById('tokensList2').innerHTML = listaTokens ;
-    
-                });
-              });
-          } else {
-            //
-            document.getElementById('tokensList2').innerHTML = listaTokens ;
-          }
-        });
-    }
-    catch (err){
-    //
-    }
-  }
-  
-}
-
-
-function findTokenInYouWallet_walletPage_individual(id) {
-    document.getElementById('tokensList2').innerHTML = ``;
-    try{
-      //console.log('=============0001=====findTokenInYouWallet_walletPage');
-      //let show_token = document.querySelector('#show-token2');
-      //window.location.hash = '#show-token2';
-      contract.methods
-        .ownerOf(id)
-        .call()
-        .then((r) => {
-    
-          //console.log('===========0002=======findTokenInYouWallet_walletPage');
-          var list_tokens_ini = `"<article id=show-token class=wallet panel>
-          <header>
-           <h2>Show Token</h2>
-           </header>	
-           <small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href=https://artstro.io/#send-token-sell><span>HERE.</span></a></small>
-           <section>"`;
-
-           var listaTokens = ""; 
-           var list_tokens_end = `"</section>"`;
-    
-          if (String(r).toUpperCase() == String(accounts[0]).toUpperCase()) {
-            contract.methods
-              .tokenURI(id)
-              .call()
-              .then(async (uri) => {
-               //console.log('===========0003=======findTokenInYouWallet_walletPage');
-                axios(uri).then(async (r) => {
-                 //console.log('===========0004=======findTokenInYouWallet_walletPage');
-                  optionalLink = r.data.optionalUrl;
-                  imageLink = r.data.img;
-                  let des = r.data.description;
-                  let tokenType = r.data.type;
-                  let price = await buySaleContract.methods.tokenPrice(id).call();
-                 //console.log('=========plota token on wallet=========');
-                  if (tokenType === 'image') {
-                    tag = `<img src=${r.data.img} id=${id} alt=""></a>`;
-                  } else {
-                    tag = `<video class="video-preview" id="${id}" autoplay loop muted src="${r.data.img}">
-                Your browser does not support the video tag.
-                </video>`;
-                  }
-                  listaTokens += `
-                  <form action="#" method="post" onsubmit="return false">
-
-                    <div class="row"> 
-                      <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-                          <a target="_blank" href=${optionalLink} class="image fit">${tag}</a>
-                      </div>    
-
-                      <div class="col-6 col-12-medium descripcion-wallet">
-                          <h2>${des}</h2>
-                          <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
-                          <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
-                          <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-                          <input style="width:100%; margin-top:10px;" type="submit" class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})" value="Sell Token">
-                          <!-- <button class="mintBtn" onClick="sendTokenToSellContract_pgWallet(${id})"> Send token to sell contract</button> -->
-                          <!-- <h3>Token not available for sale.</h3> -->
-                      </div>
-
-                      <div class="col-12">
-                          <!-- <input class="mintBtn" type="submit" id="btTransfer_${id}" onClick="ShowFormTransfer(${id})" value="Show Transfer Token Option"> -->
-                          <div style="width:100%;" id="formTransfer_${id}" >
-                              <input style="display:none;" type="text" placeholder="Destination Wallet" id="destinationWallet_backup${id}">
-                                  <select style="display:none;" id="combo_${id}" name="env" style="width: 100%; position:relative;" onchange="this.nextElementSibling.value=this.value">
-                                      <option>Previously Used Addresses</option>
-                                  </select>
-                                  </br>
-                            <input style="margin-top:10px;" type="text" id="destinationWallet_${id}" value="" placeholder="New Destination Address"/>
-                            <input style="width:100%; margin-top:10px;" class="mintBtn" type="submit" onClick="transferToken_update(${id}, ${id})" value="Transfer Token"> 
-                          </div>
-                      </div>    
-
-                    </div>      
-                                                      
-
-                  </form><hr>`;
-
-                  fillCombo(id);
-
-            var tabini = ``;
-            var tabend = ``;
-            
-            var item_list = tabini + listaTokens + tabend;
-
-            document.getElementById('tokensList2').innerHTML += listaTokens;
-
-            // verify if wallet is connected.
-            var L = document.getElementById('tokensList2').innerHTML;
-            if (L.length > 50){ // no tokens are beeing shown
-                document.getElementById("connectBtn").value = "Connected";
-                document.getElementById("conn").value = "1";
-            }else {
-                document.getElementById("connectBtn").value = "Connect your wallet";
-                document.getElementById("conn").value = "0";
-            }
-
-                });
-              });
-          } else {
-            // 
-          }
-        });
-    }
-    catch (err){
-      //
-    }
-
-
-}
-
-function findTokenInYouWallet_page_show_token(id) {
-  try{
-   //console.log('=============0001=====findTokenInYouWallet_walletPage');
-    //let show_token = document.querySelector('#show-token2');
-    //window.location.hash = '#show-token2';
-    contract.methods
-      .ownerOf(id)
-      .call()
-      .then((r) => {
-  
-       //console.log('===========0002=======findTokenInYouWallet_walletPage');
-        document.getElementById('show_token_item').innerHTML = "";
-
-         var listaTokens = ""; // document.getElementById('tokensList2').innerHTML
-  
-        if (String(r).toUpperCase() == String(accounts[0]).toUpperCase()) {
-          contract.methods
-            .tokenURI(id)
-            .call()
-            .then(async (uri) => {
-             //console.log('===========0003=======findTokenInYouWallet_walletPage');
-              axios(uri).then(async (r) => {
-               //console.log('===========0004=======findTokenInYouWallet_walletPage');
-                optionalLink = r.data.optionalUrl;
-                imageLink = r.data.img;
-                let des = r.data.description;
-                let tokenType = r.data.type;
-                let price = await buySaleContract.methods.tokenPrice(id).call();
-               //console.log('=========plota token on wallet=========');
-                if (tokenType === 'image') {
-                  tag = `<img src=${r.data.img} id=${id} alt=""></a>`;
-                } else {
-                  tag = `<video class="video-preview" id="${id}" autoplay loop muted src="${r.data.img}">
-              Your browser does not support the video tag.
-            </video>`;
-                }
-                listaTokens += `<div>
-            <article id="show-token" class="wallet panel">
-                   <header>
-                    <h2>Show Token</h2>
-                  </header>	
-                    <small>This token is in your Wallet. If you want to sell this token, please take note of the Id number and send it to the Sell Contract clicking <a href="https://artstro.io/#send-token-sell"><span>HERE.</span></a> </small>
-  
-            <section>
-            <form action="#" method="post" onsubmit="return false">
-              </br>										
-              <div class="row">	
-  
-                <div class="col-6 col-12-medium imagen-token" style="margin-top:20px;">
-                    <a href="#" class="image fit">${tag}</a>
-                </div>
-                <div class="col-6 col-12-medium" style="margin-top:20px;">
-                <h2>${des}</h2>
-                <p>Token Id: <a target="_blank" href="https://bscscan.com/token/${contractAddress}?a=${id}">${id}</a></p>
-                <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
-                <p><a target="_blank" href=${optionalLink}>Download Attachment</a> (if any)</p>
-                <b>Token not available for sale.</b>
-
-                </div>											
-              </div>	
-            </form>
-          </section></div>`;
-  
-          document.getElementById('show_token_item').innerHTML += listaTokens ;
-  
-              });
-            });
-        } else {
-          //
-          // document.getElementById('show_token_item').innerHTML += listaTokens ;
-        }
-      });
-  }
-  catch (err){
-//
-  }
-
-
-}
-
-
 
 function transferToken() {
   let tokenId = tokenid.value;
@@ -1342,17 +958,4 @@ function transferToken() {
 
   tokenid.value = '';
   destination.value = '';
-}
-
-
-function lista_tokens_1(){
-  var n = 0;
-  for (n=0;n<=100;n++){
-    try{
-      findTokenInYouWallet_walletPage_individual(n);
-    }
-    catch (err){
-      //
-    }
-  }
 }

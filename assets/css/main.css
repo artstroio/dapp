@@ -34,9 +34,6 @@
 	padding: 0;
 	font-weight: normal;
 }
-.descripcion-wallet {
-	margin-top:100px;
-}
 .descripcion b{
 	color: white;
 	font-weight: bolder;
@@ -87,8 +84,6 @@
 }
 .imagen-token {
 	text-align: center;
-}
-.imagen-token img {
 	max-width: 320px;
 	height: auto;
 }
@@ -103,10 +98,15 @@
 	text-decoration: underline;
 }
 .wallet-img img {
-	max-width: 320px; 
+	max-width: 320px;
+	height: auto;
+}
+#tokenImg {
+	max-width: 320px;
+	height: auto;	
 }
 .token-thumbnail-minting {
-	max-width: 100%;
+	max-width: 320px;
 	height: auto;
 }
 .mintbutton input {
@@ -127,10 +127,7 @@
 		background-image: url("./images/no-video.png");
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-	}
-	.descripcion-wallet {
-		margin-top:20px;
-	}
+	}	
 }
 .recommended {
 	vertical-align:middle;
