@@ -460,7 +460,7 @@ function getTokenData(tokenId) {
               <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
               </div>          
               <div class="col-6 col-12-medium mintbutton">
-                    <input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
+                    <input type="submit" id="connectBtn" onClick="onConnect()" value="Connect your Wallet" />
               </div>      
               <div class="col-6 col-12-medium mintbutton">
                 <input type="submit" onClick = "buyTokenBtn()" id='buyTokenButton' value="Buy Token" />
