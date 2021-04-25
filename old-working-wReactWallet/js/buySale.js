@@ -440,34 +440,34 @@ function getTokenData(tokenId) {
           tag = `<img src=${r.data.img} class="token-thumbnail-minting" id=${tokenId} alt=""></a>`;
         } else {
           tag = `<video class="video-preview" id="${tokenId}" autoplay loop muted src="${r.data.img}">
-			Your browser does not support the video tag.
-		</video>`;
+      Your browser does not support the video tag.
+    </video>`;
         }
         buyToken.innerHTML = `<header>
-				<h2>Buy this Token</h2>
-				</header>
-					<small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small> 									
-				<section>
-					<form action="#" method="post" onsubmit="return false">
-						</br>
-						<div class="row">				
-							<div class="col-6 col-12-medium imagen-token">
-								${tag}
-							</div>
-							<div class="col-6 col-12-medium">
-							<h2>${r.data.description}</h2>
-							<p>Token Id.: <a target="_blank" id='tokenId' href="https://bscscan.com/token/${contractAddress}?a=${tokenId}">${tokenId}</a></p>
-							<h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
-							</div>					
+        <h2>Buy this Token</h2>
+        </header>
+          <small>Transaction Fee is 0.025 $BNB + Network Gas Fee.</small>                   
+        <section>
+          <form action="#" method="post" onsubmit="return false">
+            </br>
+            <div class="row">       
+              <div class="col-6 col-12-medium imagen-token">
+                ${tag}
+              </div>
+              <div class="col-6 col-12-medium">
+              <h2>${r.data.description}</h2>
+              <p>Token Id.: <a target="_blank" id='tokenId' href="https://bscscan.com/token/${contractAddress}?a=${tokenId}">${tokenId}</a></p>
+              <h3>Current Price ${web3.utils.fromWei(price)} BNB</h3>
+              </div>          
               <div class="col-6 col-12-medium mintbutton">
                     <input type="submit" id="connectBtn" onclick="onConnect()" value="Connect your Wallet" />
               </div>      
-							<div class="col-6 col-12-medium mintbutton">
-								<input type="submit" onClick = "buyTokenBtn()" id='buyTokenButton' value="Buy Token" />
-							</div>
-						</div>		
-					</form>
-				</section>`;
+              <div class="col-6 col-12-medium mintbutton">
+                <input type="submit" onClick = "buyTokenBtn()" id='buyTokenButton' value="Buy Token" />
+              </div>
+            </div>    
+          </form>
+        </section>`;
       });
     });
 }
