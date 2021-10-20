@@ -845,7 +845,7 @@ function getValues() {
 function mintToken() {
   contract.methods
     .mint(accounts[0], supply, tokenURI, web3.utils.toWei(value), royalty)
-    .send({ from: accounts[0], value: '50000000000000000' })
+    .send({ from: accounts[0], value: '00000000000000000' })
     .then(() => {
       getTokenOfUserFromEvent();
       mintBtnELm.value = 'Transaction Confirmed (token minted)';
