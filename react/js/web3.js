@@ -798,7 +798,7 @@ async function addData() {
     }
     hash = result[0];
     loader.hidden = true;
-    imageUrl = `https://gateway.pinata.cloud/ipfs/${result[0].hash}`;
+    imageUrl = `https://ipfs.io/ipfs/${result[0].hash}`;
     const videoType = ['video/webm', 'video/mp4', 'video/muted'];
     if (videoType.includes(fileType)) {
       tokenImg.hidden = true;
@@ -827,7 +827,7 @@ sendJSONToIPFS = async () => {
 
   ipfs.add(ipfs.Buffer(doc)).then((cid) => {
     mintLoader.hidden = true;
-    tokenURI = `https://gateway.pinata.cloud/ipfs/${cid[0].hash}`;
+    tokenURI = `https://ipfs.io/ipfs/${cid[0].hash}`;
     mintBtnELm.value = 'Approving Transaction to BSC (please wait)';
     mintLoader.hidden = false;
     mintToken();
@@ -868,7 +868,7 @@ findTokenBtn[1].addEventListener('click', () => {
 });
 
 function getTokenOfUserFromEvent() {
-  const newWeb3 = new Web3('wss://apis.ankr.com/wss/13fcc698359b44aa971ed71dec279857/e0eccff31da3eb9772f92fab8e12a185/binance/full/main');
+  const newWeb3 = new Web3('wss://dex.binance.org/api/ws/7e8a6dc9-06a1-475a-a118-d54c90451b77/');
   newContract = new newWeb3.eth.Contract(contractAbi, contractAddress);
 
   let walletTokens = document.getElementById('walletTokens');

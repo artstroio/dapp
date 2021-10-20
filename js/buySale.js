@@ -522,7 +522,7 @@ function changePriceOfToken() {
 }
 
 function getValueForCatalog(address) {
-  const newWeb3 = new Web3('wss://apis.ankr.com/wss/5583358d1bd84a809cebfa5487dd758e/e0eccff31da3eb9772f92fab8e12a185/binance/full/main/');
+  const newWeb3 = new Web3('wss://dex.binance.org/api/ws/7e8a6dc9-06a1-475a-a118-d54c90451b77/');
   const newbuySaleContract = new newWeb3.eth.Contract(buySalecontractAbi, buySalecontractAddress);
 
   console.log(address);

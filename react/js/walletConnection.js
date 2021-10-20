@@ -34,11 +34,11 @@
        options: {
 
         rpc: {
-          56: "wss://dex.binance.org/api/ws/7e8a6dc9-06a1-475a-a118-d54c90451b77"
+          56: "wss://dex.binance.org/api/ws/7e8a6dc9-06a1-475a-a118-d54c90451b77/"
           // ...
         },
         chainId: 56,
-        rpcUrl: 'wss://dex.binance.org/api/ws/7e8a6dc9-06a1-475a-a118-d54c90451b77'        
+        rpcUrl: 'wss://dex.binance.org/api/ws/7e8a6dc9-06a1-475a-a118-d54c90451b77/'        
        }
      },
 
