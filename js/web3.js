@@ -721,7 +721,7 @@ async function addData() {
     }
     hash = result[0];
     loader.hidden = true;
-    imageUrl = `https://gateway.pinata.cloud/ipfs/${result[0].hash}`;
+    imageUrl = `https://ipfs.io/ipfs/${result[0].hash}`;
     const videoType = ['video/webm', 'video/mp4', 'video/muted'];
     if (videoType.includes(fileType)) {
       tokenImg.hidden = true;
@@ -768,7 +768,7 @@ function getValues() {
 function mintToken() {
   contract.methods
     .mint(accounts[0], supply, tokenURI, web3.utils.toWei(value), royalty)
-    .send({ from: accounts[0], value: '50000000000000000' })
+    .send({ from: accounts[0], value: '00000000000000000' })
     .then(() => {
       getTokenOfUserFromEvent();
       mintBtnELm.value = 'Transaction Confirmed (token minted)';
